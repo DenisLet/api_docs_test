@@ -1,0 +1,58 @@
+site_name: Citronus API
+site_description: Citronus Trading API (JSON-RPC + WebSocket)
+site_url: https://<your-github-username>.github.io/citronus-api-docs
+repo_url: https://github.com/<your-github-username>/citronus-api-docs
+repo_name: citronus-api-docs
+copyright: "© Citronus"
+
+theme:
+  name: material
+  features:
+    - navigation.top
+    - content.code.copy
+    - content.code.select
+    - search.suggest
+    - search.highlight
+    - toc.integrate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: deep purple
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: deep purple
+  language: en
+
+nav:
+  - Overview: index.md
+  - Playground: playground.md
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - tables
+  - toc:
+      permalink: true
+  - footnotes
+  - def_list
+  - attr_list
+  - fenced_code
+  - md_in_html
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.critic
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.snippets
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+plugins:
+  - search
+extra_javascript:
+  - playground.js
