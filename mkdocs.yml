@@ -1,8 +1,6 @@
 site_name: Citronus API
 site_description: Citronus Trading API (JSON-RPC + WebSocket)
-site_url: https://denislet.github.io/api_docs_test/
 copyright: "© Citronus"
-
 
 theme:
   name: material
