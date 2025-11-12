@@ -1,5 +1,6 @@
 site_name: Citronus API
 site_description: Citronus Trading API (JSON-RPC + WebSocket)
+site_url: https://denislet.github.io/api_docs_test/
 copyright: "© Citronus"
 
 theme:
@@ -12,47 +13,15 @@ theme:
     - search.suggest
     - search.highlight
     - toc.integrate
-  palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: indigo
-      accent: deep purple
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: indigo
-      accent: deep purple
 
 nav:
   - Overview: index.md
   - Playground: playground.md
 
-markdown_extensions:
-  - admonition
-  - codehilite
-  - tables
-  - toc:
-      permalink: true
-  - footnotes
-  - def_list
-  - attr_list
-  - fenced_code
-  - md_in_html
-  - pymdownx.highlight
-  - pymdownx.inlinehilite
-  - pymdownx.superfences
-  - pymdownx.details
-  - pymdownx.critic
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.snippets
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
-
 plugins:
   - search
   - i18n:
-      docs_structure: suffix          # index.md + index.ru.md
+      docs_structure: suffix
       languages:
         - locale: en
           name: English
