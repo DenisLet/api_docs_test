@@ -675,6 +675,7 @@ Stop-limit order (must include both `price` and `stop_price`; send only `amount`
 
 **Important:**
 
+* Limit on open orders: no more than 100 open orders per account at the same time.
 * Send **either** `amount` **or** `total`, not both.
 * Omitting both is an error.
 * For `market` orders:
@@ -1073,7 +1074,6 @@ POST <https://api.citronus.com/public/v1/jsonrpc>
 
 **Validation:**
 
-* If both dates are provided and `start_date > end_date` → error.
 * Missing filter fields are treated as "not provided".
 
 **Successful response:**
@@ -1229,7 +1229,6 @@ Ascending: NULLs first. Descending: NULLs last.
 
 **Validation:**
 
-* If both dates are provided and `start_date > end_date` → error.
 * `page > 1000` → error.
 * `page_size < 1` or `page_size > 100` → error.
 * Missing filter fields are treated as "not provided".
@@ -1420,7 +1419,7 @@ Below are standard error codes/messages you may receive.
 | invalid_params | Params for requested method are invalid | Missing/invalid fields in `params` / wrong `category` / wrong `symbol` / extra fields. | all |
 | internal_server_error | Internal server error | Unexpected backend error (DB failure, timeout, etc.). | all |
 | invalid_pair | Invalid pair | Trading pair (`symbol`) not supported. | create_order, cancel_all_orders, active_orders, orders_history |
-| validation_error | Validation error | e.g. `start_date \\> end_date`, bad pagination values, precision/step violations, etc. | active_orders, orders_history, get_balance |
+| validation_error | Validation error | Bad pagination values, precision/step violations, etc. | active_orders, orders_history, get_balance |
 | page_out_of_range | page must be between 1 and 1000. | `page` is outside allowed range. | orders_history |
 | page_size_out_of_range | page_size must be between 1 and 100. | `page_size` is outside allowed range. | orders_history |
 | invalid_order_value | Invalid order value | Violated precision, tick size, min/max limits, etc. | create_order |
@@ -1823,7 +1822,7 @@ Each element in `data.data` is one OHLCV candle:
 #### 5.5.4 `subscribe.tickers`
 
 **Name:** `TickersSubscribeMethod`
-**Auth:** Required
+**Auth:** Not required
 **Purpose:** Subscribe to ticker updates for a specific trading pair.
 
 **Parameters (`params`):**
@@ -1843,11 +1842,7 @@ Notes:
 ```
 {
   "command": "subscribe.tickers",
-  "params": { "asset": "CITRO/USDT" },
-  "api_key": "<YOUR_API_KEY>",
-  "timestamp": "1760623193880",
-  "recv_window": "65000",
-  "sign": "<HEX(HMAC_SHA256(secret, timestamp + api_key + recv_window + JSON(params+command))>"
+  "params": { "asset": "CITRO/USDT" }
 }
 ```
 
@@ -1888,13 +1883,6 @@ Notes:
 
 **Behavior / notes:**
 
-* This is a private subscription.
-  The frame must be signed:
-
-  ```
-  sign = HMAC_SHA256(secret, timestamp + api_key + recv_window + pre_cmd_json)
-  
-  ```
 * Works only if `asset` is in `BASE/QUOTE` format. Other formats will not produce a working stream.
 
 ## 6\. Rate Limits
@@ -1917,4 +1905,9 @@ The API enforces rate limits to protect service stability.
 * Design your client to stay under 5 rps per API key in steady state.
 * On `429`, back off briefly (e.g. 1–2 seconds).
 * Spread your bursts instead of firing all requests at once.
+
 * Remember: parallel requests and batched JSON-RPC requests still count toward rate limits.
+
+
+
+

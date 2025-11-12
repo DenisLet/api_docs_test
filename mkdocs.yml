@@ -1,12 +1,14 @@
 site_name: Citronus API
 site_description: Citronus Trading API (JSON-RPC + WebSocket)
-site_url: https://<your-github-username>.github.io/citronus-api-docs
-repo_url: https://github.com/<your-github-username>/citronus-api-docs
-repo_name: citronus-api-docs
+site_url: https://denislet.github.io/citronus-api-docs
+# repo_url и repo_name удалены, чтобы не было иконки/ссылки на репозиторий
+# repo_url: https://github.com/DenisLet/citronus-api-docs
+# repo_name: citronus-api-docs
 copyright: "© Citronus"
 
 theme:
   name: material
+  language: en
   features:
     - navigation.top
     - content.code.copy
@@ -23,7 +25,6 @@ theme:
       scheme: slate
       primary: indigo
       accent: deep purple
-  language: en
 
 nav:
   - Overview: index.md
@@ -54,5 +55,17 @@ markdown_extensions:
 
 plugins:
   - search
+  - i18n:
+      docs_structure: suffix          # index.md + index.ru.md
+      languages:
+        - locale: en
+          name: English
+          default: true
+        - locale: ru
+          name: Русский
+          nav_translations:
+            Overview: Обзор
+            Playground: Песочница
+
 extra_javascript:
   - playground.js
