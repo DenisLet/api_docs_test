@@ -1,0 +1,3447 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Citronus Trading API (JSON-RPC + WebSocket)">
+      
+      
+      
+        <link rel="canonical" href="https://denislet.github.io/api_docs_test/">
+      
+      
+      
+        <link rel="next" href="playground/">
+      
+      
+        
+          <link rel="alternate" href="/api_docs_test/" hreflang="en">
+        
+          <link rel="alternate" href="/api_docs_test/ru/" hreflang="ru">
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Citronus API</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#citronus-api-json-rpc-websocket-v1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Citronus API" class="md-header__button md-logo" aria-label="Citronus API" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Citronus API
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/api_docs_test/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/api_docs_test/ru/" hreflang="ru" class="md-select__link">
+              Русский
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Citronus API" class="md-nav__button md-logo" aria-label="Citronus API" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Citronus API
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-base-http-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Base HTTP Endpoint
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Base HTTP Endpoint">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-what-is-json-rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 What is JSON-RPC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-request-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Request Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-response-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Response Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-authentication-signing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Authentication &amp; Signing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Authentication &amp; Signing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-access-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Access Modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-getting-api-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Getting API Keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-required-headers-private-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Required Headers (private methods)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-signature-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Signature Calculation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-python-example-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Python Example (requests)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-javascript-example-node-18-fetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 JavaScript Example (Node ≥18 / fetch)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-curl-examples-unsigned-public" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7 cURL Examples (unsigned, public)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-time-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8 Time Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-spot-json-rpc-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. SPOT — JSON-RPC Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. SPOT — JSON-RPC Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-public-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Public Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Public Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-markets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1 markets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-tickers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.2 tickers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-orderbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.3 orderbook
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314-ohlcv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.4 ohlcv
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-private-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Private Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Private Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-create_order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.1 create_order
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2.1 create_order">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#batch-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Batch requests
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-cancel_order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.2 cancel_order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-cancel_all_orders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.3 cancel_all_orders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#324-active_orders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.4 active_orders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#325-orders_history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.5 orders_history
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#326-get_balance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.6 get_balance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Errors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-websocket-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. WebSocket API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. WebSocket API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-base-websocket-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Base WebSocket Endpoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Authentication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-action-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Action Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.4 Action Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ping-requires-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ping (requires authentication)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-subscription-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Subscription Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.5 Subscription Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#551-subscribebalance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.1 subscribe.balance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#552-subscribeorderbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.2 subscribe.orderbook
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#553-subscribeklines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.3 subscribe.klines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#554-subscribetickers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.4 subscribe.tickers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-rate-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Rate Limits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Rate Limits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-default-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Default limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-how-to-detect-throttling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 How to detect throttling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-client-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Client recommendations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="playground/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Playground
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="citronus-api-json-rpc-websocket-v1">Citronus API — JSON-RPC + WebSocket (v1)</h1>
+<p><strong>Version:</strong> 1<br />
+<strong>Date:</strong> 23 October 2025<br />
+<strong>Host:</strong> <code>https://api.citronus.com</code></p>
+<h2 id="1-base-http-endpoint">1. Base HTTP Endpoint</h2>
+<p><strong>Method</strong><br />
+<code>POST</code></p>
+<p><strong>URL</strong><br />
+<code>https://api.citronus.com/public/v1/jsonrpc</code></p>
+<p><strong>Protocol</strong><br />
+JSON-RPC 2.0</p>
+<p><strong>Content-Type</strong><br />
+<code>application/json</code></p>
+<h3 id="11-what-is-json-rpc">1.1 What is JSON-RPC</h3>
+<p>JSON-RPC is a lightweight RPC (Remote Procedure Call) protocol over HTTP where both the request and the response are JSON objects.
+The request includes:</p>
+<ul>
+<li>method name,</li>
+<li>parameters,</li>
+<li>and an optional <code>id</code>.</li>
+</ul>
+<p>The response contains either <code>result</code> or <code>error</code>.
+Reference: <a href="https://www.jsonrpc.org/specification">https://www.jsonrpc.org/specification</a></p>
+<h3 id="12-request-format">1.2 Request Format</h3>
+<p><code>id</code> is optional. If you include it, use a string (for example <code>"1"</code>).</p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;&lt;method_name&gt;&quot;,
+  &quot;params&quot;: { &quot;&lt;param&gt;&quot;: &quot;&lt;value&gt;&quot; },
+  &quot;id&quot;: &quot;&lt;request_id&gt;&quot;
+}
+</code></pre>
+<h3 id="13-response-format">1.3 Response Format</h3>
+<p>Successful response:</p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: { &quot;&lt;key&gt;&quot;: &quot;&lt;value&gt;&quot; },
+  &quot;id&quot;: &quot;&lt;request_id&gt;&quot;
+}
+</code></pre>
+<p>Error response:</p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;error&quot;: {
+    &quot;code&quot;: &lt;error_code&gt;,
+    &quot;message&quot;: &quot;&lt;error_message&gt;&quot;
+  },
+  &quot;id&quot;: &quot;&lt;request_id&gt;&quot;
+}
+</code></pre>
+<h2 id="2-authentication-signing">2. Authentication &amp; Signing</h2>
+<h3 id="21-access-modes">2.1 Access Modes</h3>
+<ul>
+<li><strong>Public methods</strong> — do not require API keys. You may call them with no auth headers at all.</li>
+<li><strong>Private methods</strong> — require authentication using API headers and an HMAC signature.</li>
+</ul>
+<p>Note: Public methods will accept requests even if you send “partial” or “empty-looking” auth headers.
+For private methods, correct headers and a valid signature are mandatory.</p>
+<h3 id="22-getting-api-keys">2.2 Getting API Keys</h3>
+<p>In the UI:
+<code>Settings → API Management → Create new key</code></p>
+<p>You will receive:</p>
+<ul>
+<li><strong>API Key</strong> — public identifier.</li>
+<li><strong>API Secret</strong> — secret credential (must be stored securely on your side only).</li>
+</ul>
+<h3 id="23-required-headers-private-methods">2.3 Required Headers (private methods)</h3>
+<p>For private methods you must send:</p>
+<pre><code>X-CITRO-API-KEY: &lt;your API key&gt;
+X-CITRO-TIMESTAMP: &lt;unix_ms&gt;
+X-CITRO-RECV-WINDOW: &lt;ms&gt;
+X-CITRO-SIGNATURE: &lt;hex&gt;
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>X-CITRO-TIMESTAMP</code> — client timestamp in Unix milliseconds (UTC).
+  Example: <code>1759308923000</code></li>
+<li><code>X-CITRO-RECV-WINDOW</code> — allowed acceptance window in milliseconds (e.g. <code>"5000"</code> or <code>"15000"</code>).
+  If <code>|server_now_ms - X-CITRO-TIMESTAMP| &gt; X-CITRO-RECV-WINDOW</code>, the request is rejected.</li>
+<li><code>X-CITRO-API-KEY</code> — your API key.</li>
+<li><code>X-CITRO-SIGNATURE</code> — HMAC signature (see below).</li>
+</ul>
+<p>Public methods can be called with <strong>no</strong> auth headers at all.</p>
+<h3 id="24-signature-calculation">2.4 Signature Calculation</h3>
+<p>The signature is HMAC-SHA256 over the concatenation:</p>
+<pre><code>message = &lt;timestamp&gt;&lt;api_key&gt;&lt;recv_window&gt;&lt;body_raw&gt;
+signature = HEX( HMAC_SHA256( key = api_secret, message = message ) )
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>&lt;timestamp&gt;</code> — same value you send in <code>X-CITRO-TIMESTAMP</code> (string, ms).</li>
+<li><code>&lt;api_key&gt;</code> — same value you send in <code>X-CITRO-API-KEY</code>.</li>
+<li><code>&lt;recv_window&gt;</code> — same value you send in <code>X-CITRO-RECV-WINDOW</code> (string, e.g. <code>"5000"</code>).</li>
+<li><code>&lt;body_raw&gt;</code> — the exact raw JSON request body you will send over HTTP, byte-for-byte.</li>
+<li><code>api_secret</code> — your API Secret.</li>
+</ul>
+<p>⚠ Important: You must sign the exact bytes you actually send.
+Any change in whitespace, key order, etc. changes the signature.</p>
+<h3 id="25-python-example-requests">2.5 Python Example (requests)</h3>
+<pre><code>import json, requests, time, hmac, hashlib
+from typing import Dict
+
+URL = &quot;https://api.citronus.com/public/v1/jsonrpc&quot;
+API_KEY = &quot;&lt;YOUR_API_KEY&gt;&quot;
+API_SECRET = &quot;&lt;YOUR_API_SECRET&gt;&quot;
+
+def build_api_key_auth_headers(api_key: str, api_secret: str, req_body: str) -&gt; Dict[str, str]:
+    ts = str(int(time.time() * 1000))
+    recv_window = &quot;5000&quot;
+
+    # signature over raw body bytes:
+    #   ts + api_key + recv_window + req_body
+    to_sign = ts + api_key + recv_window + req_body
+    signature = hmac.new(
+        api_secret.encode(&quot;utf-8&quot;),
+        to_sign.encode(&quot;utf-8&quot;),
+        hashlib.sha256,
+    ).hexdigest()
+
+    return {
+        &quot;X-CITRO-SIGNATURE&quot;: signature,
+        &quot;X-CITRO-API-KEY&quot;: api_key,
+        &quot;X-CITRO-TIMESTAMP&quot;: ts,
+        &quot;X-CITRO-RECV-WINDOW&quot;: recv_window,
+    }
+
+body = {
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;method&quot;: &quot;markets&quot;,
+    &quot;params&quot;: {&quot;category&quot;: &quot;spot&quot;},
+    &quot;id&quot;: &quot;1&quot;,
+}
+
+# NOTE: separators=(&quot;,&quot;, &quot;:&quot;) to avoid spaces that would change the signature
+req_body = json.dumps(body, separators=(&quot;,&quot;, &quot;:&quot;), ensure_ascii=False)
+
+headers = {
+    &quot;Content-Type&quot;: &quot;application/json; charset=utf-8&quot;,
+    &quot;Accept&quot;: &quot;application/json&quot;,
+    **build_api_key_auth_headers(API_KEY, API_SECRET, req_body),
+}
+
+resp = requests.post(URL, headers=headers, data=req_body.encode(&quot;utf-8&quot;), timeout=15)
+print(resp.status_code, resp.text)
+</code></pre>
+<h3 id="26-javascript-example-node-18-fetch">2.6 JavaScript Example (Node ≥18 / fetch)</h3>
+<pre><code>import crypto from &quot;node:crypto&quot;;
+
+const URL = &quot;https://api.citronus.com/public/v1/jsonrpc&quot;;
+const API_KEY = &quot;&lt;YOUR_API_KEY&gt;&quot;;
+const API_SECRET = &quot;&lt;YOUR_API_SECRET&gt;&quot;;
+const RECV_WINDOW = &quot;5000&quot;;
+
+const body = {
+  jsonrpc: &quot;2.0&quot;,
+  method: &quot;markets&quot;,
+  params: { category: &quot;spot&quot; },
+  id: &quot;1&quot;,
+};
+
+const raw = JSON.stringify(body); // exact body to send
+const ts = Date.now().toString();
+const toSign = ts + API_KEY + RECV_WINDOW + raw;
+
+const signature = crypto
+  .createHmac(&quot;sha256&quot;, API_SECRET)
+  .update(toSign, &quot;utf8&quot;)
+  .digest(&quot;hex&quot;);
+
+const resp = await fetch(URL, {
+  method: &quot;POST&quot;,
+  headers: {
+    &quot;Content-Type&quot;: &quot;application/json; charset=utf-8&quot;,
+    &quot;Accept&quot;: &quot;application/json&quot;,
+    &quot;X-CITRO-API-KEY&quot;: API_KEY,
+    &quot;X-CITRO-TIMESTAMP&quot;: ts,
+    &quot;X-CITRO-RECV-WINDOW&quot;: RECV_WINDOW,
+    &quot;X-CITRO-SIGNATURE&quot;: signature,
+  },
+  body: raw,
+});
+
+console.log(resp.status, await resp.text());
+</code></pre>
+<h3 id="27-curl-examples-unsigned-public">2.7 cURL Examples (unsigned, public)</h3>
+<p>Public methods do not require authentication headers.</p>
+<p><strong>Windows CMD:</strong></p>
+<pre><code>curl.exe -sS ^
+  -H &quot;Content-Type: application/json&quot; ^
+  --data-raw &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;method\&quot;:\&quot;markets\&quot;,\&quot;params\&quot;:{\&quot;category\&quot;:\&quot;futures\&quot;},\&quot;id\&quot;:\&quot;1\&quot;}&quot; ^
+  https://api.citronus.com/public/v1/jsonrpc
+</code></pre>
+<p><strong>macOS / Linux bash:</strong></p>
+<pre><code>curl -sS \
+  -H &quot;Content-Type: application/json&quot; \
+  --data-raw '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;markets&quot;,&quot;params&quot;:{&quot;category&quot;:&quot;futures&quot;},&quot;id&quot;:&quot;1&quot;}' \
+  https://api.citronus.com/public/v1/jsonrpc
+</code></pre>
+<h3 id="28-time-validation">2.8 Time Validation</h3>
+<p>The server enforces:</p>
+<pre><code>| server_now_ms - X-CITRO-TIMESTAMP | &lt;= X-CITRO-RECV-WINDOW
+</code></pre>
+<p>If your clock drift + network latency exceeds the recv window, the request fails.</p>
+<p>Typical errors:</p>
+<ul>
+<li><code>invalid_signature</code> — check concatenation order/values.</li>
+<li><code>recv_window_expired</code> / <code>invalid_timestamp</code> — sync your clock or increase <code>X-CITRO-RECV-WINDOW</code>.</li>
+<li><code>internal_server_error</code> — unexpected backend error.</li>
+</ul>
+<p>A full error reference is available later in this document.</p>
+<h2 id="3-spot-json-rpc-methods">3. SPOT — JSON-RPC Methods</h2>
+<h3 id="31-public-methods">3.1 Public Methods</h3>
+<h4 id="311-markets">3.1.1 <code>markets</code></h4>
+<p><strong>Purpose:</strong>
+Return available trading pairs and their trading parameters.</p>
+<p><strong>Access:</strong>
+Public (no authentication required)</p>
+<p><strong>Endpoint:</strong>
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a></p>
+<p><strong>Protocol:</strong>
+JSON-RPC 2.0</p>
+<p><strong>Content-Type:</strong>
+<code>application/json</code></p>
+<p><strong>Request body (list all spot pairs):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;markets&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot; },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Request body (filter by symbol, optional):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;markets&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot;, &quot;symbol&quot;: &quot;BTC/USDT&quot; },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Allowed values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>yes</td>
+<td><code>spot</code></td>
+<td>Market type.</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>no</td>
+<td>e.g. <code>BTC/USDT</code></td>
+<td>Filter by specific pair. If omitted, returns all pairs in that category.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Successful response example:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;result&quot;: {
+    &quot;symbol&quot;: &quot;BTC/USDT&quot;,
+    &quot;base_coin&quot;: {
+      &quot;name&quot;: &quot;BTC&quot;,
+      &quot;precision&quot;: 8
+    },
+    &quot;quote_coin&quot;: {
+      &quot;name&quot;: &quot;USDT&quot;,
+      &quot;precision&quot;: 6
+    },
+    &quot;icon&quot;: &quot;https://s3.eu-central-2.wasabisys.com/citronus/icons/coins/BTC.svg&quot;,
+    &quot;min_order_qty&quot;: &quot;0.000048&quot;,
+    &quot;max_order_qty&quot;: &quot;71.73956243&quot;,
+    &quot;min_order_amt&quot;: &quot;1&quot;,
+    &quot;max_order_amt&quot;: &quot;4000000&quot;,
+    &quot;quote_tick_size&quot;: &quot;0.01&quot;,
+    &quot;limit_parameter&quot;: &quot;0.05&quot;,
+    &quot;commission_limit_sell&quot;: &quot;0.0001&quot;,
+    &quot;commission_limit_buy&quot;: &quot;0.0001&quot;,
+    &quot;commission_market_sell&quot;: &quot;0&quot;,
+    &quot;commission_market_buy&quot;: &quot;0&quot;,
+    &quot;commission_stop_limit_sell&quot;: &quot;0.0001&quot;,
+    &quot;commission_stop_limit_buy&quot;: &quot;0.0001&quot;,
+    &quot;trade_base_precision&quot;: 6,
+    &quot;trade_quote_precision&quot;: 6
+  }
+}
+</code></pre>
+<p><strong>Field reference:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>jsonrpc</code></td>
+<td>string</td>
+<td>JSON-RPC version (<code>"2.0"</code>).</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Echoed request id.</td>
+</tr>
+<tr>
+<td><code>result.symbol</code></td>
+<td>string</td>
+<td>Trading pair in <code>BASE/QUOTE</code> format (e.g. <code>BTC/USDT</code>).</td>
+</tr>
+<tr>
+<td><code>result.base_coin.name</code></td>
+<td>string</td>
+<td>BASE asset ticker.</td>
+</tr>
+<tr>
+<td><code>result.base_coin.precision</code></td>
+<td>number</td>
+<td>Number of decimal places allowed for BASE asset amounts.</td>
+</tr>
+<tr>
+<td><code>result.quote_coin.name</code></td>
+<td>string</td>
+<td>QUOTE asset ticker.</td>
+</tr>
+<tr>
+<td><code>result.quote_coin.precision</code></td>
+<td>number</td>
+<td>Number of decimal places allowed for QUOTE amounts.</td>
+</tr>
+<tr>
+<td><code>result.icon</code></td>
+<td>string</td>
+<td>Icon URL for the asset.</td>
+</tr>
+<tr>
+<td><code>result.min_order_qty</code></td>
+<td>string</td>
+<td>Minimum order size in BASE units.</td>
+</tr>
+<tr>
+<td><code>result.max_order_qty</code></td>
+<td>string</td>
+<td>Maximum order size in BASE units.</td>
+</tr>
+<tr>
+<td><code>result.min_order_amt</code></td>
+<td>string</td>
+<td>Minimum notional in QUOTE currency.</td>
+</tr>
+<tr>
+<td><code>result.max_order_amt</code></td>
+<td>string</td>
+<td>Maximum notional in QUOTE currency.</td>
+</tr>
+<tr>
+<td><code>result.quote_tick_size</code></td>
+<td>string</td>
+<td>Minimum price tick in QUOTE.</td>
+</tr>
+<tr>
+<td><code>result.limit_parameter</code></td>
+<td>string</td>
+<td>Limit order price deviation parameter.</td>
+</tr>
+<tr>
+<td><code>result.commission_limit_sell</code></td>
+<td>string</td>
+<td>Fee rate for limit sell orders (fraction).</td>
+</tr>
+<tr>
+<td><code>result.commission_limit_buy</code></td>
+<td>string</td>
+<td>Fee rate for limit buy orders (fraction).</td>
+</tr>
+<tr>
+<td><code>result.commission_market_sell</code></td>
+<td>string</td>
+<td>Fee rate for market sell orders (fraction).</td>
+</tr>
+<tr>
+<td><code>result.commission_market_buy</code></td>
+<td>string</td>
+<td>Fee rate for market buy orders (fraction).</td>
+</tr>
+<tr>
+<td><code>result.commission_stop_limit_sell</code></td>
+<td>string</td>
+<td>Fee rate for stop-limit sell orders (fraction).</td>
+</tr>
+<tr>
+<td><code>result.commission_stop_limit_buy</code></td>
+<td>string</td>
+<td>Fee rate for stop-limit buy orders (fraction).</td>
+</tr>
+<tr>
+<td><code>result.trade_base_precision</code></td>
+<td>number</td>
+<td>Max decimals allowed in trade quantity (BASE).</td>
+</tr>
+<tr>
+<td><code>result.trade_quote_precision</code></td>
+<td>number</td>
+<td>Max decimals allowed in trade price / notional (QUOTE).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="312-tickers">3.1.2 <code>tickers</code></h4>
+<p><strong>Purpose:</strong>
+Return ticker data for an instrument (last price, 24h stats).</p>
+<p><strong>Access:</strong>
+Public</p>
+<p><strong>Endpoint:</strong>
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a></p>
+<p><strong>Request:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;tickers&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot;, &quot;symbol&quot;: &quot;BTC/USDT&quot; },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Allowed values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>yes</td>
+<td><code>spot</code></td>
+<td>Market type.</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>yes</td>
+<td>e.g. <code>BTC/USDT</code></td>
+<td>Trading pair symbol.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Successful response example:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;result&quot;: {
+    &quot;symbol&quot;: &quot;BTC/USDT&quot;,
+    &quot;last_price&quot;: &quot;120382.98&quot;,
+    &quot;volume_24h&quot;: &quot;292748.926560&quot;,
+    &quot;change_24h&quot;: &quot;1.31&quot;,
+    &quot;high_24h&quot;: &quot;121024.9&quot;,
+    &quot;low_24h&quot;: &quot;118499.9&quot;,
+    &quot;price_direction&quot;: &quot;DOWN&quot;
+  }
+}
+</code></pre>
+<p><strong>Field reference:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>Pair in <code>BASE/QUOTE</code> format.</td>
+</tr>
+<tr>
+<td>last_price</td>
+<td>string</td>
+<td>Last traded price / last quote (in QUOTE).</td>
+</tr>
+<tr>
+<td>volume_24h</td>
+<td>string</td>
+<td>24h volume, typically in BASE. If different, that will be clarified in the specific market.</td>
+</tr>
+<tr>
+<td>change_24h</td>
+<td>string</td>
+<td>24h price change in percent, e.g. <code>"1.31"</code> = +1.31%.</td>
+</tr>
+<tr>
+<td>high_24h</td>
+<td>string</td>
+<td>24h high.</td>
+</tr>
+<tr>
+<td>low_24h</td>
+<td>string</td>
+<td>24h low.</td>
+</tr>
+<tr>
+<td>price_direction</td>
+<td>string</td>
+<td>Direction vs previous tick, e.g. <code>"UP"</code> or <code>"DOWN"</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="313-orderbook">3.1.3 <code>orderbook</code></h4>
+<p><strong>Purpose:</strong>
+Return current order book for a trading pair.</p>
+<p><strong>Access:</strong>
+Public</p>
+<p><strong>Endpoint:</strong>
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a></p>
+<p><strong>Request:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;orderbook&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot;, &quot;symbol&quot;: &quot;BTC/USDT&quot; },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Allowed values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>yes</td>
+<td><code>spot</code></td>
+<td>Market type.</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>yes</td>
+<td>e.g. <code>BTC/USDT</code></td>
+<td>Trading pair.</td>
+</tr>
+</tbody>
+</table>
+<p>Note: in the response, the symbol may appear in <code>BASE-QUOTE</code> format (e.g. <code>BTC-USDT</code>). This is expected.</p>
+<p><strong>Successful response example:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;result&quot;: {
+    &quot;s&quot;: &quot;BTC-USDT&quot;,
+    &quot;a&quot;: [
+      [&quot;120398.57&quot;, &quot;50.00000000&quot;],
+      [&quot;120382.01&quot;, &quot;2.00000000&quot;],
+      [&quot;120374.53&quot;, &quot;35.00000000&quot;],
+      [&quot;120362.47&quot;, &quot;20.00000000&quot;]
+    ],
+    &quot;b&quot;: [
+      [&quot;120197.15&quot;, &quot;5.00000000&quot;],
+      [&quot;120228.11&quot;, &quot;50.00000000&quot;],
+      [&quot;120231.98&quot;, &quot;2.00000000&quot;],
+      [&quot;120252.05&quot;, &quot;35.00000000&quot;]
+    ],
+    &quot;ts&quot;: 1759494727.705812
+  }
+}
+</code></pre>
+<p><strong>Field reference:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s</td>
+<td>string</td>
+<td>Symbol in <code>BASE-QUOTE</code> format (e.g. <code>BTC-USDT</code>).</td>
+</tr>
+<tr>
+<td>a</td>
+<td>array\&lt;[string, string]&gt;</td>
+<td>Asks. Each element is <code>\\[price, size\\]</code> where <code>price</code> is in QUOTE, <code>size</code> is in BASE. Best prices come first.</td>
+</tr>
+<tr>
+<td>b</td>
+<td>array\&lt;[string, string]&gt;</td>
+<td>Bids. Same format as <code>a</code>. Best prices come first.</td>
+</tr>
+<tr>
+<td>ts</td>
+<td>number</td>
+<td>Server timestamp in seconds (Unix time, UTC, fractional seconds allowed).</td>
+</tr>
+</tbody>
+</table>
+<p>All price / size values are strings.
+<code>price</code> uses the <code>quote_tick_size</code> from <code>markets</code>.
+<code>size</code> respects the <code>base_coin.precision</code> from <code>markets</code>.</p>
+<h4 id="314-ohlcv">3.1.4 <code>ohlcv</code></h4>
+<p><strong>Purpose:</strong>
+Return OHLCV candles for a symbol and timeframe.</p>
+<p><strong>Access:</strong>
+Public</p>
+<p><strong>Endpoint:</strong>
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a>
+<strong>Content-Type:</strong> <code>application/json; charset=utf-8</code></p>
+<p>⚠ Currently this method only works for the symbol <code>CITRO/USDT</code>.
+Other symbols will return <code>invalid_symbol</code>.</p>
+<p><strong>Minimal request:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;ohlcv&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot;, &quot;symbol&quot;: &quot;CITRO/USDT&quot;, &quot;interval&quot;: &quot;1D&quot;, &quot;data&quot;: {} },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>With time window + limit:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;ohlcv&quot;,
+  &quot;params&quot;: {
+    &quot;category&quot;: &quot;spot&quot;,
+    &quot;symbol&quot;: &quot;CITRO/USDT&quot;,
+    &quot;interval&quot;: &quot;1m&quot;,
+    &quot;data&quot;: {
+      &quot;start&quot;: 1742688000000,
+      &quot;end&quot;:   1743379200000,
+      &quot;limit&quot;: 500
+    }
+  },
+  &quot;id&quot;: &quot;2&quot;
+}
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Where</th>
+<th>Type</th>
+<th>Required</th>
+<th>Allowed values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>params</td>
+<td>string</td>
+<td>yes</td>
+<td><code>spot</code></td>
+<td>Market type.</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>params</td>
+<td>string</td>
+<td>yes</td>
+<td>e.g. <code>CITRO/USDT</code></td>
+<td>Trading pair. Currently only <code>CITRO/USDT</code> supported.</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>params</td>
+<td>string</td>
+<td>yes</td>
+<td>See table below</td>
+<td>Candle timeframe.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>params</td>
+<td>object</td>
+<td>yes</td>
+<td>—</td>
+<td>Additional parameters object (may be <code>{}</code>).</td>
+</tr>
+<tr>
+<td>data.start</td>
+<td>data</td>
+<td>integer | null</td>
+<td>no</td>
+<td>Unix ms (UTC)</td>
+<td>Start time (inclusive).</td>
+</tr>
+<tr>
+<td>data.end</td>
+<td>data</td>
+<td>integer | null</td>
+<td>no</td>
+<td>Unix ms (UTC)</td>
+<td>End time (inclusive).</td>
+</tr>
+<tr>
+<td>data.limit</td>
+<td>data</td>
+<td>integer</td>
+<td>no</td>
+<td>default 200</td>
+<td>Max candles to return (may also be capped by backend).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Supported intervals (examples):</strong></p>
+<ul>
+<li><code>"1m"</code> — 1 minute</li>
+<li><code>"5m"</code> — 5 minutes</li>
+<li><code>"15m"</code> — 15 minutes</li>
+<li><code>"1h"</code> — 1 hour</li>
+<li><code>"4h"</code> — 4 hours</li>
+<li><code>"1D"</code> — 1 day</li>
+<li><code>"1W"</code> — 1 week</li>
+<li><code>"1M"</code> — 1 month</li>
+</ul>
+<p>(Your backend may also expose <code>"1"</code>, <code>"3"</code>, <code>"60"</code>, etc. as minute-based strings; document the exact allowed values in production.)</p>
+<p><strong>Successful response format:</strong></p>
+<p>Returns an array of candles.
+Each candle is an array of 6 elements:</p>
+<pre><code>[
+  [ timestamp_ms, open, high, low, close, volume ],
+  ...
+]
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>timestamp_ms</code> — string with Unix time in ms (UTC).</li>
+<li><code>open</code>, <code>high</code>, <code>low</code>, <code>close</code>, <code>volume</code> — numeric values as strings.</li>
+<li>Sorted ascending by time.</li>
+<li>If no data matches, returns <code>[]</code>.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;:&quot;2.0&quot;,
+  &quot;id&quot;:&quot;1&quot;,
+  &quot;result&quot;:[
+    [&quot;1742688000000&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],
+    [&quot;1742774400000&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;]
+  ]
+}
+</code></pre>
+<h3 id="32-private-methods">3.2 Private Methods</h3>
+<h4 id="321-create_order">3.2.1 <code>create_order</code></h4>
+<p><strong>Purpose:</strong>
+Create an order (market / limit / stop_limit) on the spot market.</p>
+<p><strong>Access:</strong>
+Private — requires <code>X-CITRO-*</code> headers and valid HMAC-SHA256 signature.</p>
+<p><strong>Endpoint:</strong>
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a>
+<strong>Content-Type:</strong> <code>application/json; charset=utf-8</code></p>
+<p><strong>Request (top-level structure):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;create_order&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot;, &quot;data&quot;: { /* see below */ } },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong><code>data</code> examples (any field order is allowed):</strong></p>
+<p>Market order (exact BASE amount OR QUOTE total; you send only one of them):</p>
+<pre><code>{ &quot;symbol&quot;: &quot;BTC/USDT&quot;, &quot;action&quot;: &quot;buy&quot;,  &quot;type&quot;: &quot;market&quot;, &quot;amount&quot;: &quot;0.1&quot; }
+{ &quot;symbol&quot;: &quot;BTC/USDT&quot;, &quot;action&quot;: &quot;sell&quot;, &quot;type&quot;: &quot;market&quot;, &quot;total&quot;:  &quot;100&quot;  }
+</code></pre>
+<p>Limit order (must include <code>price</code>; send only <code>amount</code> OR <code>total</code>):</p>
+<pre><code>{ &quot;symbol&quot;: &quot;BTC/USDT&quot;, &quot;action&quot;: &quot;buy&quot;,  &quot;type&quot;: &quot;limit&quot;, &quot;price&quot;: &quot;65000&quot;, &quot;amount&quot;: &quot;0.1&quot; }
+{ &quot;symbol&quot;: &quot;BTC/USDT&quot;, &quot;action&quot;: &quot;sell&quot;, &quot;type&quot;: &quot;limit&quot;, &quot;price&quot;: &quot;65000&quot;, &quot;total&quot;:  &quot;1000&quot; }
+</code></pre>
+<p>Stop-limit order (must include both <code>price</code> and <code>stop_price</code>; send only <code>amount</code> OR <code>total</code>):</p>
+<pre><code>{
+  &quot;symbol&quot;: &quot;BTC/USDT&quot;,
+  &quot;action&quot;: &quot;sell&quot;,
+  &quot;type&quot;: &quot;stop_limit&quot;,
+  &quot;price&quot;: &quot;65000&quot;,
+  &quot;stop_price&quot;: &quot;64500&quot;,
+  &quot;amount&quot;: &quot;0.1&quot;
+}
+</code></pre>
+<p><strong>Parameters (<code>params</code> / <code>data</code>):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Allowed values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>yes</td>
+<td><code>spot</code></td>
+<td>Market type.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>yes</td>
+<td>—</td>
+<td>Order definition.</td>
+</tr>
+<tr>
+<td>data.symbol</td>
+<td>string</td>
+<td>yes</td>
+<td>e.g. <code>BTC/USDT</code></td>
+<td>Trading pair.</td>
+</tr>
+<tr>
+<td>data.action</td>
+<td>string</td>
+<td>yes</td>
+<td><code>buy</code> | <code>sell</code></td>
+<td>Order side.</td>
+</tr>
+<tr>
+<td>data.type</td>
+<td>string</td>
+<td>yes</td>
+<td><code>market</code> | <code>limit</code> | <code>stop_limit</code></td>
+<td>Order type.</td>
+</tr>
+<tr>
+<td>data.amount</td>
+<td>string | number</td>
+<td>conditional</td>
+<td>&gt;0</td>
+<td>Amount in BASE. Mutually exclusive with <code>total</code>.</td>
+</tr>
+<tr>
+<td>data.total</td>
+<td>string | number</td>
+<td>conditional</td>
+<td>&gt;0</td>
+<td>Amount in QUOTE. Mutually exclusive with <code>amount</code>.</td>
+</tr>
+<tr>
+<td>data.price</td>
+<td>string | number</td>
+<td>for limit/stop</td>
+<td>&gt;0</td>
+<td>Limit price in QUOTE.</td>
+</tr>
+<tr>
+<td>data.stop_price</td>
+<td>string | number</td>
+<td>for stop_limit</td>
+<td>&gt;0</td>
+<td>Stop trigger. Typically: &gt;= for buy, \&lt;= for sell.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Important:</strong></p>
+<ul>
+<li>Limit on open orders: no more than 100 open orders per account at the same time.</li>
+<li>Send <strong>either</strong> <code>amount</code> <strong>or</strong> <code>total</code>, not both.</li>
+<li>Omitting both is an error.</li>
+<li>For <code>market</code> orders:</li>
+<li>If you provide <code>amount</code>, <code>total</code> is derived from execution.</li>
+<li>If you provide <code>total</code>, the system derives <code>amount</code> based on available liquidity.</li>
+<li>For <code>limit</code> orders:</li>
+<li>Uses your <code>price</code> directly.</li>
+<li>For <code>stop_limit</code>:</li>
+<li><code>stop_price</code> is the trigger.</li>
+<li>After trigger, becomes a live limit order at <code>price</code>.</li>
+</ul>
+<p><strong>Validation rules:</strong></p>
+<ul>
+<li><code>symbol</code> must exist in <code>markets(category="spot")</code>.</li>
+<li><code>price</code> must respect <code>quote_tick_size</code> and <code>trade_quote_precision</code>.</li>
+<li><code>amount</code> must respect <code>trade_base_precision</code>.</li>
+<li>Min/max checks use <code>min_order_qty</code> / <code>max_order_qty</code> and/or <code>min_order_amt</code> / <code>max_order_amt</code>.</li>
+<li>Fees follow <code>commission_*</code> fields from <code>markets</code>.</li>
+</ul>
+<p><strong>Example request (market SELL by amount):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;create_order&quot;,
+  &quot;params&quot;: {
+    &quot;category&quot;: &quot;spot&quot;,
+    &quot;data&quot;: {
+      &quot;symbol&quot;: &quot;BTC/USDT&quot;,
+      &quot;action&quot;: &quot;sell&quot;,
+      &quot;type&quot;: &quot;market&quot;,
+      &quot;amount&quot;: 0.1
+    }
+  },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Example request (limit BUY by total):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;create_order&quot;,
+  &quot;params&quot;: {
+    &quot;category&quot;: &quot;spot&quot;,
+    &quot;data&quot;: {
+      &quot;symbol&quot;: &quot;BTC/USDT&quot;,
+      &quot;action&quot;: &quot;buy&quot;,
+      &quot;type&quot;: &quot;limit&quot;,
+      &quot;price&quot;: &quot;65000&quot;,
+      &quot;total&quot;: &quot;500&quot;
+    }
+  },
+  &quot;id&quot;: &quot;2&quot;
+}
+</code></pre>
+<p><strong>Example request (stop-limit SELL by amount):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;create_order&quot;,
+  &quot;params&quot;: {
+    &quot;category&quot;: &quot;spot&quot;,
+    &quot;data&quot;: {
+      &quot;symbol&quot;: &quot;BTC/USDT&quot;,
+      &quot;action&quot;: &quot;sell&quot;,
+      &quot;type&quot;: &quot;stop_limit&quot;,
+      &quot;price&quot;: &quot;64000&quot;,
+      &quot;stop_price&quot;: &quot;64500&quot;,
+      &quot;amount&quot;: &quot;0.05&quot;
+    }
+  },
+  &quot;id&quot;: &quot;3&quot;
+}
+</code></pre>
+<p><strong>Successful response example (market SELL):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;pRK4klVe&quot;,
+    &quot;price&quot;: null,
+    &quot;current_amount&quot;: &quot;0&quot;,
+    &quot;original_amount&quot;: &quot;0.1&quot;,
+    &quot;action&quot;: &quot;sell&quot;,
+    &quot;pair&quot;: { &quot;base&quot;: &quot;BTC&quot;, &quot;quote&quot;: &quot;USDT&quot; },
+    &quot;status&quot;: &quot;fulfilled&quot;,
+    &quot;type&quot;: &quot;market&quot;,
+    &quot;create_date&quot;: &quot;2025-10-08T13:15:38.095823Z&quot;,
+    &quot;market_total_original&quot;: null,
+    &quot;market_total_current&quot;: null,
+    &quot;stop_price_gte&quot;: null,
+    &quot;stop_price_lte&quot;: null,
+    &quot;total&quot;: null,
+    &quot;fee&quot;: &quot;0&quot;
+  }
+}
+</code></pre>
+<h5 id="batch-requests">Batch requests</h5>
+<p>JSON-RPC 2.0 allows sending an array of requests in one HTTP call.</p>
+<pre><code>[
+  {
+    &quot;jsonrpc&quot;:&quot;2.0&quot;,
+    &quot;method&quot;:&quot;create_order&quot;,
+    &quot;params&quot;:{
+      &quot;category&quot;:&quot;spot&quot;,
+      &quot;data&quot;:{&quot;symbol&quot;:&quot;ETH/USDT&quot;,&quot;action&quot;:&quot;sell&quot;,&quot;type&quot;:&quot;market&quot;,&quot;amount&quot;:&quot;0.2&quot;}
+    },
+    &quot;id&quot;:&quot;1&quot;
+  },
+  {
+    &quot;jsonrpc&quot;:&quot;2.0&quot;,
+    &quot;method&quot;:&quot;create_order&quot;,
+    &quot;params&quot;:{
+      &quot;category&quot;:&quot;spot&quot;,
+      &quot;data&quot;:{&quot;symbol&quot;:&quot;BTC/USDT&quot;,&quot;action&quot;:&quot;sell&quot;,&quot;type&quot;:&quot;market&quot;,&quot;amount&quot;:&quot;0.1&quot;}
+    },
+    &quot;id&quot;:&quot;2&quot;
+  }
+]
+</code></pre>
+<p>Rules:</p>
+<ul>
+<li>Up to 10 orders per batch.</li>
+<li>Authentication: same <code>X-CITRO-*</code> headers + signature as single-call, but the signature covers the entire raw batch payload.</li>
+<li>Not atomic: each element is processed independently. Some may succeed, others may fail.</li>
+<li>Response order may differ. Match responses by <code>id</code>.</li>
+<li>Use unique <code>id</code> values per element.</li>
+</ul>
+<p><strong>Batch response example:</strong></p>
+<pre><code>[
+  {
+    &quot;jsonrpc&quot;:&quot;2.0&quot;,
+    &quot;id&quot;:&quot;1&quot;,
+    &quot;result&quot;:{
+      &quot;id&quot;:&quot;pRK4klVe&quot;,
+      &quot;price&quot;:null,
+      &quot;current_amount&quot;:&quot;0&quot;,
+      &quot;original_amount&quot;:&quot;0.2&quot;,
+      &quot;action&quot;:&quot;sell&quot;,
+      &quot;pair&quot;:{&quot;base&quot;:&quot;BTC&quot;,&quot;quote&quot;:&quot;USDT&quot;},
+      &quot;status&quot;:&quot;fulfilled&quot;,
+      &quot;type&quot;:&quot;market&quot;,
+      &quot;create_date&quot;:&quot;2025-10-09T11:09:15.137918Z&quot;,
+      &quot;market_total_original&quot;:null,
+      &quot;market_total_current&quot;:null,
+      &quot;stop_price_gte&quot;:null,
+      &quot;stop_price_lte&quot;:null,
+      &quot;total&quot;:null,
+      &quot;fee&quot;:&quot;0&quot;
+    }
+  },
+  {
+    &quot;jsonrpc&quot;:&quot;2.0&quot;,
+    &quot;id&quot;:&quot;2&quot;,
+    &quot;result&quot;:{
+      &quot;id&quot;:&quot;pRK4klVe&quot;,
+      &quot;price&quot;:null,
+      &quot;current_amount&quot;:&quot;0&quot;,
+      &quot;original_amount&quot;:&quot;0.1&quot;,
+      &quot;action&quot;:&quot;sell&quot;,
+      &quot;pair&quot;:{&quot;base&quot;:&quot;BTC&quot;,&quot;quote&quot;:&quot;USDT&quot;},
+      &quot;status&quot;:&quot;fulfilled&quot;,
+      &quot;type&quot;:&quot;market&quot;,
+      &quot;create_date&quot;:&quot;2025-10-09T11:09:15.058303Z&quot;,
+      &quot;market_total_original&quot;:null,
+      &quot;market_total_current&quot;:null,
+      &quot;stop_price_gte&quot;:null,
+      &quot;stop_price_lte&quot;:null,
+      &quot;total&quot;:null,
+      &quot;fee&quot;:&quot;0&quot;
+    }
+  }
+]
+</code></pre>
+<p><strong>Order result fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>Internal order ID.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>string | null</td>
+<td>Limit price; <code>null</code> for market orders.</td>
+</tr>
+<tr>
+<td>current_amount</td>
+<td>string</td>
+<td>Remaining unfilled amount (BASE). <code>"0"</code> if fully filled.</td>
+</tr>
+<tr>
+<td>original_amount</td>
+<td>string</td>
+<td>Original order size in BASE.</td>
+</tr>
+<tr>
+<td>action</td>
+<td>string</td>
+<td><code>"buy"</code> or <code>"sell"</code>.</td>
+</tr>
+<tr>
+<td>pair.base / pair.quote</td>
+<td>string</td>
+<td>Base/quote tickers.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Order status: <code>created</code>, <code>placed</code>, <code>in_order_book</code>, <code>partially_fulfilled</code>, <code>completed</code>, <code>fulfilled</code>, <code>canceled</code>, <code>marked_for_cancel</code>, etc.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td><code>market</code> | <code>limit</code> | <code>stop_limit</code>.</td>
+</tr>
+<tr>
+<td>create_date</td>
+<td>string</td>
+<td>Creation timestamp (UTC, ISO-8601).</td>
+</tr>
+<tr>
+<td>market_total_original</td>
+<td>string | null</td>
+<td>Requested total for market orders (if provided).</td>
+</tr>
+<tr>
+<td>market_total_current</td>
+<td>string | null</td>
+<td>Actually spent/received in QUOTE for market orders.</td>
+</tr>
+<tr>
+<td>stop_price_gte / stop_price_lte</td>
+<td>string | null</td>
+<td>Stop trigger for stop-limit orders.</td>
+</tr>
+<tr>
+<td>total</td>
+<td>string | null</td>
+<td>Total notional in QUOTE.</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>Fee charged for this order (in QUOTE).</td>
+</tr>
+</tbody>
+</table>
+<p>For <code>stop_limit</code>:</p>
+<ul>
+<li>For <code>buy</code> orders, the stop condition will appear as <code>stop_price_gte</code>.</li>
+<li>For <code>sell</code> orders, the stop condition will appear as <code>stop_price_lte</code>.</li>
+</ul>
+<h4 id="322-cancel_order">3.2.2 <code>cancel_order</code></h4>
+<p><strong>Purpose:</strong>
+Cancel a single existing order.</p>
+<p><strong>Access:</strong>
+Private — requires <code>X-CITRO-*</code> headers and valid HMAC-SHA256 signature.</p>
+<p><strong>Endpoint:</strong>
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a>
+<strong>Content-Type:</strong> <code>application/json; charset=utf-8</code></p>
+<p><strong>Request:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;cancel_order&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot;, &quot;order_id&quot;: &quot;pRK4klVe&quot; },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Allowed values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>yes</td>
+<td><code>spot</code></td>
+<td>Market type.</td>
+</tr>
+<tr>
+<td>order_id</td>
+<td>string</td>
+<td>yes</td>
+<td>string</td>
+<td>Order ID returned by <code>create_order</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Successful response:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;result&quot;: null
+}
+</code></pre>
+<p><strong>Behavior / notes:</strong></p>
+<ul>
+<li>Cancelable statuses: <code>created</code>, <code>placed</code>, <code>in_order_book</code>, <code>partially_fulfilled</code>.</li>
+<li>Remaining unfilled amount will be released.</li>
+<li>Terminal statuses cannot be canceled: <code>fulfilled</code> / <code>completed</code>, <code>canceled</code>.</li>
+<li><code>order_already_fulfilled</code> if already fully filled.</li>
+<li><code>order_already_canceled</code> if already canceled.</li>
+<li><code>marked_for_cancel</code>: a second cancel request is idempotent → returns success again.</li>
+<li>Market orders cannot be canceled. Trying to cancel a market order returns <code>order_is_market</code>.</li>
+<li>Stop-limit orders can be canceled before trigger OR after trigger, as long as status is still cancelable and there is remaining amount.</li>
+<li>Permission check: if the order doesn't belong to your API key, you get <code>permission_denied</code> / similar.</li>
+</ul>
+<h4 id="323-cancel_all_orders">3.2.3 <code>cancel_all_orders</code></h4>
+<p><strong>Purpose:</strong>
+Cancel all active orders for the user on the spot market (idempotent).</p>
+<p><strong>Access:</strong>
+Private — requires <code>X-CITRO-*</code> headers and valid HMAC-SHA256 signature.</p>
+<p><strong>Endpoint:</strong>
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a></p>
+<p><strong>Request (cancel all active orders across all pairs):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;cancel_all_orders&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot; },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Request (cancel only for a single symbol):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;cancel_all_orders&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot;, &quot;symbol&quot;: &quot;CITRO/USDT&quot; },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Where</th>
+<th>Type</th>
+<th>Required</th>
+<th>Allowed values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>params</td>
+<td>string</td>
+<td>yes</td>
+<td><code>spot</code></td>
+<td>Market type.</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>params</td>
+<td>string</td>
+<td>no</td>
+<td>e.g. <code>CITRO/USDT</code></td>
+<td>If provided, only orders for that pair are canceled.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Successful response:</strong>
+Returns an array of order IDs that were canceled.
+If no active orders matched → returns <code>[]</code>.</p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;result&quot;: [&quot;pRK4klVe&quot;, &quot;pRK5klVe&quot;, &quot;pRK6klVe&quot;]
+}
+</code></pre>
+<p><strong>Behavior / notes:</strong></p>
+<ul>
+<li>Cancelable statuses: <code>created</code>, <code>placed</code>, <code>in_order_book</code>, <code>partially_fulfilled</code>.</li>
+<li>Remaining unfilled amount is released.</li>
+<li>Terminal statuses (<code>fulfilled</code> / <code>completed</code>, <code>canceled</code>) cannot be canceled:</li>
+<li><code>order_already_fulfilled</code></li>
+<li><code>order_already_canceled</code></li>
+<li><code>marked_for_cancel</code>: re-calling is idempotent.</li>
+<li>Market orders (<code>type = market</code>) cannot be canceled (<code>order_is_market</code>).</li>
+<li>Stop-limit orders can still be canceled, before or after trigger, as long as they are in a cancelable status and have remaining amount.</li>
+</ul>
+<h4 id="324-active_orders">3.2.4 <code>active_orders</code></h4>
+<p><strong>Purpose:</strong>
+Return the user's <em>active</em> orders: new, placed, in order book, partially filled, waiting on stop triggers, etc.</p>
+<p><strong>Access:</strong>
+Private — requires <code>X-CITRO-*</code> headers and valid HMAC-SHA256 signature.</p>
+<p><strong>Endpoint:</strong>
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a></p>
+<p><strong>Minimal request:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;active_orders&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot;, &quot;data&quot;: {} },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>With filters and sorting:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;active_orders&quot;,
+  &quot;params&quot;: {
+    &quot;category&quot;: &quot;spot&quot;,
+    &quot;data&quot;: {
+      &quot;start_date&quot;: &quot;2025-10-01&quot;,
+      &quot;end_date&quot;: &quot;2025-10-08&quot;,
+      &quot;order_by&quot;: &quot;-price&quot;,
+      &quot;symbol&quot;: &quot;BTC/USDT&quot;
+    }
+  },
+  &quot;id&quot;: &quot;2&quot;
+}
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Allowed values / format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>yes</td>
+<td><code>spot</code></td>
+<td>Market type.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>yes</td>
+<td>—</td>
+<td>Filter object (may be <code>{}</code>).</td>
+</tr>
+<tr>
+<td>data.start_date</td>
+<td>string | null</td>
+<td>no</td>
+<td><code>YYYY-MM-DD</code></td>
+<td>Inclusive lower bound on <code>create_date</code> (UTC).</td>
+</tr>
+<tr>
+<td>data.end_date</td>
+<td>string | null</td>
+<td>no</td>
+<td><code>YYYY-MM-DD</code></td>
+<td>Inclusive upper bound on <code>create_date</code> (UTC).</td>
+</tr>
+<tr>
+<td>data.order_by</td>
+<td>string | null</td>
+<td>no</td>
+<td>see below</td>
+<td>Sort rule.</td>
+</tr>
+<tr>
+<td>data.symbol</td>
+<td>string | null</td>
+<td>no</td>
+<td>e.g. <code>BTC/USDT</code></td>
+<td>Filter by pair.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sorting (<code>order_by</code>):</strong></p>
+<ul>
+<li>No prefix → ascending.</li>
+<li><code>-</code> prefix → descending.</li>
+<li>Allowed sort fields:</li>
+<li><code>create_date</code></li>
+<li><code>price</code></li>
+<li><code>pair</code></li>
+<li><code>stop_price</code></li>
+<li><code>original_amount</code></li>
+<li><code>current_amount</code></li>
+</ul>
+<p><code>pair</code> is sorted lexicographically as <code>BASE/QUOTE</code>.
+<code>stop_price</code> is treated as <code>coalesce(stop_price_gte, stop_price_lte)</code>.
+<code>nulls last</code>: <code>null</code> values are always placed at the end (both asc and desc).</p>
+<p><strong>Validation:</strong></p>
+<ul>
+<li>Missing filter fields are treated as "not provided".</li>
+</ul>
+<p><strong>Successful response:</strong>
+Returns an array (possibly empty <code>[]</code>) of active orders.</p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;result&quot;: [
+    {
+      &quot;id&quot;: &quot;pRK4klVe&quot;,
+      &quot;price&quot;: &quot;99000.00&quot;,
+      &quot;current_amount&quot;: &quot;0.309276&quot;,
+      &quot;original_amount&quot;: &quot;0.309276&quot;,
+      &quot;action&quot;: &quot;buy&quot;,
+      &quot;pair&quot;: { &quot;base&quot;: &quot;BTC&quot;, &quot;quote&quot;: &quot;USDT&quot; },
+      &quot;status&quot;: &quot;created&quot;,
+      &quot;type&quot;: &quot;stop_limit&quot;,
+      &quot;create_date&quot;: &quot;2025-10-08T15:16:23.824699Z&quot;,
+      &quot;market_total_original&quot;: null,
+      &quot;market_total_current&quot;: null,
+      &quot;stop_price_gte&quot;: null,
+      &quot;stop_price_lte&quot;: &quot;100000.00&quot;,
+      &quot;total&quot;: &quot;30618.324000&quot;,
+      &quot;fee&quot;: &quot;0&quot;,
+      &quot;commission_buy&quot;: &quot;0.0001&quot;,
+      &quot;commission_sell&quot;: &quot;0.0001&quot;,
+      &quot;weighted_average_price&quot;: null,
+      &quot;deals_amount&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;pRK5klVe&quot;,
+      &quot;price&quot;: &quot;100000.00&quot;,
+      &quot;current_amount&quot;: &quot;1.000000&quot;,
+      &quot;original_amount&quot;: &quot;1.000000&quot;,
+      &quot;action&quot;: &quot;buy&quot;,
+      &quot;pair&quot;: { &quot;base&quot;: &quot;BTC&quot;, &quot;quote&quot;: &quot;USDT&quot; },
+      &quot;status&quot;: &quot;placed&quot;,
+      &quot;type&quot;: &quot;limit&quot;,
+      &quot;create_date&quot;: &quot;2025-10-08T15:15:47.362205Z&quot;,
+      &quot;market_total_original&quot;: null,
+      &quot;market_total_current&quot;: &quot;0.000000&quot;,
+      &quot;stop_price_gte&quot;: null,
+      &quot;stop_price_lte&quot;: null,
+      &quot;total&quot;: &quot;100000.000000&quot;,
+      &quot;fee&quot;: &quot;0&quot;,
+      &quot;commission_buy&quot;: &quot;0.0001&quot;,
+      &quot;commission_sell&quot;: &quot;0.0001&quot;,
+      &quot;weighted_average_price&quot;: null,
+      &quot;deals_amount&quot;: null
+    }
+  ]
+}
+</code></pre>
+<p><strong>Order fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>Internal order ID.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>string | null</td>
+<td>Limit price. <code>null</code> for market orders.</td>
+</tr>
+<tr>
+<td>current_amount</td>
+<td>string</td>
+<td>Remaining unfilled amount (BASE).</td>
+</tr>
+<tr>
+<td>original_amount</td>
+<td>string</td>
+<td>Original order amount (BASE).</td>
+</tr>
+<tr>
+<td>action</td>
+<td>string</td>
+<td><code>buy</code> or <code>sell</code>.</td>
+</tr>
+<tr>
+<td>pair.base / pair.quote</td>
+<td>string</td>
+<td>Base / quote tickers.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>e.g. <code>created</code>, <code>placed</code>, <code>partially_filled</code>, etc.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td><code>market</code> | <code>limit</code> | <code>stop_limit</code>.</td>
+</tr>
+<tr>
+<td>create_date</td>
+<td>string</td>
+<td>Creation time (UTC, ISO-8601).</td>
+</tr>
+<tr>
+<td>market_total_original</td>
+<td>string | null</td>
+<td>Requested total for <code>market</code> (if provided).</td>
+</tr>
+<tr>
+<td>market_total_current</td>
+<td>string | null</td>
+<td>Actually spent/received (market).</td>
+</tr>
+<tr>
+<td>stop_price_gte / stop_price_lte</td>
+<td>string | null</td>
+<td>Stop trigger conditions for stop_limit.</td>
+</tr>
+<tr>
+<td>total</td>
+<td>string | null</td>
+<td>Notional total in QUOTE.</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>Fee in QUOTE.</td>
+</tr>
+<tr>
+<td>commission_buy / commission_sell</td>
+<td>string</td>
+<td>Fee rates (fraction) for this instrument.</td>
+</tr>
+<tr>
+<td>weighted_average_price</td>
+<td>string | null</td>
+<td>VWAP of the executed portion (QUOTE).</td>
+</tr>
+<tr>
+<td>deals_amount</td>
+<td>string | null</td>
+<td>Total filled amount in BASE.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="325-orders_history">3.2.5 <code>orders_history</code></h4>
+<p><strong>Purpose:</strong>
+Paginated historical orders.</p>
+<p><strong>Access:</strong>
+Private — requires <code>X-CITRO-*</code> headers and signature.</p>
+<p><strong>Endpoint:</strong>
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a>
+<strong>Content-Type:</strong> <code>application/json; charset=utf-8</code></p>
+<p><strong>Minimal request (recommended: always include <code>"history": "true"</code>):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;orders_history&quot;,
+  &quot;params&quot;: {
+    &quot;category&quot;: &quot;spot&quot;,
+    &quot;page&quot;: 1,
+    &quot;page_size&quot;: 50,
+    &quot;data&quot;: { &quot;history&quot;: &quot;true&quot; }
+  },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>With filters and sorting:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;orders_history&quot;,
+  &quot;params&quot;: {
+    &quot;category&quot;: &quot;spot&quot;,
+    &quot;page&quot;: 1,
+    &quot;page_size&quot;: 10,
+    &quot;data&quot;: {
+      &quot;start_date&quot;: &quot;2025-10-01&quot;,
+      &quot;end_date&quot;: &quot;2025-10-08&quot;,
+      &quot;order_by&quot;: &quot;-create_date&quot;,
+      &quot;symbol&quot;: &quot;BTC/USDT&quot;,
+      &quot;history&quot;: &quot;true&quot;
+    }
+  },
+  &quot;id&quot;: &quot;2&quot;
+}
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Allowed values / range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>yes</td>
+<td><code>spot</code></td>
+<td>Market type.</td>
+</tr>
+<tr>
+<td>page</td>
+<td>integer | string</td>
+<td>yes</td>
+<td><code>1..1000</code></td>
+<td>Page number (default <code>1</code>).</td>
+</tr>
+<tr>
+<td>page_size</td>
+<td>integer | string</td>
+<td>yes</td>
+<td><code>1..100</code></td>
+<td>Page size (default <code>50</code>).</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>no</td>
+<td>—</td>
+<td>Filter object (may be <code>{}</code>).</td>
+</tr>
+<tr>
+<td>data.start_date</td>
+<td>string | null</td>
+<td>no</td>
+<td><code>YYYY-MM-DD</code></td>
+<td>Inclusive lower bound on <code>create_date</code> (UTC).</td>
+</tr>
+<tr>
+<td>data.end_date</td>
+<td>string | null</td>
+<td>no</td>
+<td><code>YYYY-MM-DD</code></td>
+<td>Inclusive upper bound on <code>create_date</code> (UTC).</td>
+</tr>
+<tr>
+<td>data.order_by</td>
+<td>string | null</td>
+<td>no</td>
+<td>see below</td>
+<td>Sort rule.</td>
+</tr>
+<tr>
+<td>data.symbol</td>
+<td>string | null</td>
+<td>no</td>
+<td>e.g. <code>BTC/USDT</code></td>
+<td>Filter by pair.</td>
+</tr>
+<tr>
+<td>data.history</td>
+<td>string | boolean</td>
+<td>preferred</td>
+<td><code>"true"</code></td>
+<td>Should be <code>"true"</code> to ensure full historical results.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sorting (<code>order_by</code>):</strong></p>
+<ul>
+<li>No prefix → ascending.</li>
+<li><code>-</code> prefix → descending.</li>
+<li>Allowed fields:
+  <code>create_date</code>, <code>price</code>, <code>pair</code>, <code>stop_price</code>, <code>total</code>, <code>original_amount</code>, <code>current_amount</code>.</li>
+</ul>
+<p><code>pair</code> is sorted as a <code>BASE/QUOTE</code> string.
+<code>stop_price</code> is interpreted as <code>coalesce(stop_price_gte, stop_price_lte)</code>.
+Ascending: NULLs first. Descending: NULLs last.</p>
+<p><strong>Validation:</strong></p>
+<ul>
+<li><code>page &gt; 1000</code> → error.</li>
+<li><code>page_size &lt; 1</code> or <code>page_size &gt; 100</code> → error.</li>
+<li>Missing filter fields are treated as "not provided".</li>
+</ul>
+<p><strong>Successful response:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;result&quot;: {
+    &quot;items&quot;: [ /* array of orders, see below */ ],
+    &quot;total&quot;: 94,
+    &quot;page&quot;: 1,
+    &quot;size&quot;: 10,
+    &quot;pages&quot;: 10
+  }
+}
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;:&quot;2.0&quot;,
+  &quot;id&quot;:&quot;1&quot;,
+  &quot;result&quot;:{
+    &quot;items&quot;:[
+      {
+        &quot;id&quot;:&quot;pRK4klVe&quot;,
+        &quot;price&quot;:&quot;90000.00&quot;,
+        &quot;current_amount&quot;:&quot;0.013577&quot;,
+        &quot;original_amount&quot;:&quot;0.013577&quot;,
+        &quot;action&quot;:&quot;sell&quot;,
+        &quot;pair&quot;:{&quot;base&quot;:&quot;BTC&quot;,&quot;quote&quot;:&quot;USDT&quot;},
+        &quot;status&quot;:&quot;canceled&quot;,
+        &quot;type&quot;:&quot;stop_limit&quot;,
+        &quot;create_date&quot;:&quot;2025-10-08T13:37:11.792819Z&quot;,
+        &quot;market_total_original&quot;:null,
+        &quot;market_total_current&quot;:null,
+        &quot;stop_price_gte&quot;:null,
+        &quot;stop_price_lte&quot;:&quot;100000.00&quot;,
+        &quot;total&quot;:&quot;0.000000&quot;,
+        &quot;fee&quot;:&quot;0&quot;,
+        &quot;commission_buy&quot;:&quot;0.0001&quot;,
+        &quot;commission_sell&quot;:&quot;0.0001&quot;,
+        &quot;weighted_average_price&quot;:null,
+        &quot;deals_amount&quot;:null
+      }
+      /* ...more items... */
+    ],
+    &quot;total&quot;:94,
+    &quot;page&quot;:1,
+    &quot;size&quot;:10,
+    &quot;pages&quot;:10
+  }
+}
+</code></pre>
+<p><strong>Order fields in <code>items[]</code>:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>Internal order ID.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>string | null</td>
+<td>Limit price; <code>null</code> for market.</td>
+</tr>
+<tr>
+<td>current_amount</td>
+<td>string | null</td>
+<td>Remaining amount in BASE. May be <code>"0"</code> or <code>null</code> when fully filled.</td>
+</tr>
+<tr>
+<td>original_amount</td>
+<td>string</td>
+<td>Original amount in BASE.</td>
+</tr>
+<tr>
+<td>action</td>
+<td>string</td>
+<td><code>buy</code> or <code>sell</code>.</td>
+</tr>
+<tr>
+<td>pair.base / pair.quote</td>
+<td>string</td>
+<td>Base/quote tickers.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>e.g. <code>completed</code>, <code>canceled</code>, etc. (terminal statuses possible here).</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td><code>market</code> | <code>limit</code> | <code>stop_limit</code>.</td>
+</tr>
+<tr>
+<td>create_date</td>
+<td>string</td>
+<td>Creation timestamp (UTC, ISO-8601).</td>
+</tr>
+<tr>
+<td>market_total_original</td>
+<td>string | null</td>
+<td>For market orders: requested total, if provided.</td>
+</tr>
+<tr>
+<td>market_total_current</td>
+<td>string | null</td>
+<td>For market orders: actually spent/received in QUOTE.</td>
+</tr>
+<tr>
+<td>stop_price_gte / stop_price_lte</td>
+<td>string | null</td>
+<td>Stop conditions for stop_limit.</td>
+</tr>
+<tr>
+<td>total</td>
+<td>string | null</td>
+<td>Total in QUOTE (if applicable).</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>Final fee in QUOTE.</td>
+</tr>
+<tr>
+<td>commission_buy / commission_sell</td>
+<td>string</td>
+<td>Fee rates (fraction) applied to this order.</td>
+</tr>
+<tr>
+<td>weighted_average_price</td>
+<td>string | null</td>
+<td>VWAP in QUOTE across fills for this order.</td>
+</tr>
+<tr>
+<td>deals_amount</td>
+<td>string | null</td>
+<td>Total executed amount in BASE.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="326-get_balance">3.2.6 <code>get_balance</code></h4>
+<p><strong>Purpose:</strong>
+Return spot wallet balances for the user (no fiat/valuation unless provided by the backend).</p>
+<p><strong>Access:</strong>
+Private — requires <code>X-CITRO-*</code> headers and signature.</p>
+<p><strong>Endpoint:</strong>
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a>
+<strong>Content-Type:</strong> <code>application/json; charset=utf-8</code></p>
+<p><strong>Minimal request:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_balance&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot; },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>With filters (coin, include null balances):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_balance&quot;,
+  &quot;params&quot;: {
+    &quot;category&quot;: &quot;spot&quot;,
+    &quot;data&quot;: {
+      &quot;coin_name&quot;: &quot;USDT&quot;,
+      &quot;include_null&quot;: &quot;false&quot;
+    }
+  },
+  &quot;id&quot;: &quot;2&quot;
+}
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Allowed values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>yes</td>
+<td><code>spot</code></td>
+<td>Market type. Returns only spot balances.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>no</td>
+<td>—</td>
+<td>Filter object (may be omitted).</td>
+</tr>
+<tr>
+<td>data.coin_name</td>
+<td>string | null</td>
+<td>no</td>
+<td>e.g. <code>USDT</code></td>
+<td>Filter by coin ticker (case sensitivity follows backend rules).</td>
+</tr>
+<tr>
+<td>data.include_null</td>
+<td>string | boolean | null</td>
+<td>no</td>
+<td><code>true/false</code></td>
+<td>Whether to include zero balances. Default is <code>false</code> (zero balances are hidden).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Behavior of <code>include_null</code>:</strong></p>
+<ul>
+<li><code>false</code> (default): zero balances are hidden.</li>
+<li>If <em>all</em> balances are zero and <code>include_null=false</code>, result may be <code>[]</code>.</li>
+</ul>
+<p><strong>Successful response:</strong>
+Returns an array of balance objects for <code>asset_type: "SPOT"</code> only.</p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;result&quot;: [
+    {
+      &quot;coin_name&quot;: &quot;BTC&quot;,
+      &quot;asset_type&quot;: &quot;SPOT&quot;,
+      &quot;in_orders&quot;: &quot;0.0000&quot;,
+      &quot;available&quot;: &quot;3.34588007&quot;,
+      &quot;total&quot;: &quot;3.34588007&quot;
+    },
+    {
+      &quot;coin_name&quot;: &quot;CITRO&quot;,
+      &quot;asset_type&quot;: &quot;SPOT&quot;,
+      &quot;in_orders&quot;: &quot;1583.0000&quot;,
+      &quot;available&quot;: &quot;99243.6960&quot;,
+      &quot;total&quot;: &quot;100826.6960&quot;
+    },
+    {
+      &quot;coin_name&quot;: &quot;USDT&quot;,
+      &quot;asset_type&quot;: &quot;SPOT&quot;,
+      &quot;in_orders&quot;: &quot;132204.424000&quot;,
+      &quot;available&quot;: &quot;581749.563085&quot;,
+      &quot;total&quot;: &quot;713953.987085&quot;
+    }
+  ]
+}
+</code></pre>
+<p><strong>Balance fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coin_name</td>
+<td>string</td>
+<td>Coin ticker (e.g. <code>USDT</code>).</td>
+</tr>
+<tr>
+<td>asset_type</td>
+<td>string</td>
+<td>Always <code>"SPOT"</code> for this method.</td>
+</tr>
+<tr>
+<td>in_orders</td>
+<td>string</td>
+<td>Amount locked in open orders.</td>
+</tr>
+<tr>
+<td>available</td>
+<td>string</td>
+<td>Free amount available to trade / withdraw.</td>
+</tr>
+<tr>
+<td>total</td>
+<td>string</td>
+<td><code>available + in_orders</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-errors">4. Errors</h2>
+<p>Below are standard error codes/messages you may receive.</p>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>message</th>
+<th>When it happens</th>
+<th>Methods</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method_not_found</td>
+<td>Method not found</td>
+<td><code>method</code> is missing or not a supported public method (<code>markets</code> / <code>tickers</code> / <code>orderbook</code> / <code>ohlcv</code>).</td>
+<td>all</td>
+</tr>
+<tr>
+<td>auth_required</td>
+<td>Authorization required for this method</td>
+<td>No or incomplete <code>X-CITRO-*</code> headers for a private method.</td>
+<td>all private</td>
+</tr>
+<tr>
+<td>invalid_signature</td>
+<td>Invalid signature</td>
+<td>Signature does not match <code>timestamp + api_key + recv_window + raw_body</code>.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>invalid_params</td>
+<td>Params for requested method are invalid</td>
+<td>Missing/invalid fields in <code>params</code> / wrong <code>category</code> / wrong <code>symbol</code> / extra fields.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>internal_server_error</td>
+<td>Internal server error</td>
+<td>Unexpected backend error (DB failure, timeout, etc.).</td>
+<td>all</td>
+</tr>
+<tr>
+<td>invalid_pair</td>
+<td>Invalid pair</td>
+<td>Trading pair (<code>symbol</code>) not supported.</td>
+<td>create_order, cancel_all_orders, active_orders, orders_history</td>
+</tr>
+<tr>
+<td>validation_error</td>
+<td>Validation error</td>
+<td>Bad pagination values, precision/step violations, etc.</td>
+<td>active_orders, orders_history, get_balance</td>
+</tr>
+<tr>
+<td>page_out_of_range</td>
+<td>page must be between 1 and 1000.</td>
+<td><code>page</code> is outside allowed range.</td>
+<td>orders_history</td>
+</tr>
+<tr>
+<td>page_size_out_of_range</td>
+<td>page_size must be between 1 and 100.</td>
+<td><code>page_size</code> is outside allowed range.</td>
+<td>orders_history</td>
+</tr>
+<tr>
+<td>invalid_order_value</td>
+<td>Invalid order value</td>
+<td>Violated precision, tick size, min/max limits, etc.</td>
+<td>create_order</td>
+</tr>
+<tr>
+<td>not_found_coins_for_hold</td>
+<td>Failed to determine funds to hold</td>
+<td>Could not reserve required funds.</td>
+<td>create_order</td>
+</tr>
+<tr>
+<td>not_enough_amount</td>
+<td>Insufficient balance</td>
+<td>User balance is too low.</td>
+<td>create_order</td>
+</tr>
+<tr>
+<td>no_market_offers</td>
+<td>No available market liquidity</td>
+<td><code>type = market</code> and there's no suitable liquidity.</td>
+<td>create_order</td>
+</tr>
+<tr>
+<td>order_not_found</td>
+<td>Order not found</td>
+<td><code>order_id</code> does not exist.</td>
+<td>cancel_order</td>
+</tr>
+<tr>
+<td>order_already_fulfilled</td>
+<td>Order already fulfilled</td>
+<td>Attempted to cancel an already fully filled order.</td>
+<td>cancel_order</td>
+</tr>
+<tr>
+<td>order_already_canceled</td>
+<td>Order already canceled</td>
+<td>Attempted to cancel an already canceled order.</td>
+<td>cancel_order</td>
+</tr>
+<tr>
+<td>order_is_market</td>
+<td>Market orders cannot be canceled</td>
+<td>Tried to cancel a market order.</td>
+<td>cancel_order</td>
+</tr>
+<tr>
+<td>permission_denied</td>
+<td>Order does not belong to this API key</td>
+<td>Order belongs to a different API key / account.</td>
+<td>cancel_order</td>
+</tr>
+<tr>
+<td>rate_limited</td>
+<td>Too many requests</td>
+<td>Rate limit exceeded; server may respond with HTTP 429.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>recv_window_expired</td>
+<td>Request is expired</td>
+<td><code>abs(server_now_ms - X-CITRO-TIMESTAMP) \\&gt; X-CITRO-RECV-WINDOW</code>. Usually caused by client clock drift or high latency. Sync your clock / increase window.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>invalid_symbol</td>
+<td>Invalid symbol</td>
+<td><code>tickers</code> / <code>orderbook</code> / <code>ohlcv</code>: symbol not supported. (For <code>ohlcv</code>, currently only <code>CITRO/USDT</code> is supported.)</td>
+<td>tickers, orderbook, ohlcv</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-websocket-api">5. WebSocket API</h2>
+<h3 id="51-base-websocket-endpoint">5.1 Base WebSocket Endpoint</h3>
+<pre><code>wss://api.citronus.com/public/ws/v1/
+</code></pre>
+<h3 id="52-authentication">5.2 Authentication</h3>
+<ul>
+<li>By default, some subscription methods are public (no auth).</li>
+<li>If a method is marked as "requires authentication", the client must send:</li>
+<li><code>api_key</code></li>
+<li><code>timestamp</code></li>
+<li><code>recv_window</code></li>
+<li><code>sign</code></li>
+</ul>
+<p>The server validates these fields before executing the method.</p>
+<h3 id="53-errors">5.3 Errors</h3>
+<p>The server can respond with standard error messages such as:</p>
+<ul>
+<li><code>"Authentication failed"</code></li>
+<li><code>"Internal server error"</code></li>
+<li><code>"Invalid parameters"</code></li>
+<li><code>"[Service] client not available"</code></li>
+</ul>
+<p>Error codes:</p>
+<ul>
+<li><code>4000</code> — generic method errors (<code>MethodError</code>)</li>
+<li><code>4001</code> — invalid command parameters (<code>InvalidCommandParametersError</code>)</li>
+<li><code>5000</code> — subscription errors (<code>SubscriptionError</code>)</li>
+</ul>
+<h3 id="54-action-methods">5.4 Action Methods</h3>
+<h4 id="ping-requires-authentication"><code>ping</code> (requires authentication)</h4>
+<p><strong>Name:</strong> <code>PingMethod</code>
+<strong>Purpose:</strong> Connection health check.
+<strong>Expected response:</strong></p>
+<pre><code>{ &quot;response&quot;: &quot;ping&quot; }
+</code></pre>
+<h3 id="55-subscription-methods">5.5 Subscription Methods</h3>
+<h4 id="551-subscribebalance">5.5.1 <code>subscribe.balance</code></h4>
+<p><strong>Name:</strong> <code>BalanceSubscribeMethod</code>
+<strong>Auth:</strong> Required
+<strong>Purpose:</strong> Subscribe to wallet balance updates.</p>
+<p><strong>Parameters (<code>params</code>):</strong></p>
+<ul>
+<li><code>asset</code> (string, required) — channel selector:</li>
+<li><code>SPOT</code> — aggregated listing of all spot wallet balances (snapshot).</li>
+<li><code>SPOT-&lt;COIN&gt;</code> — focused updates for a single coin, e.g. <code>SPOT-XRP</code>.</li>
+</ul>
+<p>Note: In incoming updates, the top-level <code>params</code> field may look like
+<code>"&lt;account_id&gt;_listings.SPOT"</code> for the listing, or
+<code>"&lt;account_id&gt;_tickers.SPOT-&lt;COIN&gt;"</code> for a single coin.
+This is the channel key (account-scoped). This is expected.</p>
+<p><strong>Example request (full SPOT listing):</strong></p>
+<pre><code>{
+  &quot;command&quot;: &quot;subscribe.balance&quot;,
+  &quot;params&quot;: { &quot;asset&quot;: &quot;SPOT&quot; },
+  &quot;api_key&quot;: &quot;&lt;YOUR_API_KEY&gt;&quot;,
+  &quot;timestamp&quot;: &quot;1760623193880&quot;,
+  &quot;recv_window&quot;: &quot;65000&quot;,
+  &quot;sign&quot;: &quot;&lt;HEX(HMAC_SHA256(secret, timestamp + api_key + recv_window + JSON(params+command)))&gt;&quot;
+}
+</code></pre>
+<p><strong>ACK response:</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;6f34da71-f412-41a8-b721-335c1b4ae4b0&quot;,
+  &quot;response&quot;: &quot;Subscribed to balance&quot;
+}
+</code></pre>
+<p><strong>Data stream — snapshot (array listing):</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;6f34da71-f412-41a8-b721-335c1b4ae4b0&quot;,
+  &quot;method&quot;: &quot;subscribe.wallets&quot;,
+  &quot;params&quot;: &quot;449_listings.SPOT&quot;,
+  &quot;data&quot;: {
+    &quot;data&quot;: [
+      {
+        &quot;in_orders&quot;: &quot;0.0000&quot;,
+        &quot;available&quot;: &quot;0.00470443&quot;,
+        &quot;total&quot;: &quot;0.00470443&quot;,
+        &quot;coin&quot;: {
+          &quot;name&quot;: &quot;BTC&quot;,
+          &quot;display_name&quot;: &quot;Bitcoin&quot;,
+          &quot;precision&quot;: 8,
+          &quot;icon&quot;: &quot;https://…/coins/BTC.svg&quot;
+        },
+        &quot;equivalent&quot;: { &quot;amount&quot;: &quot;507.45&quot;, &quot;currency&quot;: &quot;USD&quot; }
+      },
+      {
+        &quot;in_orders&quot;: &quot;0.0000&quot;,
+        &quot;available&quot;: &quot;0.01441560&quot;,
+        &quot;total&quot;: &quot;0.01441560&quot;,
+        &quot;coin&quot;: {
+          &quot;name&quot;: &quot;ETH&quot;,
+          &quot;display_name&quot;: &quot;Ethereum&quot;,
+          &quot;precision&quot;: 8,
+          &quot;icon&quot;: &quot;https://…/coins/ETH.svg&quot;
+        },
+        &quot;equivalent&quot;: { &quot;amount&quot;: &quot;56.66&quot;, &quot;currency&quot;: &quot;USD&quot; }
+      },
+      {
+        &quot;in_orders&quot;: &quot;0.0000&quot;,
+        &quot;available&quot;: &quot;445.000000&quot;,
+        &quot;total&quot;: &quot;445.000000&quot;,
+        &quot;coin&quot;: {
+          &quot;name&quot;: &quot;USDT&quot;,
+          &quot;display_name&quot;: &quot;Tether&quot;,
+          &quot;precision&quot;: 6,
+          &quot;icon&quot;: &quot;https://…/coins/USDT.svg&quot;
+        },
+        &quot;equivalent&quot;: { &quot;amount&quot;: &quot;445.00&quot;, &quot;currency&quot;: &quot;USD&quot; }
+      }
+    ]
+  }
+}
+</code></pre>
+<p><strong>Data stream — incremental updates:</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;6f34da71-f412-41a8-b721-335c1b4ae4b0&quot;,
+  &quot;method&quot;: &quot;subscribe.wallets&quot;,
+  &quot;params&quot;: &quot;449_listings.SPOT&quot;,
+  &quot;data&quot;: {
+    &quot;in_orders&quot;: &quot;0.0000&quot;,
+    &quot;available&quot;: &quot;0.00470443&quot;,
+    &quot;total&quot;: &quot;0.00470443&quot;,
+    &quot;coin&quot;: {
+      &quot;name&quot;: &quot;BTC&quot;,
+      &quot;display_name&quot;: &quot;Bitcoin&quot;,
+      &quot;precision&quot;: 8,
+      &quot;icon&quot;: &quot;https://…/coins/BTC.svg&quot;
+    },
+    &quot;equivalent&quot;: { &quot;amount&quot;: &quot;507.39&quot;, &quot;currency&quot;: &quot;USD&quot; }
+  }
+}
+</code></pre>
+<p><strong>Per-coin request:</strong></p>
+<pre><code>{
+  &quot;command&quot;: &quot;subscribe.balance&quot;,
+  &quot;params&quot;: { &quot;asset&quot;: &quot;SPOT-XRP&quot; },
+  &quot;api_key&quot;: &quot;&lt;YOUR_API_KEY&gt;&quot;,
+  &quot;timestamp&quot;: &quot;1760623193880&quot;,
+  &quot;recv_window&quot;: &quot;65000&quot;,
+  &quot;sign&quot;: &quot;&lt;HEX(HMAC_SHA256(secret, timestamp + api_key + recv_window + JSON(params+command)))&gt;&quot;
+}
+</code></pre>
+<p><strong>Per-coin ACK:</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;faeaf93b-2858-4839-8aae-e438cf61279c&quot;,
+  &quot;response&quot;: &quot;Subscribed to balance&quot;
+}
+</code></pre>
+<p><strong>Per-coin stream (XRP example):</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;faeaf93b-2858-4839-8aae-e438cf61279c&quot;,
+  &quot;method&quot;: &quot;subscribe.wallets&quot;,
+  &quot;params&quot;: &quot;449_tickers.SPOT-XRP&quot;,
+  &quot;data&quot;: {
+    &quot;balance&quot;: &quot;0.000000&quot;,
+    &quot;coin_name&quot;: &quot;XRP&quot;,
+    &quot;coin&quot;: {
+      &quot;name&quot;: &quot;XRP&quot;,
+      &quot;display_name&quot;: &quot;XRP&quot;,
+      &quot;precision&quot;: 6,
+      &quot;icon&quot;: &quot;https://…/coins/XRP.svg&quot;
+    }
+  }
+}
+</code></pre>
+<p><strong>Notes / behavior:</strong></p>
+<ul>
+<li>This is a private subscription.
+  The frame must be signed:</li>
+</ul>
+<p>```
+  sign = HMAC_SHA256(secret, timestamp + api_key + recv_window + pre_cmd_json)</p>
+<p><code>``
+* Incoming updates use</code>method: "subscribe.wallets"<code>.
+  That's expected (it's the balance channel family).
+* First message for</code>SPOT<code>is a snapshot array in</code>data.data<code>.
+  After that you get incremental single-coin updates.
+* For</code>SPOT-<COIN><code>you only get that coin’s updates.
+* Monetary values (</code>available<code>,</code>in_orders`, etc.) are strings. Use decimal math on the client.</p>
+<h4 id="552-subscribeorderbook">5.5.2 <code>subscribe.orderbook</code></h4>
+<p><strong>Name:</strong> <code>OrderBookSubscribeMethod</code>
+<strong>Auth:</strong> Not required
+<strong>Purpose:</strong> Subscribe to live order book updates.</p>
+<p><strong>Parameters (<code>params</code>):</strong></p>
+<ul>
+<li><code>symbol</code> (string, required) — trading pair in <code>BASE-QUOTE</code> format, e.g. <code>BTC-USDT</code>.
+  Uppercase with dash.</li>
+<li><code>interval</code> (string, required) — update frequency/stream code. See <code>INTERVALS</code>.</li>
+</ul>
+<p><strong>INTERVALS examples:</strong></p>
+<ul>
+<li><code>"100"</code> → 100 ms</li>
+<li><code>"300"</code> → 300 ms</li>
+<li><code>"500"</code> → 500 ms</li>
+<li><code>"1"</code> → 1 second</li>
+<li><code>"3"</code> → 3 seconds</li>
+<li><code>"5"</code> → 5 seconds</li>
+<li><code>"15"</code> → 15 seconds</li>
+<li><code>"30"</code> → 30 seconds</li>
+</ul>
+<p><strong>Request example:</strong></p>
+<pre><code>{
+  &quot;command&quot;: &quot;subscribe.orderbook&quot;,
+  &quot;params&quot;: { &quot;symbol&quot;: &quot;BTC-USDT&quot;, &quot;interval&quot;: &quot;100&quot; }
+}
+</code></pre>
+<p><strong>ACK:</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;6def89c9-e983-4de2-81d7-ba441892da60&quot;,
+  &quot;response&quot;: &quot;Subscribed to order book&quot;
+}
+</code></pre>
+<p><strong>Data stream example:</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;6def89c9-e983-4de2-81d7-ba441892da60&quot;,
+  &quot;method&quot;: &quot;subscribe.orderbook&quot;,
+  &quot;params&quot;: &quot;BTC-USDT_100&quot;,
+  &quot;data&quot;: {
+    &quot;topic&quot;: &quot;orderbook.1.BTC-USDT&quot;,
+    &quot;type&quot;: &quot;snapshot&quot;,               // later messages may use &quot;delta&quot;
+    &quot;ts&quot;: 1760617081,                 // Unix seconds
+    &quot;hmts&quot;: &quot;2025-10-16 12:18:01&quot;,    // human-readable timestamp
+    &quot;data&quot;: {
+      &quot;s&quot;: &quot;BTC-USDT&quot;,
+      &quot;a&quot;: [[&quot;111712.13&quot;,&quot;50.00000000&quot;], [&quot;111697.03&quot;,&quot;4.47852061&quot;]],
+      &quot;b&quot;: [[&quot;111555.66&quot;,&quot;50.00000000&quot;], [&quot;111575.09&quot;,&quot;5.00000000&quot;]],
+      &quot;lp&quot;: &quot;111632.00&quot;,
+      &quot;ts&quot;: 1760617081
+    }
+  }
+}
+</code></pre>
+<p><strong>Field format:</strong></p>
+<ul>
+<li>All numeric values in the order book arrays are strings.</li>
+<li><code>a</code> = asks <code>[price, size]</code>, best first.</li>
+<li><code>b</code> = bids <code>[price, size]</code>, best first.</li>
+<li><code>s</code> = symbol (BASE-QUOTE).</li>
+<li><code>lp</code> = last price.</li>
+<li><code>ts</code> = Unix seconds.</li>
+<li><code>hmts</code> = human-readable timestamp.</li>
+<li>The top-level <code>params</code> in updates is <code>"&lt;SYMBOL&gt;_&lt;INTERVAL&gt;"</code>.</li>
+<li><code>data.topic</code> can look like <code>orderbook.&lt;code&gt;.&lt;SYMBOL&gt;</code>, where <code>&lt;code&gt;</code> is an internal channel code and may not match <code>interval</code> literally.</li>
+</ul>
+<h4 id="553-subscribeklines">5.5.3 <code>subscribe.klines</code></h4>
+<p><strong>Name:</strong> <code>KlinesSubscribeMethod</code>
+<strong>Auth:</strong> Not required
+<strong>Purpose:</strong> Subscribe to kline (candlestick) data.</p>
+<p><strong>Parameters (<code>params</code>):</strong></p>
+<ul>
+<li><code>symbol</code> (string, required) — e.g. <code>BTCUSDT</code>.</li>
+<li><code>interval</code> (string, required) — timeframe code.</li>
+</ul>
+<p><strong>INTERVALS examples (chart timeframes):</strong></p>
+<ul>
+<li><code>"1"</code> → 1 minute</li>
+<li><code>"3"</code> → 3 minutes</li>
+<li><code>"5"</code> → 5 minutes</li>
+<li><code>"15"</code> → 15 minutes</li>
+<li><code>"30"</code> → 30 minutes</li>
+<li><code>"60"</code> → 1 hour</li>
+<li><code>"120"</code> → 2 hours</li>
+<li><code>"240"</code> → 4 hours</li>
+<li><code>"360"</code> → 6 hours</li>
+<li><code>"720"</code> → 12 hours</li>
+<li><code>"1440"</code> → 86400 seconds (24h)</li>
+<li><code>"D"</code> → 1 day</li>
+<li><code>"W"</code> → 1 week</li>
+<li><code>"M"</code> → 1 month</li>
+</ul>
+<p><strong>Request example:</strong></p>
+<pre><code>{
+  &quot;command&quot;: &quot;subscribe.klines&quot;,
+  &quot;params&quot;: { &quot;symbol&quot;: &quot;BTCUSDT&quot;, &quot;interval&quot;: &quot;1&quot; }
+}
+</code></pre>
+<p><strong>ACK:</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;b7570450-401a-41bc-8cf2-458a086b0940&quot;,
+  &quot;response&quot;: &quot;Subscribed to klines&quot;
+}
+</code></pre>
+<p><strong>Data stream example:</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;b7570450-401a-41bc-8cf2-458a086b0940&quot;,
+  &quot;method&quot;: &quot;subscribe.klines&quot;,
+  &quot;params&quot;: &quot;BTCUSDT_1&quot;,
+  &quot;data&quot;: {
+    &quot;type&quot;: &quot;snapshot&quot;,
+    &quot;topic&quot;: &quot;kline.1.BTCUSDT&quot;,
+    &quot;data&quot;: [{
+      &quot;start&quot;: 1760613360000,
+      &quot;end&quot;: 1760613419999,
+      &quot;interval&quot;: &quot;1&quot;,
+      &quot;open&quot;: &quot;111435.4&quot;,
+      &quot;close&quot;: &quot;111410.7&quot;,
+      &quot;high&quot;: &quot;111468&quot;,
+      &quot;low&quot;: &quot;111402.2&quot;,
+      &quot;volume&quot;: &quot;2.104702&quot;,
+      &quot;turnover&quot;: &quot;234565.1162144&quot;,
+      &quot;confirm&quot;: false,
+      &quot;timestamp&quot;: 1760613392515
+    }],
+    &quot;ts&quot;: 1760613392515
+  }
+}
+</code></pre>
+<p>Each element in <code>data.data</code> is one OHLCV candle:</p>
+<ul>
+<li><code>start</code> (integer, ms) — candle start time (Unix ms, UTC).</li>
+<li><code>end</code> (integer, ms) — candle end time (Unix ms, UTC). Whether <code>end</code> is inclusive/exclusive depends on backend; treat it as the boundary.</li>
+<li><code>interval</code> (string) — the requested timeframe.</li>
+<li><code>open</code> (string) — open price.</li>
+<li><code>close</code> (string) — close price (or current price if candle not closed).</li>
+<li><code>high</code> (string) — high price of the interval.</li>
+<li><code>low</code> (string) — low price of the interval.</li>
+<li><code>volume</code> (string) — traded volume in BASE.</li>
+<li><code>turnover</code> (string) — traded notional in QUOTE.</li>
+<li><code>confirm</code> (boolean):</li>
+<li><code>false</code> → candle is still forming (values may change),</li>
+<li><code>true</code> → candle is closed and final.</li>
+<li><code>timestamp</code> (integer, ms) — server timestamp for this candle snapshot.</li>
+<li>All numeric-looking values are sent as strings. Use high-precision decimal math.</li>
+</ul>
+<h4 id="554-subscribetickers">5.5.4 <code>subscribe.tickers</code></h4>
+<p><strong>Name:</strong> <code>TickersSubscribeMethod</code>
+<strong>Auth:</strong> Not required
+<strong>Purpose:</strong> Subscribe to ticker updates for a specific trading pair.</p>
+<p><strong>Parameters (<code>params</code>):</strong></p>
+<ul>
+<li><code>asset</code> (string, required) — trading pair in <code>BASE/QUOTE</code> format, e.g. <code>CITRO/USDT</code>.</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>Other formats (e.g. <code>SPOT-BTC</code> or just <code>BTC</code>) are not supported here.</li>
+<li>Incoming updates will return:</li>
+<li><code>method: "subscribe.coins"</code></li>
+<li><code>params</code>: the pair string (e.g. <code>"CITRO/USDT"</code>)
+    This is expected.</li>
+</ul>
+<p><strong>Request example:</strong></p>
+<pre><code>{
+  &quot;command&quot;: &quot;subscribe.tickers&quot;,
+  &quot;params&quot;: { &quot;asset&quot;: &quot;CITRO/USDT&quot; }
+}
+</code></pre>
+<p><strong>ACK:</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;c45df69d-a275-4467-92ac-900e9daad5d5&quot;,
+  &quot;response&quot;: &quot;Subscribed to tickers&quot;
+}
+</code></pre>
+<p><strong>Data stream example:</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;c45df69d-a275-4467-92ac-900e9daad5d5&quot;,
+  &quot;method&quot;: &quot;subscribe.coins&quot;,
+  &quot;params&quot;: &quot;CITRO/USDT&quot;,
+  &quot;data&quot;: {
+    &quot;symbol&quot;: &quot;CITRO/USDT&quot;,
+    &quot;last_price&quot;: &quot;999.00000&quot;,
+    &quot;volume_24h&quot;: &quot;0.02202&quot;,
+    &quot;change_24h&quot;: &quot;0.00&quot;,
+    &quot;high_24h&quot;: &quot;999.00000&quot;,
+    &quot;low_24h&quot;: &quot;999.00000&quot;,
+    &quot;price_direction&quot;: &quot;UP&quot;
+  }
+}
+</code></pre>
+<p><strong>Ticker fields:</strong></p>
+<ul>
+<li>All numeric values (<code>last_price</code>, <code>volume_24h</code>, <code>change_24h</code>, <code>high_24h</code>, <code>low_24h</code>) are strings.
+  Use decimals.</li>
+<li><code>symbol</code> — echoed <code>BASE/QUOTE</code> pair.</li>
+<li><code>price_direction</code> — direction indicator such as <code>"UP"</code>.</li>
+</ul>
+<p><strong>Behavior / notes:</strong></p>
+<ul>
+<li>Works only if <code>asset</code> is in <code>BASE/QUOTE</code> format. Other formats will not produce a working stream.</li>
+</ul>
+<h2 id="6-rate-limits">6. Rate Limits</h2>
+<p>The API enforces rate limits to protect service stability.</p>
+<h3 id="61-default-limits">6.1 Default limits</h3>
+<ul>
+<li>Baseline: \~5 requests per second per API key.</li>
+<li>Short bursts: allowed briefly up to \~5 extra requests above baseline.</li>
+<li>If you exceed limits, some requests may be slowed or rejected with HTTP <code>429 Too Many Requests</code>.</li>
+</ul>
+<h3 id="62-how-to-detect-throttling">6.2 How to detect throttling</h3>
+<ul>
+<li>You receive HTTP <code>429 Too Many Requests</code>.</li>
+<li>No additional headers like <code>Retry-After</code> are guaranteed.</li>
+</ul>
+<h3 id="63-client-recommendations">6.3 Client recommendations</h3>
+<ul>
+<li>Design your client to stay under 5 rps per API key in steady state.</li>
+<li>On <code>429</code>, back off briefly (e.g. 1–2 seconds).</li>
+<li>
+<p>Spread your bursts instead of firing all requests at once.</p>
+</li>
+<li>
+<p>Remember: parallel requests and batched JSON-RPC requests still count toward rate limits.</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Citronus
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.top", "content.code.copy", "content.code.select", "search.suggest", "search.highlight", "toc.integrate"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="playground.js"></script>
+      
+    
+  </body>
+</html>

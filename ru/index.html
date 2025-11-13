@@ -1,0 +1,3526 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Citronus Trading API (JSON-RPC + WebSocket)">
+      
+      
+      
+        <link rel="canonical" href="https://denislet.github.io/api_docs_test/ru/">
+      
+      
+      
+        <link rel="next" href="playground/">
+      
+      
+        
+          <link rel="alternate" href="/api_docs_test/" hreflang="en">
+        
+          <link rel="alternate" href="/api_docs_test/ru/" hreflang="ru">
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Обзор - Citronus API</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#citronus-api-json-rpc-websocket-v1" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="./" title="Citronus API" class="md-header__button md-logo" aria-label="Citronus API" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Citronus API
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Обзор
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Выберите язык">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/api_docs_test/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/api_docs_test/ru/" hreflang="ru" class="md-select__link">
+              Русский
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="./" title="Citronus API" class="md-nav__button md-logo" aria-label="Citronus API" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Citronus API
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Базовая HTTP‑точка входа
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Базовая HTTP‑точка входа">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-jsonrpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Что такое JSON‑RPC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Формат запроса
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Формат ответа
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Аутентификация и подпись
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Аутентификация и подпись">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Режимы доступа
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Получение API‑ключей
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Заголовки аутентификации (для приватных методов)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Формирование подписи
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-python-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Пример на Python (requests)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-javascript-node-18-fetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Пример на JavaScript (Node ≥18 / fetch)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7 Примеры cURL (без подписи, публичные)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8 Валидация времени
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-spot-jsonrpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. SPOT — методы JSON‑RPC
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. SPOT — методы JSON‑RPC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Публичные методы
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Публичные методы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-markets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1 markets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-tickers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.2 tickers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-orderbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.3 orderbook
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314-ohlcv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.4 ohlcv
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Приватные методы
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Приватные методы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-create_order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.1 create_order
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2.1 create_order">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#batch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Пакетные запросы (batch)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-cancel_order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.2 cancel_order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-cancel_all_orders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.3 cancel_all_orders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#324-active_orders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.4 active_orders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#325-orders_history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.5 orders_history
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#326-get_balance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.6 get_balance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Ошибки
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-websocket-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. WebSocket API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. WebSocket API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-ws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Базовая WS‑точка входа
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Аутентификация
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Ошибки
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Action‑методы
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ping (не требуется аутентификация)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Методы подписок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.5 Методы подписок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#551-subscribebalance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.1 subscribe.balance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#552-subscribeorderbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.2 subscribe.orderbook
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#553-subscribeklines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.3 subscribe.klines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#554-subscribetickers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.4 subscribe.tickers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-rate-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Лимиты (Rate Limits)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Лимиты (Rate Limits)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Базовые лимиты
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Как обнаружить троттлинг
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Рекомендации для клиента
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="playground/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Песочница
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="citronus-api-json-rpc-websocket-v1">Citronus API — JSON-RPC + WebSocket (v1)</h1>
+<p><strong>Версия:</strong> 1<br />
+<strong>Дата:</strong> 23 октября 2025<br />
+<strong>Хост:</strong> <code>https://api.citronus.com</code></p>
+<h2 id="1-http">1. Базовая HTTP‑точка входа</h2>
+<p><strong>Метод</strong><br />
+<code>POST</code></p>
+<p><strong>URL</strong><br />
+<code>https://api.citronus.com/public/v1/jsonrpc</code></p>
+<p><strong>Протокол</strong><br />
+JSON-RPC 2.0</p>
+<p><strong>Content-Type</strong><br />
+<code>application/json</code></p>
+<h3 id="11-jsonrpc">1.1 Что такое JSON‑RPC</h3>
+<p>JSON‑RPC — это лёгкий RPC‑протокол поверх HTTP, где и запрос, и ответ — JSON‑объекты.
+Запрос включает:</p>
+<ul>
+<li>имя метода,</li>
+<li>параметры,</li>
+<li>и необязательный <code>id</code>.</li>
+</ul>
+<p>Ответ содержит либо <code>result</code>, либо <code>error</code>.
+Справка: <a href="https://www.jsonrpc.org/specification">https://www.jsonrpc.org/specification</a></p>
+<h3 id="12">1.2 Формат запроса</h3>
+<blockquote>
+<p>Поле <code>id</code> <strong>необязательно</strong> и может не передаваться; если передаётся — используйте <strong>строковое</strong> значение (например, <code>"1"</code>).</p>
+</blockquote>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;&lt;method_name&gt;&quot;,
+  &quot;params&quot;: { &quot;&lt;param&gt;&quot;: &quot;&lt;value&gt;&quot; },
+  &quot;id&quot;: &quot;&lt;request_id&gt;&quot;
+}
+</code></pre>
+<h3 id="13">1.3 Формат ответа</h3>
+<p>Успешный ответ:</p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: { &quot;&lt;key&gt;&quot;: &quot;&lt;value&gt;&quot; },
+  &quot;id&quot;: &quot;&lt;request_id&gt;&quot;
+}
+</code></pre>
+<p>Ответ с ошибкой:</p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;error&quot;: {
+    &quot;code&quot;: &lt;error_code&gt;,
+    &quot;message&quot;: &quot;&lt;error_message&gt;&quot;
+  },
+  &quot;id&quot;: &quot;&lt;request_id&gt;&quot;
+}
+</code></pre>
+<h2 id="2">2. Аутентификация и подпись</h2>
+<h3 id="21">2.1 Режимы доступа</h3>
+<ul>
+<li><strong>Публичные методы</strong> — не требуют API‑ключей. Их можно вызывать вообще без auth‑заголовков.</li>
+<li><strong>Приватные методы</strong> — требуют аутентификации через API‑заголовки и подпись HMAC.</li>
+</ul>
+<blockquote>
+<p>Примечание: технически публичные методы принимают запрос даже при передаче "пустых" либо неполных заголовков. Для приватных методов соблюдение правил ниже — обязательно.</p>
+</blockquote>
+<h3 id="22-api">2.2 Получение API‑ключей</h3>
+<p>Пользователь получает ключи в интерфейсе:<br />
+<code>Settings → API Management → Create new key</code></p>
+<p>Вы получите:</p>
+<ul>
+<li><strong>API Key</strong> — публичный идентификатор.</li>
+<li><strong>API Secret</strong> — секрет (храните только на стороне клиента/сервера).</li>
+</ul>
+<h3 id="23">2.3 Заголовки аутентификации (для приватных методов)</h3>
+<p>Для <strong>приватных</strong> методов пользователь должен отправлять следующие заголовки:</p>
+<pre><code>X-CITRO-API-KEY: &lt;your API key&gt;
+X-CITRO-TIMESTAMP: &lt;unix_ms&gt;
+X-CITRO-RECV-WINDOW: &lt;ms&gt;
+X-CITRO-SIGNATURE: &lt;hex&gt;
+</code></pre>
+<p>Где:</p>
+<ul>
+<li><code>X-CITRO-TIMESTAMP</code> — ваш клиентский таймстамп в миллисекундах Unix (UTC).
+  Пример: <code>1759308923000</code></li>
+<li><code>X-CITRO-RECV-WINDOW</code> — допустимое "окно" приема запроса в миллисекундах (например, <code>5000</code> или <code>15000</code>). Если фактический дрейф часов + задержки &gt; этого значения, запрос будет отклонён.</li>
+<li><code>X-CITRO-API-KEY</code> — ваш API‑ключ.</li>
+<li><code>X-CITRO-SIGNATURE</code> — подпись HMAC (см. ниже).</li>
+</ul>
+<p>Публичные методы можно вызывать <strong>без</strong> каких‑либо auth‑заголовков.</p>
+<h3 id="24">2.4 Формирование подписи</h3>
+<p>Подпись вычисляется как <strong>HMAC-SHA256</strong> по конкатенации следующих полей:</p>
+<pre><code>message = &lt;timestamp&gt;&lt;api_key&gt;&lt;recv_window&gt;&lt;body_raw&gt;
+signature = HEX( HMAC_SHA256( key = api_secret, message = message ) )
+</code></pre>
+<p>Где:</p>
+<ul>
+<li><strong><code>&lt;timestamp&gt;</code></strong> — то же значение, что в заголовке <code>X-CITRO-TIMESTAMP</code> (в миллисекундах, <strong>строкой</strong>).</li>
+<li><strong><code>&lt;api_key&gt;</code></strong> — ваш ключ из заголовка <code>X-CITRO-API-KEY</code>.</li>
+<li><strong><code>&lt;recv_window&gt;</code></strong> — то же значение, что в заголовке <code>X-CITRO-RECV-WINDOW</code> (например, <code>"5000"</code>, <strong>строкой</strong>).</li>
+<li><strong><code>&lt;body_raw&gt;</code></strong> — <strong>сырой JSON-текст</strong> HTTP-тела запроса (ровно тот, что отправляется в сеть).</li>
+<li><strong><code>api_secret</code></strong> — ваш секрет.</li>
+</ul>
+<p>⚠ Важно: и клиент, и сервер должны использовать <strong>одни и те же байты</strong> <code>body_raw</code>. Любое изменение форматирования (пробелы, переносы строк, порядок ключей) изменяет подпись. Подписывайте <strong>ровно ту строку</strong>, которую отправляете.</p>
+<h3 id="25-python-requests">2.5 Пример на Python (requests)</h3>
+<pre><code>import json, requests, time, hmac, hashlib
+from typing import Dict
+
+URL = &quot;https://api.citronus.com/public/v1/jsonrpc&quot;
+API_KEY = &quot;&lt;YOUR_API_KEY&gt;&quot;
+API_SECRET = &quot;&lt;YOUR_API_SECRET&gt;&quot;
+
+def build_api_key_auth_headers(api_key: str, api_secret: str, req_body: str) -&gt; Dict[str, str]:
+    ts = str(int(time.time() * 1000))
+    recv_window = &quot;5000&quot;
+
+    # подпись по сырым байтам тела:
+    #   ts + api_key + recv_window + req_body
+    to_sign = ts + api_key + recv_window + req_body
+    signature = hmac.new(
+        api_secret.encode(&quot;utf-8&quot;),
+        to_sign.encode(&quot;utf-8&quot;),
+        hashlib.sha256,
+    ).hexdigest()
+
+    return {
+        &quot;X-CITRO-SIGNATURE&quot;: signature,
+        &quot;X-CITRO-API-KEY&quot;: api_key,
+        &quot;X-CITRO-TIMESTAMP&quot;: ts,
+        &quot;X-CITRO-RECV-WINDOW&quot;: recv_window,
+    }
+
+body = {
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;method&quot;: &quot;markets&quot;,
+    &quot;params&quot;: {&quot;category&quot;: &quot;spot&quot;},
+    &quot;id&quot;: &quot;1&quot;,
+}
+
+# ВАЖНО: separators=(&quot;,&quot;, &quot;:&quot;) чтобы избежать пробелов, меняющих подпись
+req_body = json.dumps(body, separators=(&quot;,&quot;, &quot;:&quot;), ensure_ascii=False)
+
+headers = {
+    &quot;Content-Type&quot;: &quot;application/json; charset=utf-8&quot;,
+    &quot;Accept&quot;: &quot;application/json&quot;,
+    **build_api_key_auth_headers(API_KEY, API_SECRET, req_body),
+}
+
+resp = requests.post(URL, headers=headers, data=req_body.encode(&quot;utf-8&quot;), timeout=15)
+print(resp.status_code, resp.text)
+</code></pre>
+<h3 id="26-javascript-node-18-fetch">2.6 Пример на JavaScript (Node ≥18 / fetch)</h3>
+<pre><code>import crypto from &quot;node:crypto&quot;;
+
+const URL = &quot;https://api.citronus.com/public/v1/jsonrpc&quot;;
+const API_KEY = &quot;&lt;YOUR_API_KEY&gt;&quot;;
+const API_SECRET = &quot;&lt;YOUR_API_SECRET&gt;&quot;;
+const RECV_WINDOW = &quot;5000&quot;;
+
+const body = {
+  jsonrpc: &quot;2.0&quot;,
+  method: &quot;markets&quot;,
+  params: { category: &quot;spot&quot; },
+  id: &quot;1&quot;,
+};
+
+const raw = JSON.stringify(body); // ровно это тело вы отправляете
+const ts = Date.now().toString();
+const toSign = ts + API_KEY + RECV_WINDOW + raw;
+
+const signature = crypto
+  .createHmac(&quot;sha256&quot;, API_SECRET)
+  .update(toSign, &quot;utf8&quot;)
+  .digest(&quot;hex&quot;);
+
+const resp = await fetch(URL, {
+  method: &quot;POST&quot;,
+  headers: {
+    &quot;Content-Type&quot;: &quot;application/json; charset=utf-8&quot;,
+    &quot;Accept&quot;: &quot;application/json&quot;,
+    &quot;X-CITRO-API-KEY&quot;: API_KEY,
+    &quot;X-CITRO-TIMESTAMP&quot;: ts,
+    &quot;X-CITRO-RECV-WINDOW&quot;: RECV_WINDOW,
+    &quot;X-CITRO-SIGNATURE&quot;: signature,
+  },
+  body: raw,
+});
+
+console.log(resp.status, await resp.text());
+</code></pre>
+<h3 id="27-curl">2.7 Примеры cURL (без подписи, публичные)</h3>
+<p>Публичные методы не требуют заголовков аутентификации.</p>
+<p><strong>Windows CMD:</strong></p>
+<pre><code>curl.exe -sS ^
+  -H &quot;Content-Type: application/json&quot; ^
+  --data-raw &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;method\&quot;:\&quot;markets\&quot;,\&quot;params\&quot;:{\&quot;category\&quot;:\&quot;futures\&quot;},\&quot;id\&quot;:\&quot;1\&quot;}&quot; ^
+  https://api.citronus.com/public/v1/jsonrpc
+</code></pre>
+<p><strong>macOS / Linux bash:</strong></p>
+<pre><code>curl -sS \
+  -H &quot;Content-Type: application/json&quot; \
+  --data-raw '{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;markets&quot;,&quot;params&quot;:{&quot;category&quot;:&quot;futures&quot;},&quot;id&quot;:&quot;1&quot;}' \
+  https://api.citronus.com/public/v1/jsonrpc
+</code></pre>
+<p>Для публичных методов можно:</p>
+<ul>
+<li>отправлять полный набор заголовков,</li>
+<li>отправлять только часть заголовков,</li>
+<li><strong>или не отправлять их вовсе</strong> — запрос всё равно пройдёт.</li>
+</ul>
+<h3 id="28">2.8 Валидация времени</h3>
+<p>Сервер проверяет:</p>
+<pre><code>| server_now_ms - X-CITRO-TIMESTAMP | &lt;= X-CITRO-RECV-WINDOW
+</code></pre>
+<p>Если рассинхрон часов + сетевые задержки превышают окно — запрос отклоняется.</p>
+<p>Типичные ошибки:</p>
+<ul>
+<li><code>invalid_signature</code> — проверьте порядок/значения конкатенации.</li>
+<li><code>recv_window_expired</code> / <code>invalid_timestamp</code> — синхронизируйте часы или увеличьте <code>X-CITRO-RECV-WINDOW</code>.</li>
+<li><code>internal_server_error</code> — неожиданная ошибка бэкенда.</li>
+</ul>
+<p>Полный справочник ошибок — дальше в документе.</p>
+<hr />
+<h2 id="3-spot-jsonrpc">3. SPOT — методы JSON‑RPC</h2>
+<h3 id="31">3.1 Публичные методы</h3>
+<h4 id="311-markets">3.1.1 <code>markets</code></h4>
+<p><strong>Назначение:</strong>
+Вернуть доступные торговые пары и их параметры.</p>
+<p><strong>Доступ:</strong>
+Публичный (без аутентификации)</p>
+<p><strong>Endpoint:</strong>
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a></p>
+<p><strong>Протокол:</strong>
+JSON‑RPC 2.0</p>
+<p><strong>Content-Type:</strong>
+<code>application/json</code></p>
+<p><strong>Тело запроса (все spot‑пары):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;markets&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot; },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Тело запроса (фильтр по символу, опционально):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;markets&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot;, &quot;symbol&quot;: &quot;BTC/USDT&quot; },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Параметры:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Обяз.</th>
+<th>Допустимые значения</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>да</td>
+<td><code>spot</code></td>
+<td>Тип рынка.</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>нет</td>
+<td>напр. <code>BTC/USDT</code></td>
+<td>Фильтр по конкретной паре. Если не указан — вернутся все пары категории.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Пример успешного ответа:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;result&quot;: {
+    &quot;symbol&quot;: &quot;BTC/USDT&quot;,
+    &quot;base_coin&quot;: {
+      &quot;name&quot;: &quot;BTC&quot;,
+      &quot;precision&quot;: 8
+    },
+    &quot;quote_coin&quot;: {
+      &quot;name&quot;: &quot;USDT&quot;,
+      &quot;precision&quot;: 6
+    },
+    &quot;icon&quot;: &quot;https://s3.eu-central-2.wasabisys.com/citronus/icons/coins/BTC.svg&quot;,
+    &quot;min_order_qty&quot;: &quot;0.000048&quot;,
+    &quot;max_order_qty&quot;: &quot;71.73956243&quot;,
+    &quot;min_order_amt&quot;: &quot;1&quot;,
+    &quot;max_order_amt&quot;: &quot;4000000&quot;,
+    &quot;quote_tick_size&quot;: &quot;0.01&quot;,
+    &quot;limit_parameter&quot;: &quot;0.05&quot;,
+    &quot;commission_limit_sell&quot;: &quot;0.0001&quot;,
+    &quot;commission_limit_buy&quot;: &quot;0.0001&quot;,
+    &quot;commission_market_sell&quot;: &quot;0&quot;,
+    &quot;commission_market_buy&quot;: &quot;0&quot;,
+    &quot;commission_stop_limit_sell&quot;: &quot;0.0001&quot;,
+    &quot;commission_stop_limit_buy&quot;: &quot;0.0001&quot;,
+    &quot;trade_base_precision&quot;: 6,
+    &quot;trade_quote_precision&quot;: 6
+  }
+}
+</code></pre>
+<p><strong>Справочник полей:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jsonrpc</td>
+<td>string</td>
+<td>Версия протокола JSON-RPC ("2.0").</td>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>Идентификатор запроса/ответа.</td>
+</tr>
+<tr>
+<td>result.symbol</td>
+<td>string</td>
+<td>Пара в формате BASE/QUOTE, напр. BTC/USDT.</td>
+</tr>
+<tr>
+<td>result.base_coin.name</td>
+<td>string</td>
+<td>Тикер базовой валюты (BASE).</td>
+</tr>
+<tr>
+<td>result.base_coin.precision</td>
+<td>number</td>
+<td>Точность (кол-во знаков) для BASE.</td>
+</tr>
+<tr>
+<td>result.quote_coin.name</td>
+<td>string</td>
+<td>Тикер котируемой валюты (QUOTE).</td>
+</tr>
+<tr>
+<td>result.quote_coin.precision</td>
+<td>number</td>
+<td>Точность (кол-во знаков) для QUOTE.</td>
+</tr>
+<tr>
+<td>result.icon</td>
+<td>string</td>
+<td>URL иконки инструмента.</td>
+</tr>
+<tr>
+<td>result.min_order_qty</td>
+<td>string</td>
+<td>Минимальное количество (объём) ордера в BASE.</td>
+</tr>
+<tr>
+<td>result.max_order_qty</td>
+<td>string</td>
+<td>Максимальное количество (объём) ордера в BASE.</td>
+</tr>
+<tr>
+<td>result.min_order_amt</td>
+<td>string</td>
+<td>Минимальная сумма ордера в QUOTE.</td>
+</tr>
+<tr>
+<td>result.max_order_amt</td>
+<td>string</td>
+<td>Максимальная сумма ордера в QUOTE.</td>
+</tr>
+<tr>
+<td>result.quote_tick_size</td>
+<td>string</td>
+<td>Минимальный шаг цены (tick size) в котируемой валюте (QUOTE).</td>
+</tr>
+<tr>
+<td>result.commission_limit_sell</td>
+<td>string</td>
+<td>Комиссия для лимитной продажи (доля).</td>
+</tr>
+<tr>
+<td>result.commission_limit_buy</td>
+<td>string</td>
+<td>Комиссия для лимитной покупки (доля).</td>
+</tr>
+<tr>
+<td>result.commission_market_sell</td>
+<td>string</td>
+<td>Комиссия для рыночной продажи (доля).</td>
+</tr>
+<tr>
+<td>result.commission_market_buy</td>
+<td>string</td>
+<td>Комиссия для рыночной покупки (доля).</td>
+</tr>
+<tr>
+<td>result.commission_stop_limit_sell</td>
+<td>string</td>
+<td>Комиссия для стоп-лимит продажи (доля).</td>
+</tr>
+<tr>
+<td>result.commission_stop_limit_buy</td>
+<td>string</td>
+<td>Комиссия для стоп-лимит покупки (доля).</td>
+</tr>
+<tr>
+<td>result.trade_base_precision</td>
+<td>number</td>
+<td>Кол-во знаков в объёме (BASE) при торгах.</td>
+</tr>
+<tr>
+<td>result.trade_quote_precision</td>
+<td>number</td>
+<td>Кол-во знаков в цене/сумме (QUOTE) при торгах.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="312-tickers">3.1.2 <code>tickers</code></h4>
+<p><strong>Назначение:</strong> текущий тикер по инструменту (цена, 24h метрики).  </p>
+<p><strong>Доступ:</strong> публичный (без аутентификации).  </p>
+<p><strong>Эндпоинт:</strong> POST <a href="https://api.citronus.pro/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a>  </p>
+<p><strong>Протокол:</strong> JSON-RPC 2.0  </p>
+<p><strong>Content-Type:</strong> <code>application/json</code>  </p>
+<p><strong>Запрос:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;tickers&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot;, &quot;symbol&quot;: &quot;BTC/USDT&quot; },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Параметры:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Обяз.</th>
+<th>Допустимые</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>да</td>
+<td><code>spot</code></td>
+<td>Тип рынка.</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>да</td>
+<td>напр. <code>BTC/USDT</code></td>
+<td>Торговая пара.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Пример успешного ответа:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;result&quot;: {
+    &quot;symbol&quot;: &quot;BTC/USDT&quot;,
+    &quot;last_price&quot;: &quot;120382.98&quot;,
+    &quot;volume_24h&quot;: &quot;292748.926560&quot;,
+    &quot;change_24h&quot;: &quot;1.31&quot;,
+    &quot;high_24h&quot;: &quot;121024.9&quot;,
+    &quot;low_24h&quot;: &quot;118499.9&quot;,
+    &quot;price_direction&quot;: &quot;DOWN&quot;
+  }
+}
+</code></pre>
+<p><strong>Справочник полей:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>Пара в формате <code>BASE/QUOTE</code>.</td>
+</tr>
+<tr>
+<td>last_price</td>
+<td>string</td>
+<td>Последняя цена сделки/квота (в QUOTE).</td>
+</tr>
+<tr>
+<td>volume_24h</td>
+<td>string</td>
+<td>Объём за 24 часа (в BASE).</td>
+</tr>
+<tr>
+<td>change_24h</td>
+<td>string</td>
+<td>Изменение цены за 24ч, проценты, напр. <code>"1.31"</code> = +1,31%.</td>
+</tr>
+<tr>
+<td>high_24h</td>
+<td>string</td>
+<td>24h‑максимум.</td>
+</tr>
+<tr>
+<td>low_24h</td>
+<td>string</td>
+<td>24h‑минимум.</td>
+</tr>
+<tr>
+<td>price_direction</td>
+<td>string</td>
+<td>Направление относительно предыдущего тика, напр. <code>"UP"</code>/<code>"DOWN"</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="313-orderbook">3.1.3 <code>orderbook</code></h4>
+<p><strong>Назначение:</strong>
+Вернуть текущий стакан по паре.</p>
+<p><strong>Доступ:</strong>
+Публичный</p>
+<p><strong>Endpoint:</strong>
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a></p>
+<p><strong>Протокол:</strong><br />
+JSON-RPC 2.0</p>
+<p><strong>Content-Type:</strong><br />
+<code>application/json</code></p>
+<p><strong>Запрос:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;orderbook&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot;, &quot;symbol&quot;: &quot;BTC/USDT&quot; },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Параметры:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Обяз.</th>
+<th>Допустимые</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>да</td>
+<td><code>spot</code></td>
+<td>Тип рынка.</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>да</td>
+<td>напр. <code>BTC/USDT</code></td>
+<td>Торговая пара.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Примечание: в ответе поле <code>s</code> возвращается в формате с дефисом (<code>BTC-USDT</code>), это нормальная особенность формата ответа.</p>
+</blockquote>
+<p><strong>Пример успешного ответа:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;result&quot;: {
+    &quot;s&quot;: &quot;BTC-USDT&quot;,
+    &quot;a&quot;: [
+      [&quot;120398.57&quot;, &quot;50.00000000&quot;],
+      [&quot;120382.01&quot;, &quot;2.00000000&quot;],
+      [&quot;120374.53&quot;, &quot;35.00000000&quot;],
+      [&quot;120362.47&quot;, &quot;20.00000000&quot;]
+    ],
+    &quot;b&quot;: [
+      [&quot;120197.15&quot;, &quot;5.00000000&quot;],
+      [&quot;120228.11&quot;, &quot;50.00000000&quot;],
+      [&quot;120231.98&quot;, &quot;2.00000000&quot;],
+      [&quot;120252.05&quot;, &quot;35.00000000&quot;]
+    ],
+    &quot;ts&quot;: 1759494727.705812
+  }
+}
+</code></pre>
+<p><strong>Справочник полей:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s</code></td>
+<td>string</td>
+<td>Символ инструмента в формате <code>BASE-QUOTE</code> (например, <code>BTC-USDT</code>).</td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td>array\&lt;[string, string]&gt;</td>
+<td><strong>Ask-уровни</strong> (продажи). Каждый элемент — массив из двух строк: [price, size]. Цена в QUOTE, количество в BASE. Уровни упорядочены от лучшей цены к дальней.</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>array\&lt;[string, string]&gt;</td>
+<td><strong>Bid-уровни</strong> (покупки). Формат аналогичен a: [price, size], упорядочены от лучшей цены к дальней.</td>
+</tr>
+<tr>
+<td><code>ts</code></td>
+<td>number</td>
+<td>Серверный таймстемп книги в секундах с долями (Unix time, UTC).</td>
+</tr>
+</tbody>
+</table>
+<p>Все <code>price</code>/<code>size</code> — строки.
+<code>price</code> использует <code>quote_tick_size</code> из <code>markets</code>.
+<code>size</code> соблюдает <code>base_coin.precision</code> из <code>markets</code>.</p>
+<h4 id="314-ohlcv">3.1.4 <code>ohlcv</code></h4>
+<p><strong>Назначение:</strong>
+Получить свечи (OHLCV) по инструменту и таймфрейму.</p>
+<p><strong>Доступ:</strong>
+Публичный</p>
+<p><strong>Endpoint:</strong><br />
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a>  </p>
+<p><strong>Content-Type:</strong><br />
+<code>application/json; charset=utf-8</code></p>
+<p>⚠ Сейчас метод работает только для символа <code>CITRO/USDT</code>.
+Другие символы вернут <code>invalid_symbol</code>.</p>
+<p><strong>Минимальный запрос:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;ohlcv&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot;, &quot;symbol&quot;: &quot;CITRO/USDT&quot;, &quot;interval&quot;: &quot;1D&quot;, &quot;data&quot;: {} },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>С окном по времени + limit:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;ohlcv&quot;,
+  &quot;params&quot;: {
+    &quot;category&quot;: &quot;spot&quot;,
+    &quot;symbol&quot;: &quot;CITRO/USDT&quot;,
+    &quot;interval&quot;: &quot;1m&quot;,
+    &quot;data&quot;: {
+      &quot;start&quot;: 1742688000000,
+      &quot;end&quot;:   1743379200000,
+      &quot;limit&quot;: 500
+    }
+  },
+  &quot;id&quot;: &quot;2&quot;
+}
+</code></pre>
+<p><strong>Параметры:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Где</th>
+<th>Тип</th>
+<th>Обязат.</th>
+<th>Допустимые значения</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td><code>params</code></td>
+<td>string</td>
+<td>да</td>
+<td><code>spot</code></td>
+<td>Тип рынка.</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td><code>params</code></td>
+<td>string</td>
+<td>да</td>
+<td>напр. <code>CITRO/USDT</code></td>
+<td>Торговая пара. Сейчас поддержан <strong>только</strong> <code>CITRO/USDT</code>.</td>
+</tr>
+<tr>
+<td>interval</td>
+<td><code>params</code></td>
+<td>string</td>
+<td>да</td>
+<td>см. таблицу ниже</td>
+<td>Таймфрейм.</td>
+</tr>
+<tr>
+<td>data</td>
+<td><code>params</code></td>
+<td>object</td>
+<td>да</td>
+<td>—</td>
+<td>Объект доп. параметров (может быть <code>{}</code>).</td>
+</tr>
+<tr>
+<td>data.start</td>
+<td><code>data</code></td>
+<td>integer | null</td>
+<td>нет</td>
+<td>миллисекунды от Unix epoch (UTC)</td>
+<td>Начало окна, <strong>включительно</strong>.</td>
+</tr>
+<tr>
+<td>data.end</td>
+<td><code>data</code></td>
+<td>integer | null</td>
+<td>нет</td>
+<td>миллисекунды от Unix epoch (UTC)</td>
+<td>Конец окна, <strong>включительно</strong>.</td>
+</tr>
+<tr>
+<td>data.limit</td>
+<td><code>data</code></td>
+<td>integer</td>
+<td>нет</td>
+<td>по умолчанию <code>200</code></td>
+<td>Кол-во свечей, верхняя граница может ограничиваться бэкендом.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Поддерживаемые интервалы (примеры):</strong></p>
+<ul>
+<li><code>"1m"</code> — 1 минута</li>
+<li><code>"5m"</code> — 5 минут</li>
+<li><code>"15m"</code> — 15 минут</li>
+<li><code>"1h"</code> — 1 час</li>
+<li><code>"4h"</code> — 4 часа</li>
+<li><code>"1D"</code> — 1 день</li>
+<li><code>"1W"</code> — 1 неделя</li>
+<li><code>"1M"</code> — 1 месяц</li>
+</ul>
+<p><strong>Формат успешного ответа:</strong></p>
+<p>Возвращается массив свечей.
+Каждая свеча — массив из 6 элементов:</p>
+<pre><code>[
+  [ timestamp_ms, open, high, low, close, volume ],
+  ...
+]
+</code></pre>
+<p>Где:</p>
+<ul>
+<li><code>timestamp_ms</code> — строка с Unix‑временем в мс (UTC).</li>
+<li><code>open</code>, <code>high</code>, <code>low</code>, <code>close</code>, <code>volume</code> — числовые значения в виде строк.</li>
+<li>Сортировка по возрастанию времени.</li>
+<li>Если данных нет — <code>[]</code>.</li>
+</ul>
+<p><strong>Пример:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;:&quot;2.0&quot;,
+  &quot;id&quot;:&quot;1&quot;,
+  &quot;result&quot;:[
+    [&quot;1742688000000&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],
+    [&quot;1742774400000&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;]
+  ]
+}
+</code></pre>
+<p><strong>Ошибки</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>message</th>
+<th>Когда возникает</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method_not_found</td>
+<td>Method not found</td>
+<td>Поле <code>method</code> отсутствует или не совпадает с поддерживаемым публичным методом (<code>markets</code>/<code>tickers</code>/<code>orderbook</code>/<code>ohlcv</code>).</td>
+</tr>
+<tr>
+<td>invalid_params</td>
+<td>Params for requested method are invalid</td>
+<td>Неверные/отсутствующие параметры (<code>category</code> ≠ <code>spot</code>, нет <code>symbol</code>, типы не совпадают, лишние поля и т.п.).</td>
+</tr>
+<tr>
+<td>invalid_pair</td>
+<td>Pair is invalid or <strong>doesn't exist</strong></td>
+<td><code>markets</code>: передан <code>symbol</code> корректного формата, но такой пары нет среди поддерживаемых.</td>
+</tr>
+<tr>
+<td>invalid_symbol</td>
+<td>Invalid symbol</td>
+<td><code>tickers</code>/<code>orderbook</code>/<code>ohlcv</code>: символ не поддерживается данным методом (напр., для <code>ohlcv</code> сейчас только <code>CITRO/USDT</code>).</td>
+</tr>
+<tr>
+<td>auth_required</td>
+<td>Authorization required for this method</td>
+<td><strong>Нюанс:</strong> если клиент передал какие-либо auth-заголовки (API-ключ и т.д.), публичный вызов трактуется как приватный, и при неполной/невалидной аутентификации вернётся эта ошибка. Без заголовков — не применяется.</td>
+</tr>
+<tr>
+<td>internal_server_error</td>
+<td>Internal server error</td>
+<td>Неожиданная ошибка на стороне сервера (сбой БД, таймаут и т.п.).</td>
+</tr>
+<tr>
+<td>recv_window_expired</td>
+<td>Request is expired</td>
+<td>Метка времени запроса вышла за окно при проверке <code>abs(server_now_ms − X-CITRO-TIMESTAMP) &gt; X-CITRO-RECV-WINDOW</code>. Обычно из-за рассинхрона часов клиента или большой сетевой задержки. Рекомендуем: синхронизировать время (NTP) и/или увеличить <code>X-CITRO-RECV-WINDOW</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="32">3.2 Приватные методы</h3>
+<h4 id="321-create_order">3.2.1 <code>create_order</code></h4>
+<p><strong>Назначение:</strong>
+Создать ордер (market / limit / stop_limit) на спот‑рынке.</p>
+<p><strong>Доступ:</strong>
+Приватный — требуются заголовки <code>X-CITRO-*</code> и валидная HMAC‑подпись.</p>
+<p><strong>Endpoint:</strong>
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a></p>
+<p><strong>Content-Type:</strong><br />
+<code>application/json; charset=utf-8</code></p>
+<p><strong>Запрос (верхний уровень):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;create_order&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot;, &quot;data&quot;: { /* см. ниже */ } },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Примеры <code>data</code> (порядок полей не обязателен):</strong></p>
+<p>Маркет‑ордер (ТОЛЬКО <code>amount</code> в BASE ИЛИ <code>total</code> в QUOTE; требуется указывать <strong>только один</strong> параметр):</p>
+<pre><code>{ &quot;symbol&quot;: &quot;BTC/USDT&quot;, &quot;action&quot;: &quot;buy&quot;,  &quot;type&quot;: &quot;market&quot;, &quot;amount&quot;: &quot;0.1&quot; }
+{ &quot;symbol&quot;: &quot;BTC/USDT&quot;, &quot;action&quot;: &quot;sell&quot;, &quot;type&quot;: &quot;market&quot;, &quot;total&quot;:  &quot;100&quot;  }
+</code></pre>
+<p>Лимитный ордер (цена обязательна; одно из <code>amount</code> или <code>total</code>, требуется указывать <strong>только один</strong> параметр):</p>
+<pre><code>{ &quot;symbol&quot;: &quot;BTC/USDT&quot;, &quot;action&quot;: &quot;buy&quot;,  &quot;type&quot;: &quot;limit&quot;, &quot;price&quot;: &quot;65000&quot;, &quot;amount&quot;: &quot;0.1&quot; }
+{ &quot;symbol&quot;: &quot;BTC/USDT&quot;, &quot;action&quot;: &quot;sell&quot;, &quot;type&quot;: &quot;limit&quot;, &quot;price&quot;: &quot;65000&quot;, &quot;total&quot;:  &quot;1000&quot; }
+</code></pre>
+<p>Стоп‑лимит (обязан включать <code>price</code> и <code>stop_price</code>; отправляете ТОЛЬКО <code>amount</code> ИЛИ <code>total</code>):</p>
+<pre><code>{
+  &quot;symbol&quot;: &quot;BTC/USDT&quot;,
+  &quot;action&quot;: &quot;sell&quot;,
+  &quot;type&quot;: &quot;stop_limit&quot;,
+  &quot;price&quot;: &quot;65000&quot;,
+  &quot;stop_price&quot;: &quot;64500&quot;,
+  &quot;amount&quot;: &quot;0.1&quot;
+}
+</code></pre>
+<p><strong>Параметры (<code>params</code> / <code>data</code>):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Обязат.</th>
+<th>Допустимые значения</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>да</td>
+<td><code>spot</code></td>
+<td>Тип рынка.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>да</td>
+<td>—</td>
+<td>Параметры ордера.</td>
+</tr>
+<tr>
+<td>data.symbol</td>
+<td>string</td>
+<td>да</td>
+<td>напр. <code>BTC/USDT</code></td>
+<td>Торговая пара.</td>
+</tr>
+<tr>
+<td>data.action</td>
+<td>string</td>
+<td>да</td>
+<td><code>buy</code> | <code>sell</code></td>
+<td>Направление.</td>
+</tr>
+<tr>
+<td>data.type</td>
+<td>string</td>
+<td>да</td>
+<td><code>market</code> | <code>limit</code> | <code>stop_limit</code></td>
+<td>Тип ордера.</td>
+</tr>
+<tr>
+<td>data.amount</td>
+<td>string | number</td>
+<td><strong>см. прим.</strong></td>
+<td>&gt;0</td>
+<td>Кол-во в BASE. Указывать <strong>либо</strong> <code>amount</code>, <strong>либо</strong> <code>total</code>.Взаимоисключимо с <code>total</code>.</td>
+</tr>
+<tr>
+<td>data.total</td>
+<td>string | number</td>
+<td><strong>см. прим.</strong></td>
+<td>&gt;0</td>
+<td>Сумма в QUOTE. Взаимоисключимо с <code>amount</code>.</td>
+</tr>
+<tr>
+<td>data.price</td>
+<td>string | number</td>
+<td>для <code>limit</code>, <code>stop_limit</code></td>
+<td>&gt;0</td>
+<td>Лимит-цена (в QUOTE).</td>
+</tr>
+<tr>
+<td>data.stop_price</td>
+<td>string | number</td>
+<td>для <code>stop_limit</code></td>
+<td>&gt;0</td>
+<td>Стоп-триггер. По умолчанию: для <code>buy</code> — &gt;=, для <code>sell</code> — \&lt;=.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Лимит открытых ордеров</strong>: одновременно открытых ордеров не более 100 на аккаунт.</p>
+<p><strong>Примечания по <code>amount</code> и <code>total</code>:</strong></p>
+<ul>
+<li>Если указан <code>amount</code>, <code>total</code> будет рассчитан как <code>amount × price</code> (для <code>market</code> — по фактической цене исполнения, для <code>limit</code> — по цене ордера).</li>
+<li>Если указан <code>total</code>, система вычислит <code>amount = floor(total / price, trade_base_precision)</code>; для <code>market</code> итоговый расход/получение в QUOTE может быть ≤ заявленного <code>total</code>.</li>
+<li>Указывать <strong>оба сразу нельзя</strong>; указание <strong>ни одного</strong> — ошибка.</li>
+</ul>
+<p><strong>Валидации и правила точности</strong></p>
+<ul>
+<li><code>symbol</code> должен существовать в <code>markets(category="spot")</code>.</li>
+<li>Для <code>price</code> соблюдайте шаг <code>quote_tick_size</code> и точность <code>trade_quote_precision</code>.</li>
+<li>Для <code>amount</code> — точность <code>trade_base_precision</code>.</li>
+<li>Минимумы/максимумы проверяются по <code>min_order_qty</code>/<code>max_order_qty</code> и/или <code>min_order_amt</code>/<code>max_order_amt</code> для соответствующего символа.</li>
+<li>Комиссии применяются согласно полям <code>commission_*</code> из <code>markets</code>.</li>
+</ul>
+<p><strong>Пример запроса (market SELL по amount):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;create_order&quot;,
+  &quot;params&quot;: {
+    &quot;category&quot;: &quot;spot&quot;,
+    &quot;data&quot;: {
+      &quot;symbol&quot;: &quot;BTC/USDT&quot;,
+      &quot;action&quot;: &quot;sell&quot;,
+      &quot;type&quot;: &quot;market&quot;,
+      &quot;amount&quot;: 0.1
+    }
+  },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Пример запроса (limit BUY по total):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;create_order&quot;,
+  &quot;params&quot;: {
+    &quot;category&quot;: &quot;spot&quot;,
+    &quot;data&quot;: {
+      &quot;symbol&quot;: &quot;BTC/USDT&quot;,
+      &quot;action&quot;: &quot;buy&quot;,
+      &quot;type&quot;: &quot;limit&quot;,
+      &quot;price&quot;: &quot;65000&quot;,
+      &quot;total&quot;: &quot;500&quot;
+    }
+  },
+  &quot;id&quot;: &quot;2&quot;
+}
+</code></pre>
+<p><strong>Пример запроса (stop-limit SELL по amount):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;create_order&quot;,
+  &quot;params&quot;: {
+    &quot;category&quot;: &quot;spot&quot;,
+    &quot;data&quot;: {
+      &quot;symbol&quot;: &quot;BTC/USDT&quot;,
+      &quot;action&quot;: &quot;sell&quot;,
+      &quot;type&quot;: &quot;stop_limit&quot;,
+      &quot;price&quot;: &quot;64000&quot;,
+      &quot;stop_price&quot;: &quot;64500&quot;,
+      &quot;amount&quot;: &quot;0.05&quot;
+    }
+  },
+  &quot;id&quot;: &quot;3&quot;
+}
+</code></pre>
+<p><strong>Пример успешного ответа (market SELL):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;result&quot;: {
+    &quot;id&quot;: &quot;pRK4klVe&quot;,
+    &quot;price&quot;: null,
+    &quot;current_amount&quot;: &quot;0&quot;,
+    &quot;original_amount&quot;: &quot;0.1&quot;,
+    &quot;action&quot;: &quot;sell&quot;,
+    &quot;pair&quot;: { &quot;base&quot;: &quot;BTC&quot;, &quot;quote&quot;: &quot;USDT&quot; },
+    &quot;status&quot;: &quot;fulfilled&quot;,
+    &quot;type&quot;: &quot;market&quot;,
+    &quot;create_date&quot;: &quot;2025-10-08T13:15:38.095823Z&quot;,
+    &quot;market_total_original&quot;: null,
+    &quot;market_total_current&quot;: null,
+    &quot;stop_price_gte&quot;: null,
+    &quot;stop_price_lte&quot;: null,
+    &quot;total&quot;: null,
+    &quot;fee&quot;: &quot;0&quot;
+  }
+}
+</code></pre>
+<h5 id="batch">Пакетные запросы (batch)</h5>
+<p>JSON‑RPC 2.0 позволяет отправлять массив запросов в одном HTTP‑вызове.</p>
+<pre><code>[
+  {
+    &quot;jsonrpc&quot;:&quot;2.0&quot;,
+    &quot;method&quot;:&quot;create_order&quot;,
+    &quot;params&quot;:{
+      &quot;category&quot;:&quot;spot&quot;,
+      &quot;data&quot;:{&quot;symbol&quot;:&quot;ETH/USDT&quot;,&quot;action&quot;:&quot;sell&quot;,&quot;type&quot;:&quot;market&quot;,&quot;amount&quot;:&quot;0.2&quot;}
+    },
+    &quot;id&quot;:&quot;1&quot;
+  },
+  {
+    &quot;jsonrpc&quot;:&quot;2.0&quot;,
+    &quot;method&quot;:&quot;create_order&quot;,
+    &quot;params&quot;:{
+      &quot;category&quot;:&quot;spot&quot;,
+      &quot;data&quot;:{&quot;symbol&quot;:&quot;BTC/USDT&quot;,&quot;action&quot;:&quot;sell&quot;,&quot;type&quot;:&quot;market&quot;,&quot;amount&quot;:&quot;0.1&quot;}
+    },
+    &quot;id&quot;:&quot;2&quot;
+  }
+]
+</code></pre>
+<p>Правила:</p>
+<ol>
+<li>Отправка <strong>массива</strong> JSON-RPC запросов в одном HTTP-запросе согласно спецификации JSON-RPC 2.0.</li>
+<li><strong>Количество ореров в одном батче ограничего 10 шт.</strong></li>
+<li><strong>Аутентификация:</strong> те же <code>X-CITRO-*</code> заголовки и подпись HMAC, что и для одиночного вызова (на <strong>весь</strong> батч).</li>
+<li><strong>Атомарность:</strong> <strong>не атомарно</strong> — каждый элемент обрабатывается независимо (возможны частичные успехи/ошибки).</li>
+<li><strong>Порядок ответов:</strong> может <strong>не совпадать</strong> с порядком запросов; сопоставляйте по полю <code>id</code>.</li>
+<li><strong>Рекомендация:</strong> используйте <strong>уникальные</strong> <code>id</code> внутри батча.</li>
+</ol>
+<p><strong>Пример ответа на батч:</strong></p>
+<pre><code>[
+  {
+    &quot;jsonrpc&quot;:&quot;2.0&quot;,
+    &quot;id&quot;:&quot;1&quot;,
+    &quot;result&quot;:{
+      &quot;id&quot;:&quot;pRK4klVe&quot;,
+      &quot;price&quot;:null,
+      &quot;current_amount&quot;:&quot;0&quot;,
+      &quot;original_amount&quot;:&quot;0.2&quot;,
+      &quot;action&quot;:&quot;sell&quot;,
+      &quot;pair&quot;:{&quot;base&quot;:&quot;BTC&quot;,&quot;quote&quot;:&quot;USDT&quot;},
+      &quot;status&quot;:&quot;fulfilled&quot;,
+      &quot;type&quot;:&quot;market&quot;,
+      &quot;create_date&quot;:&quot;2025-10-09T11:09:15.137918Z&quot;,
+      &quot;market_total_original&quot;:null,
+      &quot;market_total_current&quot;:null,
+      &quot;stop_price_gte&quot;:null,
+      &quot;stop_price_lte&quot;:null,
+      &quot;total&quot;:null,
+      &quot;fee&quot;:&quot;0&quot;
+    }
+  },
+  {
+    &quot;jsonrpc&quot;:&quot;2.0&quot;,
+    &quot;id&quot;:&quot;2&quot;,
+    &quot;result&quot;:{
+      &quot;id&quot;:&quot;pRK4klVe&quot;,
+      &quot;price&quot;:null,
+      &quot;current_amount&quot;:&quot;0&quot;,
+      &quot;original_amount&quot;:&quot;0.1&quot;,
+      &quot;action&quot;:&quot;sell&quot;,
+      &quot;pair&quot;:{&quot;base&quot;:&quot;BTC&quot;,&quot;quote&quot;:&quot;USDT&quot;},
+      &quot;status&quot;:&quot;fulfilled&quot;,
+      &quot;type&quot;:&quot;market&quot;,
+      &quot;create_date&quot;:&quot;2025-10-09T11:09:15.058303Z&quot;,
+      &quot;market_total_original&quot;:null,
+      &quot;market_total_current&quot;:null,
+      &quot;stop_price_gte&quot;:null,
+      &quot;stop_price_lte&quot;:null,
+      &quot;total&quot;:null,
+      &quot;fee&quot;:&quot;0&quot;
+    }
+  }
+]
+</code></pre>
+<p><strong>Поля результата ордера:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>Внутренний идентификатор ордера.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>string</td>
+<td><strong>null</strong>: нет цены у рыночных ордеров (<strong>type = market</strong>); для <strong>limit/stop_limit</strong> заполняется.</td>
+</tr>
+<tr>
+<td>current_amount</td>
+<td>string</td>
+<td>Текущее неисполненное кол-во (для fulfilled = "0").</td>
+</tr>
+<tr>
+<td>original_amount</td>
+<td>string</td>
+<td>Исходное количество в BASE.</td>
+</tr>
+<tr>
+<td>action</td>
+<td>string</td>
+<td>buy или sell.</td>
+</tr>
+<tr>
+<td>pair.base / quote</td>
+<td>string</td>
+<td>Тикеры BASE/QUOTE.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Статус: created | placed | in_order_book | partially_fulfilled | completed | fulfilled | canceled | marked_for_cancel</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Тип ордера: market | limit | stop_limit.</td>
+</tr>
+<tr>
+<td>create_date</td>
+<td>string</td>
+<td>Время создания (UTC, ISO-8601).</td>
+</tr>
+<tr>
+<td>market_total_original</td>
+<td>string</td>
+<td>Запрошенный <code>total</code> для market (если указывался)</td>
+</tr>
+<tr>
+<td>market_total_current</td>
+<td>string</td>
+<td>Фактически израсходовано/получено (market).</td>
+</tr>
+<tr>
+<td>stop_price_gte</td>
+<td>string</td>
+<td>Стоп-условие &gt;= (если применимо).</td>
+</tr>
+<tr>
+<td>stop_price_lte</td>
+<td>string</td>
+<td>Стоп-условие &lt;= (если применимо).</td>
+</tr>
+<tr>
+<td>total</td>
+<td>string</td>
+<td>Итоговая сумма в QUOTE</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>Комиссия, удержанная по ордеру (в QUOTE).</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Для <code>stop_limit</code>система автоматически выберет условие: для <code>buy</code> — <code>stop_price_gte</code>, для <code>sell</code> — <code>stop_price_lte</code>.</p>
+</blockquote>
+<h4 id="322-cancel_order">3.2.2 <code>cancel_order</code></h4>
+<p><strong>Назначение:</strong>
+Отменить один существующий ордер.</p>
+<p><strong>Доступ:</strong>
+Приватный — требуются заголовки <code>X-CITRO-*</code> и подпись.</p>
+<p><strong>Endpoint:</strong>
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a></p>
+<p><strong>Content-Type:</strong><br />
+<code>application/json; charset=utf-8</code></p>
+<p><strong>Запрос:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;cancel_order&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot;, &quot;order_id&quot;: &quot;pRK4klVe&quot; },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Параметры:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Обяз.</th>
+<th>Допустимые</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>да</td>
+<td><code>spot</code></td>
+<td>Тип рынка.</td>
+</tr>
+<tr>
+<td>order_id</td>
+<td>string</td>
+<td>да</td>
+<td>string</td>
+<td>ID ордера из <code>create_order</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Успешный ответ:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;result&quot;: null
+}
+</code></pre>
+<p><strong>Поведение / заметки:</strong></p>
+<ul>
+<li>
+<p>Отменяемые статусы: <code>created</code>, <code>placed</code>, <code>in_order_book</code>, <code>partially_fulfilled</code>.</p>
+</li>
+<li>
+<p>При отмене незаполненный остаток будет освобождён.</p>
+</li>
+<li>
+<p>Терминальные статусы нельзя отменить: <code>fulfilled</code> / <code>completed</code>, <code>canceled</code>.</p>
+</li>
+<li>
+<p><code>order_already_fulfilled</code> — уже полностью исполнен.</p>
+</li>
+<li><code>order_already_canceled</code> — уже отменён.</li>
+<li><code>marked_for_cancel</code>: повторный вызов идемпотентен → снова вернётся успех.</li>
+<li>Маркет‑ордера нельзя отменить. Попытка отмены вернёт <code>order_is_market</code>.</li>
+<li>Стоп‑лимиты можно отменять до триггера ИЛИ после, пока статус отменяемый и есть остаток.</li>
+<li>Проверка прав: если ордер не принадлежит вашему API‑ключу → <code>permission_denied</code> / аналогичная.</li>
+</ul>
+<h4 id="323-cancel_all_orders">3.2.3 <code>cancel_all_orders</code></h4>
+<p><strong>Назначение:</strong>
+Отменить все активные ордера пользователя на споте (идемпотентно).</p>
+<p><strong>Доступ:</strong>
+Приватный — требуются заголовки <code>X-CITRO-*</code> и подпись.</p>
+<p><strong>Endpoint:</strong>
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a>  </p>
+<p><strong>Content-Type:</strong><br />
+<code>application/json; charset=utf-8</code></p>
+<p><strong>Запрос (все пары):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;cancel_all_orders&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot; },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Запрос (только одна пара):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;cancel_all_orders&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot;, &quot;symbol&quot;: &quot;CITRO/USDT&quot; },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>Параметры:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Где</th>
+<th>Тип</th>
+<th>Обяз.</th>
+<th>Допустимые</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>params</td>
+<td>string</td>
+<td>да</td>
+<td><code>spot</code></td>
+<td>Тип рынка.</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>params</td>
+<td>string</td>
+<td>нет</td>
+<td>напр. <code>CITRO/USDT</code></td>
+<td>Если указано — отменяются ордера только по этой паре.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Успешный ответ:</strong>
+Возвращает массив ID ордеров, которые были отменены.
+Если активных не было → <code>[]</code>.</p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;result&quot;: [&quot;pRK4klVe&quot;, &quot;pRK5klVe&quot;, &quot;pRK6klVe&quot;]
+}
+</code></pre>
+<p><strong>Поведение / заметки:</strong></p>
+<ul>
+<li>
+<p>Отменяемые статусы: <code>created</code>, <code>placed</code>, <code>in_order_book</code>, <code>partially_fulfilled</code>.</p>
+</li>
+<li>
+<p>При отмене незаполненный остаток будет освобождён.</p>
+</li>
+<li>
+<p>Терминальные статусы нельзя отменить: <code>fulfilled</code> / <code>completed</code>, <code>canceled</code>.</p>
+</li>
+<li>
+<p><code>order_already_fulfilled</code> — уже полностью исполнен.</p>
+</li>
+<li><code>order_already_canceled</code> — уже отменён.</li>
+<li><code>marked_for_cancel</code>: повторный вызов идемпотентен → снова вернётся успех.</li>
+<li>Маркет‑ордера нельзя отменить. Попытка отмены вернёт <code>order_is_market</code>.</li>
+<li>Стоп‑лимиты можно отменять до триггера ИЛИ после, пока статус отменяемый и есть остаток.</li>
+<li>Проверка прав: если ордер не принадлежит вашему API‑ключу → <code>permission_denied</code> / аналогичная.</li>
+</ul>
+<h4 id="324-active_orders">3.2.4 <code>active_orders</code></h4>
+<p><strong>Назначение:</strong>
+Получить список <strong>активных</strong> ордеров пользователя (новые/размещённые/частично исполненные, включая ожидающие стоп-условия).</p>
+<p><strong>Доступ:</strong>
+Приватный — требуются заголовки <code>X-CITRO-*</code> и подпись.</p>
+<p><strong>Endpoint:</strong>
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a></p>
+<p><strong>Content-Type:</strong><br />
+<code>application/json; charset=utf-8</code></p>
+<p><strong>Минимальный запрос:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;active_orders&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot;, &quot;data&quot;: {} },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>С фильтрами и сортировкой:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;active_orders&quot;,
+  &quot;params&quot;: {
+    &quot;category&quot;: &quot;spot&quot;,
+    &quot;data&quot;: {
+      &quot;start_date&quot;: &quot;2025-10-01&quot;,
+      &quot;end_date&quot;: &quot;2025-10-08&quot;,
+      &quot;order_by&quot;: &quot;-price&quot;,
+      &quot;symbol&quot;: &quot;BTC/USDT&quot;
+    }
+  },
+  &quot;id&quot;: &quot;2&quot;
+}
+</code></pre>
+<p><strong>Параметры:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Обязат.</th>
+<th>Допустимые значения</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>да</td>
+<td><code>spot</code></td>
+<td>Тип рынка.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>да</td>
+<td>—</td>
+<td>Объект фильтров (может быть пустым <code>{}</code>).</td>
+</tr>
+<tr>
+<td>data.start_date</td>
+<td>string | null</td>
+<td>нет</td>
+<td><code>YYYY-MM-DD</code></td>
+<td>Нижняя граница по <code>create_date</code> (UTC), <strong>включительно</strong>.</td>
+</tr>
+<tr>
+<td>data.end_date</td>
+<td>string | null</td>
+<td>нет</td>
+<td><code>YYYY-MM-DD</code></td>
+<td>Верхняя граница по <code>create_date</code> (UTC), <strong>включительно</strong>.</td>
+</tr>
+<tr>
+<td>data.order_by</td>
+<td>string | null</td>
+<td>нет</td>
+<td>см. ниже</td>
+<td>Правило сортировки.</td>
+</tr>
+<tr>
+<td>data.symbol</td>
+<td>string | null</td>
+<td>нет</td>
+<td>напр. <code>BTC/USDT</code></td>
+<td>Фильтр по паре.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Сортировка (<code>order_by</code>):</strong></p>
+<ul>
+<li>Без префикса → по возрастанию.</li>
+<li>Префикс <code>-</code> → по убыванию.</li>
+<li>
+<p>Разрешённые поля сортировки:</p>
+</li>
+<li>
+<p><code>create_date</code></p>
+</li>
+<li><code>price</code></li>
+<li><code>pair</code></li>
+<li><code>stop_price</code></li>
+<li><code>original_amount</code></li>
+<li><code>current_amount</code></li>
+</ul>
+<p><code>pair</code> сортируется лексикографически как строка <code>BASE/QUOTE</code>.
+<code>stop_price</code> трактуется как <code>coalesce(stop_price_gte, stop_price_lte)</code>.
+<code>nulls last</code>: <code>null</code>‑значения всегда в конце (и для asc, и для desc).</p>
+<p><strong>Валидация:</strong></p>
+<ul>
+<li>Отсутствующие поля фильтров воспринимаются как «не указаны».</li>
+</ul>
+<p><strong>Успешный ответ:</strong>
+Возвращает массив (возможно пустой <code>[]</code>) активных ордеров.</p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;result&quot;: [
+    {
+      &quot;id&quot;: &quot;pRK4klVe&quot;,
+      &quot;price&quot;: &quot;99000.00&quot;,
+      &quot;current_amount&quot;: &quot;0.309276&quot;,
+      &quot;original_amount&quot;: &quot;0.309276&quot;,
+      &quot;action&quot;: &quot;buy&quot;,
+      &quot;pair&quot;: { &quot;base&quot;: &quot;BTC&quot;, &quot;quote&quot;: &quot;USDT&quot; },
+      &quot;status&quot;: &quot;created&quot;,
+      &quot;type&quot;: &quot;stop_limit&quot;,
+      &quot;create_date&quot;: &quot;2025-10-08T15:16:23.824699Z&quot;,
+      &quot;market_total_original&quot;: null,
+      &quot;market_total_current&quot;: null,
+      &quot;stop_price_gte&quot;: null,
+      &quot;stop_price_lte&quot;: &quot;100000.00&quot;,
+      &quot;total&quot;: &quot;30618.324000&quot;,
+      &quot;fee&quot;: &quot;0&quot;,
+      &quot;commission_buy&quot;: &quot;0.0001&quot;,
+      &quot;commission_sell&quot;: &quot;0.0001&quot;,
+      &quot;weighted_average_price&quot;: null,
+      &quot;deals_amount&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;pRK5klVe&quot;,
+      &quot;price&quot;: &quot;100000.00&quot;,
+      &quot;current_amount&quot;: &quot;1.000000&quot;,
+      &quot;original_amount&quot;: &quot;1.000000&quot;,
+      &quot;action&quot;: &quot;buy&quot;,
+      &quot;pair&quot;: { &quot;base&quot;: &quot;BTC&quot;, &quot;quote&quot;: &quot;USDT&quot; },
+      &quot;status&quot;: &quot;placed&quot;,
+      &quot;type&quot;: &quot;limit&quot;,
+      &quot;create_date&quot;: &quot;2025-10-08T15:15:47.362205Z&quot;,
+      &quot;market_total_original&quot;: null,
+      &quot;market_total_current&quot;: &quot;0.000000&quot;,
+      &quot;stop_price_gte&quot;: null,
+      &quot;stop_price_lte&quot;: null,
+      &quot;total&quot;: &quot;100000.000000&quot;,
+      &quot;fee&quot;: &quot;0&quot;,
+      &quot;commission_buy&quot;: &quot;0.0001&quot;,
+      &quot;commission_sell&quot;: &quot;0.0001&quot;,
+      &quot;weighted_average_price&quot;: null,
+      &quot;deals_amount&quot;: null
+    }
+  ]
+}
+</code></pre>
+<p><strong>Поля ордера:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>Внутренний ID ордера.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>string | null</td>
+<td>Лимит-цена; для market — null.</td>
+</tr>
+<tr>
+<td>current_amount</td>
+<td>string</td>
+<td>Неисполненный остаток (BASE).</td>
+</tr>
+<tr>
+<td>original_amount</td>
+<td>string</td>
+<td>Исходное количество (BASE).</td>
+</tr>
+<tr>
+<td>action</td>
+<td>string</td>
+<td>buy | sell.</td>
+</tr>
+<tr>
+<td>pair.base / pair.quote</td>
+<td>string</td>
+<td>Тикеры BASE/QUOTE.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>created | placed | partially_filled и т.п.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>market | limit | stop_limit.</td>
+</tr>
+<tr>
+<td>create_date</td>
+<td>string</td>
+<td>Время создания (UTC, ISO-8601).</td>
+</tr>
+<tr>
+<td>market_total_original</td>
+<td>string | null</td>
+<td>Запрошенный total для market (если задавался).</td>
+</tr>
+<tr>
+<td>market_total_current</td>
+<td>string | null</td>
+<td>Фактически израсходовано/получено (market).</td>
+</tr>
+<tr>
+<td>stop_price_gte / stop_price_lte</td>
+<td>string | null</td>
+<td>Стоп-условия для stop_limit.</td>
+</tr>
+<tr>
+<td>total</td>
+<td>string | null</td>
+<td>Сумма в QUOTE.</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>Комиссия (QUOTE).</td>
+</tr>
+<tr>
+<td>commission_buy / sell</td>
+<td>string</td>
+<td>Ставки комиссий (доля) для инструмента.</td>
+</tr>
+<tr>
+<td>weighted_average_price</td>
+<td>string | null</td>
+<td>Средневзвешенная цена исполненной части (QUOTE).</td>
+</tr>
+<tr>
+<td>deals_amount</td>
+<td>string | null</td>
+<td>Суммарно исполнено (BASE), если есть.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="325-orders_history">3.2.5 <code>orders_history</code></h4>
+<p><strong>Назначение:</strong>
+Пагинированная история ордеров.</p>
+<p><strong>Доступ:</strong>
+Приватный — требуются <code>X-CITRO-*</code> и подпись.</p>
+<p><strong>Endpoint:</strong>
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a>  </p>
+<p><strong>Content-Type:</strong><br />
+<code>application/json; charset=utf-8</code></p>
+<p><strong>Минимальный запрос (рекомендуем ВСЕГДА передавать <code>"history": "true"</code>):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;orders_history&quot;,
+  &quot;params&quot;: {
+    &quot;category&quot;: &quot;spot&quot;,
+    &quot;page&quot;: 1,
+    &quot;page_size&quot;: 50,
+    &quot;data&quot;: { &quot;history&quot;: &quot;true&quot; }
+  },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>С фильтрами и сортировкой:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;orders_history&quot;,
+  &quot;params&quot;: {
+    &quot;category&quot;: &quot;spot&quot;,
+    &quot;page&quot;: 1,
+    &quot;page_size&quot;: 10,
+    &quot;data&quot;: {
+      &quot;start_date&quot;: &quot;2025-10-01&quot;,
+      &quot;end_date&quot;: &quot;2025-10-08&quot;,
+      &quot;order_by&quot;: &quot;-create_date&quot;,
+      &quot;symbol&quot;: &quot;BTC/USDT&quot;,
+      &quot;history&quot;: &quot;true&quot;
+    }
+  },
+  &quot;id&quot;: &quot;2&quot;
+}
+</code></pre>
+<p><strong>Параметры:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Обязат.</th>
+<th>Допустимые значения</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>да</td>
+<td><code>spot</code></td>
+<td>Тип рынка.</td>
+</tr>
+<tr>
+<td>page</td>
+<td>integer | string</td>
+<td>да</td>
+<td><code>1..1000</code></td>
+<td>Номер страницы (по умолчанию <code>1</code>).</td>
+</tr>
+<tr>
+<td>page_size</td>
+<td>integer | string</td>
+<td>да</td>
+<td><code>1..100</code></td>
+<td>Размер страницы (по умолчанию <code>50</code>).</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>нет</td>
+<td>—</td>
+<td>Объект фильтров (может быть <code>{}</code>).</td>
+</tr>
+<tr>
+<td>data.start_date</td>
+<td>string | null</td>
+<td>нет</td>
+<td><code>YYYY-MM-DD</code></td>
+<td>Нижняя граница по <code>create_date</code> (UTC), <strong>включительно</strong>.</td>
+</tr>
+<tr>
+<td>data.end_date</td>
+<td>string | null</td>
+<td>нет</td>
+<td><code>YYYY-MM-DD</code></td>
+<td>Верхняя граница по <code>create_date</code> (UTC), <strong>включительно</strong>.</td>
+</tr>
+<tr>
+<td>data.order_by</td>
+<td>string | null</td>
+<td>нет</td>
+<td>см. ниже</td>
+<td>Правило сортировки.</td>
+</tr>
+<tr>
+<td>data.symbol</td>
+<td>string | null</td>
+<td>нет</td>
+<td>напр. <code>BTC/USDT</code></td>
+<td>Фильтр по паре.</td>
+</tr>
+<tr>
+<td>data.history</td>
+<td>string | boolean</td>
+<td><strong>желат.</strong></td>
+<td><code>true</code></td>
+<td><strong>Рекомендуется всегда</strong> <strong><code>true</code></strong>, иначе результат может не соответствовать истории ордеров.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Сортировка (<code>order_by</code>):</strong></p>
+<ul>
+<li>Без префикса → по возрастанию.</li>
+<li>Префикс <code>-</code> → по убыванию.</li>
+<li>Разрешённые поля:
+  <code>create_date</code>, <code>price</code>, <code>pair</code>, <code>stop_price</code>, <code>total</code>, <code>original_amount</code>, <code>current_amount</code>.</li>
+</ul>
+<p><code>pair</code> сортируется как строка <code>BASE/QUOTE</code>.
+<code>stop_price</code> трактуется как <code>coalesce(stop_price_gte, stop_price_lte)</code>.
+По возрастанию: NULL‑значения первыми. По убыванию: NULL‑значения последними.</p>
+<p><strong>Валидация:</strong></p>
+<ul>
+<li><code>page &gt; 1000</code> → ошибка.</li>
+<li><code>page_size &lt; 1</code> или <code>page_size &gt; 100</code> → ошибка.</li>
+<li>Отсутствующие поля фильтров воспринимаются как «не указаны».</li>
+</ul>
+<p><strong>Успешный ответ:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;result&quot;: {
+    &quot;items&quot;: [ /* массив ордеров, см. ниже */ ],
+    &quot;total&quot;: 94,
+    &quot;page&quot;: 1,
+    &quot;size&quot;: 10,
+    &quot;pages&quot;: 10
+  }
+}
+</code></pre>
+<p><strong>Пример:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;:&quot;2.0&quot;,
+  &quot;id&quot;:&quot;1&quot;,
+  &quot;result&quot;:{
+    &quot;items&quot;:[
+      {
+        &quot;id&quot;:&quot;pRK4klVe&quot;,
+        &quot;price&quot;:&quot;90000.00&quot;,
+        &quot;current_amount&quot;:&quot;0.013577&quot;,
+        &quot;original_amount&quot;:&quot;0.013577&quot;,
+        &quot;action&quot;:&quot;sell&quot;,
+        &quot;pair&quot;:{&quot;base&quot;:&quot;BTC&quot;,&quot;quote&quot;:&quot;USDT&quot;},
+        &quot;status&quot;:&quot;canceled&quot;,
+        &quot;type&quot;:&quot;stop_limit&quot;,
+        &quot;create_date&quot;:&quot;2025-10-08T13:37:11.792819Z&quot;,
+        &quot;market_total_original&quot;:null,
+        &quot;market_total_current&quot;:null,
+        &quot;stop_price_gte&quot;:null,
+        &quot;stop_price_lte&quot;:&quot;100000.00&quot;,
+        &quot;total&quot;:&quot;0.000000&quot;,
+        &quot;fee&quot;:&quot;0&quot;,
+        &quot;commission_buy&quot;:&quot;0.0001&quot;,
+        &quot;commission_sell&quot;:&quot;0.0001&quot;,
+        &quot;weighted_average_price&quot;:null,
+        &quot;deals_amount&quot;:null
+      }
+      /* ...ещё элементы... */
+    ],
+    &quot;total&quot;:94,
+    &quot;page&quot;:1,
+    &quot;size&quot;:10,
+    &quot;pages&quot;:10
+  }
+}
+</code></pre>
+<p><strong>Поля ордера в <code>items[]</code>:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>Внутренний ID ордера.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>string | null</td>
+<td>Лимит-цена; для market — null.</td>
+</tr>
+<tr>
+<td>current_amount</td>
+<td>string | null</td>
+<td>Неисполненный остаток (BASE); для полностью исполненных может быть "0" или null (как в примерах).</td>
+</tr>
+<tr>
+<td>original_amount</td>
+<td>string</td>
+<td>Исходное количество (BASE).</td>
+</tr>
+<tr>
+<td>action</td>
+<td>string</td>
+<td>buy | sell.</td>
+</tr>
+<tr>
+<td>pair.base / pair.quote</td>
+<td>string</td>
+<td>Тикеры BASE/QUOTE.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Например: completed, canceled, могут встречаться и другие финальные статусы.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>market | limit | stop_limit.</td>
+</tr>
+<tr>
+<td>create_date</td>
+<td>string</td>
+<td>Время создания (UTC, ISO-8601).</td>
+</tr>
+<tr>
+<td>market_total_original</td>
+<td>string | null</td>
+<td>Запрошенный total (для market, если задавался).</td>
+</tr>
+<tr>
+<td>market_total_current</td>
+<td>string | null</td>
+<td>Фактически израсходовано/получено (market).</td>
+</tr>
+<tr>
+<td>stop_price_gte / lte</td>
+<td>string | null</td>
+<td>Стоп-условия для stop_limit.</td>
+</tr>
+<tr>
+<td>total</td>
+<td>string | null</td>
+<td>Сумма в QUOTE (если применимо).</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>string</td>
+<td>Итоговая комиссия (QUOTE).</td>
+</tr>
+<tr>
+<td>commission_buy / sell</td>
+<td>string</td>
+<td>Ставки комиссий (доля), действовавшие для инструмента.</td>
+</tr>
+<tr>
+<td>weighted_average_price</td>
+<td>string | null</td>
+<td>Средневзвешенная цена исполнения (QUOTE) по сделкам ордера.</td>
+</tr>
+<tr>
+<td>deals_amount</td>
+<td>string | null</td>
+<td>Суммарно исполнено (BASE).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="326-get_balance">3.2.6 <code>get_balance</code></h4>
+<p><strong>Назначение:</strong>
+Листинг балансов по спотовым ассетам пользователя (без эквивалента/оценки в фиате).</p>
+<p><strong>Доступ:</strong>
+Приватный — требуются <code>X-CITRO-*</code> и подпись.</p>
+<p><strong>Endpoint:</strong>
+POST <a href="https://api.citronus.com/public/v1/jsonrpc">https://api.citronus.com/public/v1/jsonrpc</a>  </p>
+<p><strong>Content-Type:</strong><br />
+<code>application/json; charset=utf-8</code></p>
+<p><strong>Минимальный запрос:</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_balance&quot;,
+  &quot;params&quot;: { &quot;category&quot;: &quot;spot&quot; },
+  &quot;id&quot;: &quot;1&quot;
+}
+</code></pre>
+<p><strong>С фильтрами (монета, нули):</strong></p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_balance&quot;,
+  &quot;params&quot;: {
+    &quot;category&quot;: &quot;spot&quot;,
+    &quot;data&quot;: {
+      &quot;coin_name&quot;: &quot;USDT&quot;,
+      &quot;include_null&quot;: &quot;false&quot;
+    }
+  },
+  &quot;id&quot;: &quot;2&quot;
+}
+</code></pre>
+<p><strong>Параметры:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Обязат.</th>
+<th>Допустимые значения</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>да</td>
+<td><code>spot</code></td>
+<td>Тип рынка. Возвращаются только спотовые балансы.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>нет</td>
+<td>—</td>
+<td>Объект фильтров (может отсутствовать).</td>
+</tr>
+<tr>
+<td>data.coin_name</td>
+<td>string | null</td>
+<td>нет</td>
+<td>напр. <code>USDT</code></td>
+<td>Фильтр по тикеру монеты. Кейсы чувствительны так же, как в REST.</td>
+</tr>
+<tr>
+<td>data.include_null</td>
+<td>string | boolean | null</td>
+<td>нет</td>
+<td><code>true</code>/<code>false</code></td>
+<td>Управляет показом нулевых балансов. По умолчанию <code>false</code> (нули скрыты).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Поведение <code>include_null</code>:</strong></p>
+<ul>
+<li><code>false</code> (по умолчанию): нулевые балансы скрываются.</li>
+<li>Если <strong>все</strong> балансы нулевые и <code>include_null=false</code>, результат может быть <code>[]</code>.</li>
+</ul>
+<p><strong>Успешный ответ:</strong>
+Возвращает массив объектов балансов только для <code>asset_type: "SPOT"</code>.</p>
+<pre><code>{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;result&quot;: [
+    {
+      &quot;coin_name&quot;: &quot;BTC&quot;,
+      &quot;asset_type&quot;: &quot;SPOT&quot;,
+      &quot;in_orders&quot;: &quot;0.0000&quot;,
+      &quot;available&quot;: &quot;3.34588007&quot;,
+      &quot;total&quot;: &quot;3.34588007&quot;
+    },
+    {
+      &quot;coin_name&quot;: &quot;CITRO&quot;,
+      &quot;asset_type&quot;: &quot;SPOT&quot;,
+      &quot;in_orders&quot;: &quot;1583.0000&quot;,
+      &quot;available&quot;: &quot;99243.6960&quot;,
+      &quot;total&quot;: &quot;100826.6960&quot;
+    },
+    {
+      &quot;coin_name&quot;: &quot;USDT&quot;,
+      &quot;asset_type&quot;: &quot;SPOT&quot;,
+      &quot;in_orders&quot;: &quot;132204.424000&quot;,
+      &quot;available&quot;: &quot;581749.563085&quot;,
+      &quot;total&quot;: &quot;713953.987085&quot;
+    }
+  ]
+}
+</code></pre>
+<p><strong>Поля баланса:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coin_name</td>
+<td>string</td>
+<td>Тикер монеты (напр. <code>USDT</code>).</td>
+</tr>
+<tr>
+<td>asset_type</td>
+<td>string</td>
+<td>Всегда <code>"SPOT"</code> для этого метода.</td>
+</tr>
+<tr>
+<td>in_orders</td>
+<td>string</td>
+<td>Сумма, заблокированная в открытых ордерах.</td>
+</tr>
+<tr>
+<td>available</td>
+<td>string</td>
+<td>Свободно — доступно для торговли/вывода.</td>
+</tr>
+<tr>
+<td>total</td>
+<td>string</td>
+<td><code>available + in_orders</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4">4. Ошибки</h2>
+<p>Ниже перечислены стандартные коды/сообщения ошибок.</p>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>message</th>
+<th>Когда возникает</th>
+<th>Методы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method_not_found</td>
+<td>Method not found</td>
+<td><code>method</code> отсутствует/опечатан.</td>
+<td>все</td>
+</tr>
+<tr>
+<td>auth_required</td>
+<td>Authorization required for this method</td>
+<td>Нет/неполные заголовки <code>X-CITRO-*</code>.</td>
+<td>все</td>
+</tr>
+<tr>
+<td>invalid_signature</td>
+<td>Invalid signature</td>
+<td>Подпись не совпала с <code>timestamp+api_key+recv_window+raw_body</code>.</td>
+<td>все</td>
+</tr>
+<tr>
+<td>invalid_params</td>
+<td>Params for requested method are invalid</td>
+<td>Нет <code>category="spot"</code>, некорректные/лишние поля <code>params</code>/<code>data</code>.</td>
+<td>все</td>
+</tr>
+<tr>
+<td>internal_server_error</td>
+<td>Internal server error</td>
+<td>Неожиданная ошибка сервера.</td>
+<td>все</td>
+</tr>
+<tr>
+<td>invalid_pair</td>
+<td>Invalid pair</td>
+<td>Пара (<code>symbol</code>) не поддерживается.</td>
+<td>create_order, cancel_all_orders, active_orders, orders_history</td>
+</tr>
+<tr>
+<td>validation_error</td>
+<td>Validation error</td>
+<td>Ошибки валидации.</td>
+<td>active_orders, orders_history, get_balance</td>
+</tr>
+<tr>
+<td>page_out_of_range</td>
+<td>page must be between 1 and 1000.</td>
+<td><code>page</code> вне диапазона.</td>
+<td>orders_history</td>
+</tr>
+<tr>
+<td>page_size_out_of_range</td>
+<td>page_size must be between 1 and 100.</td>
+<td><code>page_size</code> вне диапазона.</td>
+<td>orders_history</td>
+</tr>
+<tr>
+<td>invalid_order_value</td>
+<td>Invalid order value</td>
+<td>Нарушены шаг/точности/границы значений.</td>
+<td>create_order</td>
+</tr>
+<tr>
+<td>not_found_coins_for_hold</td>
+<td>Не удалось определить число средств для удержания</td>
+<td>Ошибка расчёта холда.</td>
+<td>create_order</td>
+</tr>
+<tr>
+<td>not_enough_amount</td>
+<td>Недостаточно средств</td>
+<td>Недостаточно баланса.</td>
+<td>create_order</td>
+</tr>
+<tr>
+<td>no_market_offers</td>
+<td>Нет подходящих предложений на рынке для выполнения ордера</td>
+<td>Для <code>type=market</code> нет ликвидности.</td>
+<td>create_order</td>
+</tr>
+<tr>
+<td>order_not_found</td>
+<td>Order not found</td>
+<td><code>order_id</code> не существует.</td>
+<td>cancel_order</td>
+</tr>
+<tr>
+<td>order_already_fulfilled</td>
+<td>Order already fulfilled</td>
+<td>Пытаемся отменить полностью исполненный ордер.</td>
+<td>cancel_order</td>
+</tr>
+<tr>
+<td>order_already_canceled</td>
+<td>Order already canceled</td>
+<td>Повторная отмена уже отменённого ордера.</td>
+<td>cancel_order</td>
+</tr>
+<tr>
+<td>order_is_market</td>
+<td>Market orders cannot be canceled</td>
+<td>Нельзя отменить рыночный ордер.</td>
+<td>cancel_order</td>
+</tr>
+<tr>
+<td>permission_denied</td>
+<td>Order does not belong to this API key</td>
+<td>Ордер не принадлежит этому API-ключу (пример из 403).</td>
+<td>cancel_order</td>
+</tr>
+<tr>
+<td>rate_limited</td>
+<td>Too many requests</td>
+<td>Превышен лимит запросов.</td>
+<td>все</td>
+</tr>
+<tr>
+<td>recv_window_expired</td>
+<td>Request is expired</td>
+<td>Метка времени запроса вышла за окно при проверке <code>abs(server_now_ms − X-CITRO-TIMESTAMP) &gt; X-CITRO-RECV-WINDOW</code>. Обычно из-за рассинхрона часов клиента или большой сетевой задержки. Рекомендуем: синхронизировать время (NTP) и/или увеличить <code>X-CITRO-RECV-WINDOW</code></td>
+<td>все</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-websocket-api">5. WebSocket API</h2>
+<h3 id="51-ws">5.1 Базовая WS‑точка входа</h3>
+<pre><code>wss://api.citronus.com/public/ws/v1/
+</code></pre>
+<h3 id="52">5.2 Аутентификация</h3>
+<ul>
+<li>По умолчанию часть методов подписки — публичные (без аутентификации).</li>
+<li>
+<p>Если метод помечен как «требует аутентификацию», клиент обязан передать:</p>
+</li>
+<li>
+<p><code>api_key</code></p>
+</li>
+<li><code>timestamp</code></li>
+<li><code>recv_window</code></li>
+<li><code>sign</code></li>
+</ul>
+<p>Сервер валидирует эти поля перед выполнением метода.</p>
+<h3 id="53">5.3 Ошибки</h3>
+<p>Сервер может отвечать стандартными сообщениями об ошибках, например:</p>
+<ul>
+<li><code>"Authentication failed"</code></li>
+<li><code>"Internal server error"</code></li>
+<li><code>"Invalid parameters"</code></li>
+<li><code>"[Service] client not available"</code></li>
+</ul>
+<p>Коды ошибок:</p>
+<ul>
+<li><code>4000</code> — общие ошибки методов (<code>MethodError</code>)</li>
+<li><code>4001</code> — неверные параметры команды (<code>InvalidCommandParametersError</code>)</li>
+<li><code>5000</code> — ошибки подписок (<code>SubscriptionError</code>)</li>
+</ul>
+<h3 id="54-action">5.4 Action‑методы</h3>
+<h3 id="ping"><code>ping</code> <em>(не требуется аутентификация)</em></h3>
+<ul>
+<li>Название: <code>PingMethod</code></li>
+<li>Назначение: проверка соединения.</li>
+<li>Ответ <strong>должен</strong> иметь вид:</li>
+</ul>
+<pre><code>{ &quot;response&quot;: &quot;ping&quot; }
+</code></pre>
+<h3 id="55">5.5 Методы подписок</h3>
+<h4 id="551-subscribebalance">5.5.1 <code>subscribe.balance</code></h4>
+<p><strong>Имя:</strong> <code>BalanceSubscribeMethod</code><br />
+<strong>Auth:</strong> Требуется<br />
+<strong>Назначение:</strong> Подписка на обновления балансов кошельков.  </p>
+<p><strong>Параметры (<code>params</code>):</strong></p>
+<ul>
+<li><code>asset</code> (<strong>string</strong>, обязателен) — целевой канал:</li>
+<li><code>SPOT</code> — агрегированный список всех монет спотового кошелька (листинг).</li>
+<li><code>SPOT-&lt;COIN&gt;</code> — точечные апдейты по одной монете, напр. <code>SPOT-XRP</code>.</li>
+</ul>
+<blockquote>
+<p>Примечание: в входящих апдейтах верхнеуровневое поле <code>params</code> имеет вид
+<code>"&lt;account_id&gt;_listings.SPOT"</code> для листинга или <code>"&lt;account_id&gt;_tickers.SPOT-&lt;COIN&gt;"</code> для конкретной монеты. Это <strong>канальный ключ</strong> (с префиксом идентификатора аккаунта).</p>
+</blockquote>
+<p><strong>Пример запроса (полный SPOT‑листинг):</strong></p>
+<pre><code>{
+  &quot;command&quot;: &quot;subscribe.balance&quot;,
+  &quot;params&quot;: { &quot;asset&quot;: &quot;SPOT&quot; },
+  &quot;api_key&quot;: &quot;&lt;YOUR_API_KEY&gt;&quot;,
+  &quot;timestamp&quot;: &quot;1760623193880&quot;,
+  &quot;recv_window&quot;: &quot;65000&quot;,
+  &quot;sign&quot;: &quot;&lt;HEX(HMAC_SHA256(secret, timestamp + api_key + recv_window + JSON(params+command)))&gt;&quot;
+}
+</code></pre>
+<p><strong>ACK‑ответ:</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;6f34da71-f412-41a8-b721-335c1b4ae4b0&quot;,
+  &quot;response&quot;: &quot;Subscribed to balance&quot;
+}
+</code></pre>
+<p><strong>Поток данных — снимок (массив):</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;6f34da71-f412-41a8-b721-335c1b4ae4b0&quot;,
+  &quot;method&quot;: &quot;subscribe.wallets&quot;,
+  &quot;params&quot;: &quot;449_listings.SPOT&quot;,
+  &quot;data&quot;: {
+    &quot;data&quot;: [
+      {
+        &quot;in_orders&quot;: &quot;0.0000&quot;,
+        &quot;available&quot;: &quot;0.00470443&quot;,
+        &quot;total&quot;: &quot;0.00470443&quot;,
+        &quot;coin&quot;: {
+          &quot;name&quot;: &quot;BTC&quot;,
+          &quot;display_name&quot;: &quot;Bitcoin&quot;,
+          &quot;precision&quot;: 8,
+          &quot;icon&quot;: &quot;https://…/coins/BTC.svg&quot;
+        },
+        &quot;equivalent&quot;: { &quot;amount&quot;: &quot;507.45&quot;, &quot;currency&quot;: &quot;USD&quot; }
+      },
+      {
+        &quot;in_orders&quot;: &quot;0.0000&quot;,
+        &quot;available&quot;: &quot;0.01441560&quot;,
+        &quot;total&quot;: &quot;0.01441560&quot;,
+        &quot;coin&quot;: {
+          &quot;name&quot;: &quot;ETH&quot;,
+          &quot;display_name&quot;: &quot;Ethereum&quot;,
+          &quot;precision&quot;: 8,
+          &quot;icon&quot;: &quot;https://…/coins/ETH.svg&quot;
+        },
+        &quot;equivalent&quot;: { &quot;amount&quot;: &quot;56.66&quot;, &quot;currency&quot;: &quot;USD&quot; }
+      },
+      {
+        &quot;in_orders&quot;: &quot;0.0000&quot;,
+        &quot;available&quot;: &quot;445.000000&quot;,
+        &quot;total&quot;: &quot;445.000000&quot;,
+        &quot;coin&quot;: {
+          &quot;name&quot;: &quot;USDT&quot;,
+          &quot;display_name&quot;: &quot;Tether&quot;,
+          &quot;precision&quot;: 6,
+          &quot;icon&quot;: &quot;https://…/coins/USDT.svg&quot;
+        },
+        &quot;equivalent&quot;: { &quot;amount&quot;: &quot;445.00&quot;, &quot;currency&quot;: &quot;USD&quot; }
+      }
+    ]
+  }
+}
+</code></pre>
+<p><strong>Поток — инкрементальные обновления:</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;6f34da71-f412-41a8-b721-335c1b4ae4b0&quot;,
+  &quot;method&quot;: &quot;subscribe.wallets&quot;,
+  &quot;params&quot;: &quot;449_listings.SPOT&quot;,
+  &quot;data&quot;: {
+    &quot;in_orders&quot;: &quot;0.0000&quot;,
+    &quot;available&quot;: &quot;0.00470443&quot;,
+    &quot;total&quot;: &quot;0.00470443&quot;,
+    &quot;coin&quot;: {
+      &quot;name&quot;: &quot;BTC&quot;,
+      &quot;display_name&quot;: &quot;Bitcoin&quot;,
+      &quot;precision&quot;: 8,
+      &quot;icon&quot;: &quot;https://…/coins/BTC.svg&quot;
+    },
+    &quot;equivalent&quot;: { &quot;amount&quot;: &quot;507.39&quot;, &quot;currency&quot;: &quot;USD&quot; }
+  }
+}
+</code></pre>
+<p><strong>Формат полей (листинг/монетные апдейты):</strong></p>
+<ul>
+<li>Числовые значения (<code>available</code>, <code>in_orders</code>, <code>total</code>, <code>equivalent.amount</code>) отдаются <strong>строками</strong>.</li>
+<li><code>coin.precision</code> — целое число (кол-во знаков после запятой).</li>
+<li><code>equivalent.currency</code> — строковый код валюты эквивалента (например, <code>USD</code>).</li>
+</ul>
+<p><strong>Запрос на одну монету:</strong></p>
+<pre><code>{
+  &quot;command&quot;: &quot;subscribe.balance&quot;,
+  &quot;params&quot;: { &quot;asset&quot;: &quot;SPOT-XRP&quot; },
+  &quot;api_key&quot;: &quot;&lt;YOUR_API_KEY&gt;&quot;,
+  &quot;timestamp&quot;: &quot;1760623193880&quot;,
+  &quot;recv_window&quot;: &quot;65000&quot;,
+  &quot;sign&quot;: &quot;&lt;HEX(HMAC_SHA256(secret, timestamp + api_key + recv_window + JSON(params+command)))&gt;&quot;
+}
+</code></pre>
+<p><strong>ACK по монете:</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;faeaf93b-2858-4839-8aae-e438cf61279c&quot;,
+  &quot;response&quot;: &quot;Subscribed to balance&quot;
+}
+</code></pre>
+<p><strong>Поток по монете (пример XRP):</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;faeaf93b-2858-4839-8aae-e438cf61279c&quot;,
+  &quot;method&quot;: &quot;subscribe.wallets&quot;,
+  &quot;params&quot;: &quot;449_tickers.SPOT-XRP&quot;,
+  &quot;data&quot;: {
+    &quot;balance&quot;: &quot;0.000000&quot;,
+    &quot;coin_name&quot;: &quot;XRP&quot;,
+    &quot;coin&quot;: {
+      &quot;name&quot;: &quot;XRP&quot;,
+      &quot;display_name&quot;: &quot;XRP&quot;,
+      &quot;precision&quot;: 6,
+      &quot;icon&quot;: &quot;https://…/coins/XRP.svg&quot;
+    }
+  }
+}
+</code></pre>
+<blockquote>
+<p>Примечание: в канале по одной монете схема может отличаться от листинга (например, <code>balance</code> вместо <code>available/in_orders/total</code>). Клиенту следует обрабатывать оба варианта.</p>
+</blockquote>
+<p><strong>Поведение и примечания</strong></p>
+<ul>
+<li>Подписка приватная: требуется корректная подпись кадра по правилу
+  <code>sign = HMAC_SHA256(secret, timestamp + api_key + recv_window + pre_cmd)</code>.</li>
+<li><code>method</code> во входящих апдейтах приходит как <code>subscribe.wallets</code> — это <strong>семейство каналов балансов</strong>. Это нормально и не является ошибкой названия метода.</li>
+<li>Снапшот для <code>SPOT</code> приходит массивом в <code>data.data</code>, затем — точечные апдейты по монетам (один объект в <code>data</code>).</li>
+<li>Для <code>SPOT-&lt;COIN&gt;</code> приходят апдейты только по выбранной монете.</li>
+<li>Все денежные/количественные величины приходят <strong>строками</strong>; используйте точную (decimal) арифметику на клиенте.</li>
+</ul>
+<h4 id="552-subscribeorderbook">5.5.2 <code>subscribe.orderbook</code></h4>
+<p><strong>Имя:</strong> <code>OrderBookSubscribeMethod</code><br />
+<strong>Auth:</strong> Не требуется<br />
+<strong>Назначение:</strong> Подписка на изменения стакана заявок.  </p>
+<p><strong>Параметры (<code>params</code>):</strong></p>
+<ul>
+<li><code>symbol</code> (<strong>string</strong>, обязателен) — торговая пара в формате <code>BASE-QUOTE</code>, например <code>BTC-USDT</code>.
+  Требования: верхний регистр, дефис между базовой и котируемой валютами.</li>
+<li><code>interval</code> (<strong>string</strong>, обязателен) — частота/режим обновлений, одно из значений из таблицы <strong>INTERVALS</strong> ниже.
+  Возвращается в ACK косвенно (как часть <code>params</code> в виде <code>BTC-USDT_&lt;interval&gt;</code>).</li>
+</ul>
+<blockquote>
+<p>Внутри <code>data.topic</code> число после <code>orderbook.</code> — <strong>код канала</strong>, а не переданный вами <code>interval</code>.</p>
+</blockquote>
+<p><strong>INTERVALS</strong></p>
+<p>'100' → 100 milliseconds</p>
+<p>'300' → 300 milliseconds</p>
+<p>'500' → 500 milliseconds</p>
+<p>'1'   → 1 second</p>
+<p>'3'   → 3 seconds</p>
+<p>'5'   → 5 seconds</p>
+<p>'15'  → 15 seconds</p>
+<p>'30'  → 30 seconds</p>
+<p><strong>Пример запроса:</strong></p>
+<pre><code>{
+  &quot;command&quot;: &quot;subscribe.orderbook&quot;,
+  &quot;params&quot;: { &quot;symbol&quot;: &quot;BTC-USDT&quot;, &quot;interval&quot;: &quot;100&quot; }
+}
+</code></pre>
+<p><strong>ACK:</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;6def89c9-e983-4de2-81d7-ba441892da60&quot;,
+  &quot;response&quot;: &quot;Subscribed to order book&quot;
+}
+</code></pre>
+<p><strong>Пример потока данных:</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;6def89c9-e983-4de2-81d7-ba441892da60&quot;,
+  &quot;method&quot;: &quot;subscribe.orderbook&quot;,
+  &quot;params&quot;: &quot;BTC-USDT_100&quot;,
+  &quot;data&quot;: {
+    &quot;topic&quot;: &quot;orderbook.1.BTC-USDT&quot;,
+    &quot;type&quot;: &quot;snapshot&quot;,               // далее могут быть &quot;delta&quot;
+    &quot;ts&quot;: 1760617081,                  // Unix‑секунды
+    &quot;hmts&quot;: &quot;2025-10-16 12:18:01&quot;,    // человеко‑читаемая метка времени
+    &quot;data&quot;: {
+      &quot;s&quot;: &quot;BTC-USDT&quot;,
+      &quot;a&quot;: [[&quot;111712.13&quot;,&quot;50.00000000&quot;], [&quot;111697.03&quot;,&quot;4.47852061&quot;]],
+      &quot;b&quot;: [[&quot;111555.66&quot;,&quot;50.00000000&quot;], [&quot;111575.09&quot;,&quot;5.00000000&quot;]],
+      &quot;lp&quot;: &quot;111632.00&quot;,
+      &quot;ts&quot;: 1760617081
+    }
+  }
+}
+</code></pre>
+<p><strong>Формат полей:</strong></p>
+<ul>
+<li><strong>Типы:</strong></li>
+<li>Все числовые значения в массиве уровней — <strong>строки</strong>.</li>
+<li><code>ts</code> — целое (UNIX seconds). <code>hmts</code> — строка (человекочитаемая дата/время).</li>
+<li><strong>Структура стакана:</strong></li>
+<li><code>a</code> — массив асков (asks), каждый элемент — пара <code>[price, size]</code>.</li>
+<li><code>b</code> — массив бидов (bids), каждый элемент — пара <code>[price, size]</code>.</li>
+<li><code>s</code> — символ (пара) <code>BASE-QUOTE</code>.</li>
+<li><code>lp</code> — последняя цена .</li>
+<li><strong>Канальный ключ vs интервал:</strong></li>
+<li>Верхнеуровневый <code>params</code> у апдейтов — это строка <code>"&lt;SYMBOL&gt;_&lt;INTERVAL&gt;"</code>.</li>
+<li><code>data.topic</code> имеет вид <code>"orderbook.&lt;code&gt;.&lt;SYMBOL&gt;"</code>, где <code>&lt;code&gt;</code> — <strong>внутренний код канала</strong>, он может не совпадать с переданным <code>interval</code>.</li>
+</ul>
+<h4 id="553-subscribeklines">5.5.3 <code>subscribe.klines</code></h4>
+<p><strong>Имя:</strong> <code>KlinesSubscribeMethod</code><br />
+<strong>Auth:</strong> Не требуется<br />
+<strong>Назначение:</strong> Подписка на данные свечей.  </p>
+<p><strong>Параметры (<code>params</code>):</strong></p>
+<ul>
+<li><code>symbol</code> (string, обяз.) — напр. <code>BTCUSDT</code>.</li>
+<li><code>interval</code> (string, обяз.) — таймфрейм.</li>
+</ul>
+<p><strong>INTERVALS (чарт‑таймфреймы):</strong></p>
+<ul>
+<li><code>"1"</code> → 1 мин</li>
+<li><code>"3"</code> → 3 мин</li>
+<li><code>"5"</code> → 5 мин</li>
+<li><code>"15"</code> → 15 мин</li>
+<li><code>"30"</code> → 30 мин</li>
+<li><code>"60"</code> → 1 ч</li>
+<li><code>"120"</code> → 2 ч</li>
+<li><code>"240"</code> → 4 ч</li>
+<li><code>"360"</code> → 6 ч</li>
+<li><code>"720"</code> → 12 ч</li>
+<li><code>"1440"</code> → 24 ч</li>
+<li><code>"D"</code> → 1 день</li>
+<li><code>"W"</code> → 1 неделя</li>
+<li><code>"M"</code> → 1 месяц</li>
+</ul>
+<p><strong>Пример запроса:</strong></p>
+<pre><code>{
+  &quot;command&quot;: &quot;subscribe.klines&quot;,
+  &quot;params&quot;: { &quot;symbol&quot;: &quot;BTCUSDT&quot;, &quot;interval&quot;: &quot;1&quot; }
+}
+</code></pre>
+<p><strong>ACK:</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;b7570450-401a-41bc-8cf2-458a086b0940&quot;,
+  &quot;response&quot;: &quot;Subscribed to klines&quot;
+}
+</code></pre>
+<p><strong>Пример потока данных:</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;b7570450-401a-41bc-8cf2-458a086b0940&quot;,
+  &quot;method&quot;: &quot;subscribe.klines&quot;,
+  &quot;params&quot;: &quot;BTCUSDT_1&quot;,
+  &quot;data&quot;: {
+    &quot;type&quot;: &quot;snapshot&quot;,
+    &quot;topic&quot;: &quot;kline.1.BTCUSDT&quot;,
+    &quot;data&quot;: [{
+      &quot;start&quot;: 1760613360000,
+      &quot;end&quot;: 1760613419999,
+      &quot;interval&quot;: &quot;1&quot;,
+      &quot;open&quot;: &quot;111435.4&quot;,
+      &quot;close&quot;: &quot;111410.7&quot;,
+      &quot;high&quot;: &quot;111468&quot;,
+      &quot;low&quot;: &quot;111402.2&quot;,
+      &quot;volume&quot;: &quot;2.104702&quot;,
+      &quot;turnover&quot;: &quot;234565.1162144&quot;,
+      &quot;confirm&quot;: false,
+      &quot;timestamp&quot;: 1760613392515
+    }],
+    &quot;ts&quot;: 1760613392515
+  }
+}
+</code></pre>
+<p>Каждый элемент массива — одна свеча OHLCV.</p>
+<ul>
+<li><code>start</code> (<strong>integer</strong>, ms) — начало интервала свечи, UNIX time в <strong>миллисекундах</strong>.</li>
+<li><code>end</code> (<strong>integer</strong>, ms) — конец интервала свечи (включительно/исключительно — см. ниже); UNIX ms.</li>
+<li><code>interval</code> (<strong>string</strong>) — запрошенный таймфрейм (см. таблицу INTERVALS в разделе метода).</li>
+<li><code>open</code> (<strong>string</strong>) — цена открытия.</li>
+<li><code>close</code> (<strong>string</strong>) — цена закрытия (для незакрытых свечей — текущая).</li>
+<li><code>high</code> (<strong>string</strong>) — максимум за интервал.</li>
+<li><code>low</code> (<strong>string</strong>) — минимум за интервал.</li>
+<li><code>volume</code> (<strong>string</strong>) — объём в <strong>базовой</strong> валюте (BASE). Суммарное количество BASE за <strong>все сделки</strong> внутри свечи</li>
+<li><code>turnover</code> (<strong>string</strong>) — оборот в <strong>котируемой</strong> валюте (QUOTE). Суммарный оборот в QUOTE за <strong>все сделки</strong> внутри свечи</li>
+<li><code>confirm</code> (<strong>boolean</strong>) — финализация:</li>
+<li><code>false</code> — свеча <strong>ещё формируется</strong> (данные могут обновляться);</li>
+<li><code>true</code> — свеча <strong>закрыта</strong>, значения стабильны.</li>
+<li><code>timestamp</code> (<strong>integer</strong>, ms) — серверный момент формирования именно этой записи (может совпадать с верхним <code>ts</code>, но относится к конкретной свече).</li>
+</ul>
+<blockquote>
+<p>Все ценовые и объёмные поля (<code>open/close/high/low/volume/turnover</code>) приходят <strong>строками</strong>. Для расчётов используйте Decimal/BigNumber.</p>
+</blockquote>
+<h4 id="554-subscribetickers">5.5.4 <code>subscribe.tickers</code></h4>
+<p><strong>Имя:</strong> <code>TickersSubscribeMethod</code><br />
+<strong>Auth:</strong> Не требуется<br />
+<strong>Назначение:</strong> Подписка на тикер выбранной торговой пары.  </p>
+<p><strong>Параметры (<code>params</code>):</strong>  </p>
+<ul>
+<li><code>asset</code> (<strong>string</strong>, обязателен) — торговая пара в формате <code>BASE/QUOTE</code>, например <code>CITRO/USDT</code>.</li>
+</ul>
+<blockquote>
+<p>Примечание: другие форматы (например, <code>SPOT-BTC</code> или просто <code>BTC</code>) <strong>не поддерживаются</strong> этим методом — подписка сработает <strong>только</strong> при передаче пары <code>BASE/QUOTE</code>.</p>
+<p>В входящих апдейтах поле <code>params</code> возвращает пару (например, <code>"CITRO/USDT"</code>), а поле <code>method</code> приходит как <code>subscribe.coins</code> — это семейство каналов тикеров. Это ожидаемо и не является ошибкой имени метода.</p>
+</blockquote>
+<p><strong>Пример запроса:</strong></p>
+<pre><code>{
+  &quot;command&quot;: &quot;subscribe.tickers&quot;,
+  &quot;params&quot;: { &quot;asset&quot;: &quot;CITRO/USDT&quot; }
+}
+</code></pre>
+<p><strong>ACK:</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;c45df69d-a275-4467-92ac-900e9daad5d5&quot;,
+  &quot;response&quot;: &quot;Subscribed to tickers&quot;
+}
+</code></pre>
+<p><strong>Пример потока:</strong></p>
+<pre><code>{
+  &quot;subscription_id&quot;: &quot;c45df69d-a275-4467-92ac-900e9daad5d5&quot;,
+  &quot;method&quot;: &quot;subscribe.coins&quot;,
+  &quot;params&quot;: &quot;CITRO/USDT&quot;,
+  &quot;data&quot;: {
+    &quot;symbol&quot;: &quot;CITRO/USDT&quot;,
+    &quot;last_price&quot;: &quot;999.00000&quot;,
+    &quot;volume_24h&quot;: &quot;0.02202&quot;,
+    &quot;change_24h&quot;: &quot;0.00&quot;,
+    &quot;high_24h&quot;: &quot;999.00000&quot;,
+    &quot;low_24h&quot;: &quot;999.00000&quot;,
+    &quot;price_direction&quot;: &quot;UP&quot;
+  }
+}
+</code></pre>
+<p>Поля <code>data</code></p>
+<ul>
+<li>Все числовые значения (<code>last_price</code>, <code>volume_24h</code>, <code>change_24h</code>, <code>high_24h</code>, <code>low_24h</code>) — <strong>строки</strong>. Рекомендуется парсить в Decimal.</li>
+<li><code>symbol</code> — строка, эхо пары <code>BASE/QUOTE</code>.</li>
+<li><code>price_direction</code> — строка-индикатор направления (например, <code>"UP"</code>).</li>
+</ul>
+<p>Поведение и примечания</p>
+<ul>
+<li>Работает <strong>только</strong> при <code>asset</code> в формате <code>BASE/QUOTE</code>. При других значениях сервер не даёт рабочий стрим.</li>
+</ul>
+<hr />
+<h2 id="6-rate-limits">6. Лимиты (Rate Limits)</h2>
+<p>API применяет лимиты, чтобы обеспечить стабильность сервиса.</p>
+<h3 id="61">6.1 Базовые лимиты</h3>
+<ul>
+<li>Базовая полоса: ~5 запросов в секунду на API‑ключ.</li>
+<li>Пиковый запас (burst):** кратковременно допускается до <code>+5</code> запросов сверх базового лимита.</li>
+<li>При превышении лимитов некоторые запросы могут замедляться или отклоняться с HTTP <code>429 Too Many Requests</code>.</li>
+</ul>
+<h3 id="62">6.2 Как обнаружить троттлинг</h3>
+<ul>
+<li>Вы получаете HTTP <code>429 Too Many Requests</code>.</li>
+<li>Дополнительные заголовки вроде <code>Retry-After</code> не гарантируются.</li>
+</ul>
+<h3 id="63">6.3 Рекомендации для клиента</h3>
+<ul>
+<li>Планируйте трафик так, чтобы <strong>устойчиво не превышать 5 rps</strong> на ключ.</li>
+<li>При получении <strong>429</strong> подождите короткую паузу (например, 1–2 секунды).</li>
+<li>Равномерно распределяйте пакеты запросов</li>
+<li>Помните, что <strong>параллельные и батч-запросы</strong> тоже учитываются в лимите.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  К началу
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Citronus
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "content.code.copy", "content.code.select", "search.suggest", "search.highlight", "toc.integrate"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../playground.js"></script>
+      
+    
+  </body>
+</html>
